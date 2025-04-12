@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
+import { ThemeToggle } from "./theme-toggle"
 
 const navigation = [
   { name: "Anasayfa", href: "/" },
@@ -17,7 +18,7 @@ export function Navigation() {
 
   return (
     <div className="flex items-center justify-between w-full">
-      <Link href="/" className="font-bold text-xl">
+      <Link href="/" className="font-bold text-xl text-black dark:text-white">
         AS
       </Link>
       <nav className="flex items-center space-x-6">
@@ -26,13 +27,16 @@ export function Navigation() {
             key={item.href}
             href={item.href}
             className={cn(
-              "text-sm font-medium transition-colors hover:text-primary",
-              pathname === item.href ? "text-primary" : "text-muted-foreground"
+              "text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400",
+              pathname === item.href
+                ? "text-blue-600 dark:text-blue-400"
+                : "text-gray-600 dark:text-gray-400"
             )}
           >
             {item.name}
           </Link>
         ))}
+        <ThemeToggle />
       </nav>
     </div>
   )

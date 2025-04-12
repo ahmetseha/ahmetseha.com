@@ -1,21 +1,14 @@
-import { notFound } from "next/navigation"
-import { type BlogPost } from "@/types/blog"
-import { formatDate } from "@/lib/utils"
-import { getPostBySlug } from "@/lib/mdx"
-import { MDXRemote } from "next-mdx-remote/rsc"
-import Link from "next/link"
+import { notFound } from "next/navigation";
+import { formatDate } from "@/lib/utils";
+import { getPostBySlug } from "@/lib/mdx";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import Link from "next/link";
 
-interface BlogPostPageProps {
-  params: {
-    slug: string
-  }
-}
-
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = getPostBySlug(params.slug)
+export default async function BlogPostPage({ params }: any) {
+  const post = getPostBySlug(params.slug);
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -25,7 +18,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           href="/blog"
           className="text-sm text-muted-foreground hover:text-primary transition-colors"
         >
-          ← Blog'a Dön
+          ← Bloga Dön
         </Link>
         <h1 className="text-4xl font-bold">{post.title}</h1>
         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
@@ -49,5 +42,5 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         <MDXRemote source={post.content} />
       </div>
     </article>
-  )
+  );
 }
