@@ -1,4 +1,3 @@
-import { type BlogPost } from "@/types/blog"
 import { BlogCard } from "@/components/blog/blog-card"
 import { BlogLayout } from "@/components/blog/blog-layout"
 import { getAllPosts } from "@/lib/mdx"
@@ -9,8 +8,13 @@ export default function BlogPage() {
   return (
     <BlogLayout posts={posts}>
       <div className="space-y-8">
-        <h1 className="text-3xl font-bold">Blog</h1>
-        <div className="space-y-8">
+        <div className="space-y-2">
+          <h1 className="text-4xl font-bold">Blog</h1>
+          <p className="text-lg text-muted-foreground">
+            Yazılım, teknoloji ve kişisel deneyimlerim hakkında yazılar.
+          </p>
+        </div>
+        <div className="space-y-6">
           {posts.map((post) => (
             <BlogCard key={post.slug} post={post} />
           ))}

@@ -7,7 +7,6 @@ interface BlogLayoutProps {
 }
 
 export function BlogLayout({ posts, children }: BlogLayoutProps) {
-  // Extract unique categories and tags
   const categories = Array.from(new Set(posts.map((post) => post.category)))
   const tags = Array.from(new Set(posts.flatMap((post) => post.tags)))
 
@@ -15,7 +14,7 @@ export function BlogLayout({ posts, children }: BlogLayoutProps) {
     <div className="grid grid-cols-1 md:grid-cols-[1fr_250px] gap-8">
       <main>{children}</main>
       <aside className="space-y-8">
-        <div>
+        <div className="p-4 rounded-lg border border-border">
           <h3 className="text-lg font-semibold mb-4">Kategoriler</h3>
           <ul className="space-y-2">
             {categories.map((category) => (
@@ -30,14 +29,14 @@ export function BlogLayout({ posts, children }: BlogLayoutProps) {
             ))}
           </ul>
         </div>
-        <div>
+        <div className="p-4 rounded-lg border border-border">
           <h3 className="text-lg font-semibold mb-4">Etiketler</h3>
           <div className="flex flex-wrap gap-2">
             {tags.map((tag) => (
               <Link
                 key={tag}
                 href={`/blog/tag/${tag}`}
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                className="text-sm px-2 py-1 bg-muted rounded-full text-muted-foreground hover:text-primary transition-colors"
               >
                 #{tag}
               </Link>

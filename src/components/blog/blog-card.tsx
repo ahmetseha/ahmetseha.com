@@ -8,7 +8,7 @@ interface BlogCardProps {
 
 export function BlogCard({ post }: BlogCardProps) {
   return (
-    <article className="group relative flex flex-col space-y-2">
+    <article className="group relative flex flex-col space-y-3 p-4 rounded-lg border border-border hover:border-primary/50 transition-colors">
       <Link href={`/blog/${post.slug}`}>
         <h2 className="text-2xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
           {post.title}
@@ -25,7 +25,7 @@ export function BlogCard({ post }: BlogCardProps) {
           <Link
             key={tag}
             href={`/blog/tag/${tag}`}
-            className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            className="text-sm px-2 py-1 bg-muted rounded-full text-muted-foreground hover:text-primary transition-colors"
           >
             #{tag}
           </Link>
