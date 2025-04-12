@@ -1,0 +1,36 @@
+import Link from "next/link"
+import { type BlogPost } from "@/types/blog"
+import { formatDate } from "@/lib/utils"
+
+interface BlogCardProps {
+  post: BlogPost
+}
+
+export function BlogCard({ post }: BlogCardProps) {
+  return (
+    <article className="group relative flex flex-col space-y-2">
+      <Link href={`/blog/${post.slug}`}>
+        <h2 className="text-2xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+          {post.title}
+        </h2>
+      </Link>
+      <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+        <time dateTime={post.date}>{formatDate(post.date)}</time>
+        <span>•</span>
+        <span>{post.readingTime}</span>
+      </div>
+      <p className="text-muted-foreground">{post.description}</p>
+      <div className="flex flex-wrap gap-2">
+        {post.tags.map((tag) => (
+          <Link
+            key={tag}
+            href={`/blog/tag/${tag}`}
+            className="text-sm text-muted-foreground hover:text-primary transition-colors"
+          >
+            #{tag}
+          </Link>
+        ))}
+      </div>
+    </article>
+  )
+}
