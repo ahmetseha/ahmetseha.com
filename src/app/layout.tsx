@@ -2,8 +2,7 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { Navigation } from "@/components/navigation"
-import { ThemeProvider } from "@/lib/theme-context"
-import { ThemeProvider as NextThemeProvider } from "next-themes"
+import { ThemeProvider } from "next-themes"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,25 +27,23 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-200`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background text-foreground transition-colors duration-200`}
       >
-        <NextThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <ThemeProvider>
-            <header className="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-800 bg-white/95 dark:bg-gray-900/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-900/60">
-              <div className="container flex h-16 items-center">
-                <Navigation />
-              </div>
-            </header>
-            <main className="flex-1">{children}</main>
-            <footer className="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
-              <div className="container flex h-16 items-center justify-between">
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  © 2024 Ahmet Seha. All rights reserved.
-                </p>
-              </div>
-            </footer>
-          </ThemeProvider>
-        </NextThemeProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+            <div className="container flex h-16 items-center">
+              <Navigation />
+            </div>
+          </header>
+          <main className="flex-1">{children}</main>
+          <footer className="border-t border-border bg-background">
+            <div className="container flex h-16 items-center justify-between">
+              <p className="text-sm text-muted-foreground">
+                © 2024 Ahmet Seha. All rights reserved.
+              </p>
+            </div>
+          </footer>
+        </ThemeProvider>
       </body>
     </html>
   )

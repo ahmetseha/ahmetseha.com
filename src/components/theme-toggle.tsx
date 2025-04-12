@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import { useTheme } from "next-themes";
+import { useTheme } from "next-themes"
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme()
 
   return (
     <button
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 transition-colors"
+      className="p-2 rounded-lg bg-muted hover:bg-muted/80 transition-colors"
       aria-label="Toggle theme"
     >
       {theme === "light" ? (
@@ -43,5 +43,5 @@ export function ThemeToggle() {
         </svg>
       )}
     </button>
-  );
+  )
 }
