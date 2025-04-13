@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Navigation } from "@/components/navigation";
+import Header from "@/components/shared/header";
 import { ThemeProvider } from "next-themes";
 import Container from "@/components/shared/container";
 
@@ -16,8 +16,49 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ahmet Seha",
-  description: "Personal website of Ahmet Seha",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL || "https://onurhan.dev"
+  ),
+  title: {
+    default: "Ahmet Seha - Software Developer",
+    template: "%s | Ahmet Seha",
+  },
+  description:
+    "Ahmet Seha - Software Developer at Insider, focused on building comprehensive applications and micro products.",
+  openGraph: {
+    title: "Ahmet Seha - Software Developer",
+    description:
+      "Software Developer at AlışGidiş, focused on building comprehensive applications and micro products.",
+    url: "https://onurhan.dev",
+    siteName: "Ahmet Seha",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://ahmetseha.com/logo.svg",
+        width: 1200,
+        height: 630,
+        alt: "Onurhan Demir",
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  twitter: {
+    title: "Ahmet Seha",
+    card: "summary_large_image",
+    site: "@onurhan1337",
+    creator: "@onurhan1337",
+  },
 };
 
 export default function RootLayout({
@@ -31,23 +72,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background text-foreground transition-colors duration-200`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <Container
-              size="large"
-              className="prose prose-zinc dark:prose-invert container animate-enter"
-            >
-              <div className="flex h-16 items-center">
-                <Navigation />
-              </div>
-            </Container>
-          </header>
-          <main className="flex-1">
-            <Container
-              size="large"
-              className="prose prose-zinc dark:prose-invert container animate-enter"
-            >
+          <main className="antialiased lg:max-w-2xl md:max-w-full mx-4 mb-40 flex flex-col md:flex-row  mt-2 sm:mt-8 lg:mx-auto">
+            <section className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+              <Header />
+
               {children}
-            </Container>
+            </section>
           </main>
         </ThemeProvider>
       </body>

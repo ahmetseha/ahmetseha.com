@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { ExternalLink } from "lucide-react"
+import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 
 const bookmarks = [
   {
@@ -39,15 +39,15 @@ const bookmarks = [
     url: "https://mdxjs.com",
     category: "Dokümantasyon",
   },
-]
+];
 
 const categories = Array.from(
   new Set(bookmarks.map((bookmark) => bookmark.category))
-)
+);
 
 export default function BookmarksPage() {
   return (
-    <div className="max-w-4xl mx-auto space-y-12">
+    <div className="space-y-12">
       <div className="space-y-4">
         <h1 className="text-4xl font-bold">Yer İmleri</h1>
         <p className="text-lg text-muted-foreground">
@@ -92,5 +92,5 @@ export default function BookmarksPage() {
         ))}
       </div>
     </div>
-  )
+  );
 }

@@ -1,12 +1,12 @@
-import { BlogCard } from "@/components/blog/blog-card"
-import { BlogLayout } from "@/components/blog/blog-layout"
-import { getAllPosts } from "@/lib/mdx"
+import { BlogCard } from "@/components/blog/blog-card";
+import { BlogLayout } from "@/components/blog/blog-layout";
+import { getAllPosts } from "@/lib/mdx";
 
 export default function BlogPage() {
-  const posts = getAllPosts()
+  const posts = getAllPosts();
 
   return (
-    <BlogLayout posts={posts}>
+    <BlogLayout>
       <div className="space-y-8">
         <div className="space-y-2">
           <h1 className="text-4xl font-bold">Blog</h1>
@@ -14,12 +14,12 @@ export default function BlogPage() {
             Yazılım, teknoloji ve kişisel deneyimlerim hakkında yazılar.
           </p>
         </div>
-        <div className="space-y-6">
+        <div className="space-y-8">
           {posts.map((post) => (
             <BlogCard key={post.slug} post={post} />
           ))}
         </div>
       </div>
     </BlogLayout>
-  )
+  );
 }

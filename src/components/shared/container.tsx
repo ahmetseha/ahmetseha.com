@@ -1,33 +1,16 @@
-import { ReactNode } from "react"
+import React from "react";
 
-type ContainerProps = {
-  children: ReactNode
-  size?: "small" | "medium" | "large"
-  className?: string
+interface ContainerProps {
+  children: React.ReactNode;
+  size?: "sm" | "md" | "lg";
 }
 
-export default function Container({
-  children,
-  size = "large",
-  className,
-}: ContainerProps) {
-  let width
-  switch (size) {
-    case "small":
-      width = "w-full sm:max-w-screen-sm"
-      break
-    case "medium":
-      width = "w-full sm:max-w-screen-md"
-      break
-    case "large":
-    default:
-      width = "w-full sm:max-w-screen-lg"
-      break
-  }
-
+export default function Container(props: ContainerProps) {
   return (
-    <div className={`mx-auto px-4 sm:px-6 lg:px-8 ${width} ${className}`}>
-      {children}
+    <div
+      className={`mx-auto px-4 sm:px-6 w-full lg:px-8 sm:max-w-screen-${props.size}`}
+    >
+      {props.children}
     </div>
-  )
+  );
 }

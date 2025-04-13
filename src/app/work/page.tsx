@@ -1,84 +1,59 @@
-import Link from "next/link"
-import { ExternalLink } from "lucide-react"
+import Container from "@/components/shared/container";
 
-// Sample work data
-const projects = [
-  {
-    title: "Kişisel Web Sitesi",
-    description:
-      "Next.js, TypeScript ve Tailwind CSS ile geliştirilmiş kişisel web sitesi",
-    url: "https://ahmetseha.com",
-    image: "/images/projects/personal-website.png",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
-  },
-  {
-    title: "E-Ticaret Uygulaması",
-    description: "React ve Node.js ile geliştirilmiş e-ticaret uygulaması",
-    url: "https://github.com/ahmetseha/ecommerce",
-    image: "/images/projects/ecommerce.png",
-    tags: ["React", "Node.js", "MongoDB"],
-  },
-  {
-    title: "Blog Uygulaması",
-    description: "Next.js ve MDX ile geliştirilmiş blog uygulaması",
-    url: "https://github.com/ahmetseha/blog",
-    image: "/images/projects/blog.png",
-    tags: ["Next.js", "MDX", "Tailwind CSS"],
-  },
-]
-
-export default function WorkPage() {
+export default function Work() {
   return (
-    <div className="max-w-4xl mx-auto space-y-12">
-      <div className="space-y-4">
-        <h1 className="text-4xl font-bold">Çalışmalarım</h1>
-        <p className="text-lg text-muted-foreground">
-          Geliştirdiğim projeler ve çalışmalarım.
-        </p>
-      </div>
+    <Container size="lg">
+      <main className="prose prose-neutral dark:prose-invert">
+        <header>
+          <p>
+            On a mission to create impactful applications that engage users and
+            drive value for businesses. Here's a summary of my journey so far.
+          </p>
+          <hr className="my-6 border-neutral-200 dark:border-neutral-800" />
+        </header>
 
-      <div className="grid gap-8">
-        {projects.map((project) => (
-          <div
-            key={project.url}
-            className="p-6 rounded-lg border border-border hover:border-primary/50 transition-colors"
-          >
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="w-full md:w-1/3">
-                <div className="aspect-video bg-muted rounded-md overflow-hidden">
-                  <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                    {project.title}
-                  </div>
-                </div>
-              </div>
-              <div className="w-full md:w-2/3 space-y-4">
-                <div className="flex items-start justify-between">
-                  <h2 className="text-2xl font-bold">{project.title}</h2>
-                  <Link
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <ExternalLink size={20} />
-                  </Link>
-                </div>
-                <p className="text-muted-foreground">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-muted rounded-full text-sm"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
+        <section>
+          <article>
+            <header>
+              <h2 className="font-medium text-2xl mb-1 tracking-tighter">
+                Gordion
+              </h2>
+              <time className="text-neutral-600 dark:text-neutral-400 text-sm">
+                Software Developer, 2022 — present
+              </time>
+            </header>
+            <p>
+              At Gordion, a company operating in the tourism sector, I
+              contribute to the development of both B2B and B2C applications
+              tailored to our users' needs. My role focuses on delivering
+              seamless and visually appealing user experiences using modern web
+              technologies.
+            </p>
+            <ul className="list-disc">
+              <li className="">
+                Developed and maintained scalable B2B and B2C applications,
+                ensuring optimal performance and user satisfaction.
+              </li>
+              <li>
+                Leveraged technologies such as React, Next.js, and jQuery to
+                build dynamic and responsive interfaces.
+              </li>
+              <li>
+                Utilized shadcn and Tailwind CSS for efficient and customizable
+                design implementations.
+              </li>
+              <li>
+                Collaborated with cross-functional teams to deliver
+                high-quality, user-focused solutions.
+              </li>
+              <li>
+                Continuously improved existing systems, incorporating feedback
+                and optimizing workflows to meet business goals.
+              </li>
+            </ul>
+          </article>
+        </section>
+      </main>
+    </Container>
+  );
 }
