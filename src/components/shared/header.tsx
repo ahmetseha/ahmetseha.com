@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ThemeToggle } from "../theme-toggle";
+import ThemeToogle from "../ui/theme-toggle";
 
 const navItems = {
   about: "/about",
@@ -58,7 +58,7 @@ export default function Header() {
               </Link>
             ))}
           </div>
-          <ThemeToggle />
+          <ThemeToogle />
         </div>
       </nav>
     </header>

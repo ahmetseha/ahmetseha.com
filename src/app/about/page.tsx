@@ -1,8 +1,9 @@
 import React from "react";
+import Container from "@/components/shared/container";
 
 export default function About() {
   return (
-    <div>
+    <Container size="lg">
       <div className="flex flex-col gap-3 prose prose-neutral dark:prose-invert">
         <h1>Hi, I'm Seha.</h1>
         <span>
@@ -30,6 +31,6 @@ export default function About() {
           that align with both business and user goals.
         </span>
       </div>
-    </div>
+    </Container>
   );
 }
