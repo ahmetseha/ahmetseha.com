@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import { formatDate } from "@/lib/utils";
 import { getPostBySlug } from "@/lib/mdx";
-import { MDXRemote } from "next-mdx-remote/rsc";
+import Markdown from "markdown-to-jsx";
+import BlurFade from "@/components/ui/blur-fade";
 import Link from "next/link";
 
 export default async function BlogPostPage({ params }: any) {
@@ -13,7 +14,7 @@ export default async function BlogPostPage({ params }: any) {
 
   return (
     <article className="max-w-3xl mx-auto">
-      <header className="space-y-4 mb-8">
+      <header className="flex flex-col gap-4">
         <Link
           href="/blog"
           className="text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -39,7 +40,9 @@ export default async function BlogPostPage({ params }: any) {
         </div>
       </header>
       <div className="prose prose-gray dark:prose-invert max-w-none">
-        <MDXRemote source={post.content} />
+        <BlurFade delay={0.5} duration={0.5}>
+          <Markdown>{post.content}</Markdown>
+        </BlurFade>
       </div>
     </article>
   );

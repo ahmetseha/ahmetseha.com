@@ -51,7 +51,7 @@ export default function Header() {
                 href={href}
                 className={cn(
                   pathname === href ? "font-semibold" : "font-normal",
-                  "transition-all hover:text-gray-500 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2"
+                  "transition-all hover:text-gray-400 dark:hover:text-white-800 flex align-middle relative py-1 px-2"
                 )}
               >
                 {name}
