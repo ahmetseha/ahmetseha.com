@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Mail, Twitter, Linkedin } from "lucide-react";
+import { GithubIcon, Mail, TwitterIcon, LinkedinIcon } from "lucide-react";
 
 export function Hero() {
   return (
@@ -16,21 +16,21 @@ export function Hero() {
           target="_blank"
           className="p-2 hover:bg-accent rounded-lg transition-colors"
         >
-          <Github className="w-6 h-6" />
+          <GithubIcon className="w-6 h-6" />
         </Link>
         <Link
           href="https://twitter.com/ahmetseha"
           target="_blank"
           className="p-2 hover:bg-accent rounded-lg transition-colors"
         >
-          <Twitter className="w-6 h-6" />
+          <TwitterIcon className="w-6 h-6" />
         </Link>
         <Link
           href="https://linkedin.com/in/ahmetseha"
           target="_blank"
           className="p-2 hover:bg-accent rounded-lg transition-colors"
         >
-          <Linkedin className="w-6 h-6" />
+          <LinkedinIcon className="w-6 h-6" />
         </Link>
         <Link
           href="mailto:ahmetseha@example.com"
