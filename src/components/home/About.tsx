@@ -1,10 +1,9 @@
 import React from "react";
-import Container from "@/components/shared/container";
 
 export default function About() {
   return (
-    <div className="flex flex-col gap-3 prose prose-neutral dark:prose-invert">
-      <h1>Hi, I'm Seha.</h1>
+    <section className="flex flex-col gap-3 max-w-2xl mx-auto prose prose-neutral dark:prose-invert">
+      <h2 className="text-2xl font-semibold mb-6">About</h2>
       <span>
         As a dedicated Frontend Developer, I specialize in building dynamic,
         accessible, and responsive web applications using React, Next.js, and
@@ -29,6 +28,6 @@ export default function About() {
         problems, and delivering polished, impactful products that align with
         both business and user goals.
       </span>
-    </div>
+    </section>
   );
 }
