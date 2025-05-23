@@ -10,6 +10,7 @@ const navItems = {
   Home: "/",
   Blog: "/blog",
   Work: "/work",
+  About: "/about",
 };
 
 export default function Header() {
