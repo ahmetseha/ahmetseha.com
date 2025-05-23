@@ -19,13 +19,6 @@ export function Hero() {
           <GithubIcon className="w-6 h-6" />
         </Link>
         <Link
-          href="https://twitter.com/ahmetseha"
-          target="_blank"
-          className="p-2 hover:bg-accent rounded-lg transition-colors"
-        >
-          <TwitterIcon className="w-6 h-6" />
-        </Link>
-        <Link
           href="https://linkedin.com/in/ahmetseha"
           target="_blank"
           className="p-2 hover:bg-accent rounded-lg transition-colors"
