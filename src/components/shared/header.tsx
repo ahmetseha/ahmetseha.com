@@ -7,10 +7,9 @@ import { usePathname } from "next/navigation";
 import ThemeToogle from "../ui/theme-toggle";
 
 const navItems = {
-  Home: "/",
-  Blog: "/blog",
+  About: "/",
   Work: "/work",
-  About: "/about",
+  Components: "/components",
 };
 
 export default function Header() {
