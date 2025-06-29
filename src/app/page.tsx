@@ -44,7 +44,11 @@ export default function Page() {
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-            <About />
+            <p className="text-sm text-muted-foreground font-sans">
+              <strong>Frontend Developer</strong> specializing in modern web
+              technologies. Creating <strong>accessible, responsive</strong>{" "}
+              applications that deliver exceptional user experiences.
+            </p>
           </div>
         </BlurFade>
       </section>

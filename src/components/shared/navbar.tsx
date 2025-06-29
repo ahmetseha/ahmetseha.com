@@ -8,6 +8,7 @@ import {
   XIcon,
   LinkedinIcon,
   GithubIcon,
+  UserIcon,
 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -36,7 +37,8 @@ const Icons = {
 
 const DATA = {
   navbar: [
-    { href: "/", icon: HomeIcon, label: "About" },
+    { href: "/", icon: HomeIcon, label: "Home" },
+    { href: "/about", icon: UserIcon, label: "About" },
     { href: "/projects", icon: CodeXmlIcon, label: "Projects" },
     { href: "/work", icon: BriefcaseIcon, label: "Work" },
   ],
