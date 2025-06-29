@@ -3,15 +3,14 @@ import Container from "@/components/shared/container";
 export default function Work() {
   return (
     <main className="space-y-6">
-      <header>
-        <p className="text-sm text-muted-foreground font-sans">
-          Creating impactful applications that engage users and drive business
-          value.
-          <strong> Full-stack developer</strong> with expertise in modern web
-          technologies.
-        </p>
-        <hr className="my-6 border-neutral-200 dark:border-neutral-800" />
-      </header>
+      <div className="flex flex-col items-center justify-center space-y-4">
+        <div className="space-y-2">
+          <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            Creating impactful applications that engage users and drive business
+            value.
+          </p>
+        </div>
+      </div>
 
       <section className="space-y-8">
         <article>
@@ -20,7 +19,7 @@ export default function Work() {
               Alışgidiş
             </h2>
             <time className="text-sm text-muted-foreground font-sans">
-              Software Developer, 2025 — present
+              Frontend Developer, 2025 — present
             </time>
           </header>
           <p className="text-sm text-muted-foreground font-sans mb-4">
@@ -52,7 +51,7 @@ export default function Work() {
               Gordion
             </h2>
             <time className="text-sm text-muted-foreground font-sans">
-              Software Developer, 2022 — 2025
+              Frontend Developer, 2022 — 2025
             </time>
           </header>
           <p className="text-sm text-muted-foreground font-sans mb-4">
