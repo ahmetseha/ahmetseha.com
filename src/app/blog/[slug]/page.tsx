@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import { formatDate } from "@/lib/utils";
 import { getPostBySlug } from "@/lib/mdx";
 import Markdown from "markdown-to-jsx";
 import BlurFade from "@/components/ui/blur-fade";
@@ -23,7 +22,6 @@ export default async function BlogPostPage({ params }: any) {
         </Link>
         <h1 className="text-4xl font-bold">{post.title}</h1>
         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-          <time dateTime={post.date}>{formatDate(post.date)}</time>
           <span>•</span>
           <span>{post.readingTime}</span>
         </div>

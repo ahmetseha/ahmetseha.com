@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { type BlogPost } from "@/types/blog";
-import { formatDate } from "@/lib/utils";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -15,7 +14,6 @@ export function BlogCard({ post }: BlogCardProps) {
         </h2>
       </Link>
       <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-        <time dateTime={post.date}>{formatDate(post.date)}</time>
         <span>•</span>
         <span>{post.readingTime}</span>
       </div>
