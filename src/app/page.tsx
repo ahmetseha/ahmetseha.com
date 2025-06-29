@@ -3,7 +3,6 @@ import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
-import Markdown from "react-markdown";
 import ProjectGrid from "./projects/page";
 import Work from "./work/page";
 import About from "./about/page";
