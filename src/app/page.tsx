@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-[100dvh] space-y-10">
+    <main className="flex flex-col">
       <section id="hero">
         <span>Hi, I'm Ahmet Seha.</span>
         <span>

@@ -6,6 +6,7 @@ const projects = [
     image: "/story-craft.png",
     title: "story-craft",
     dates: "Jan 2024 - Feb 2024",
+    href: "https://story-craft-drab.vercel.app/",
     description:
       "Modern web teknolojileri ile geliştirilmiş, yapay zeka destekli Türkçe hikaye oluşturucu uygulaması.",
     tags: [
@@ -48,6 +49,7 @@ const projects = [
     image: "/tr-slugify.png",
     title: "tr-slugify",
     dates: "June 2023 - Present",
+    href: "https://tr-slugify-site.vercel.app/",
     description:
       "Türkçe özel karakterleri doğru çeviren ve URL için slug'lar oluşturan npm paketi.",
     tags: ["TypeScript", "npm"],
@@ -92,6 +94,7 @@ const projects = [
     image: "/path-way.jpg",
     title: "path-way-app",
     dates: "April 2023 - September 2023",
+    href: "#",
     description:
       "PathWay, backpacker'lar ve seyahat tutkunları için geliştirilmiş offline çalışabilen seyahat planlama uygulamasıdır. İnternet bağlantısı olmadan da haritaları kullanabilir, gezilerinizi planlayabilir ve rotalarınızı yönetebilirsiniz.",
     tags: [
@@ -143,7 +146,7 @@ const projects = [
 
 const ProjectGrid = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
       {projects.map((project, idx) => (
         <ProjectCard
           key={idx}
@@ -153,6 +156,7 @@ const ProjectGrid = () => {
           tags={project.tags}
           image={project.image}
           links={project.links}
+          href={project.href}
         />
       ))}
     </div>
