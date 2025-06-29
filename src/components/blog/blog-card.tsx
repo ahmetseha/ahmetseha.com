@@ -1,9 +1,9 @@
-import Link from "next/link"
-import { type BlogPost } from "@/types/blog"
-import { formatDate } from "@/lib/utils"
+import Link from "next/link";
+import { type BlogPost } from "@/types/blog";
+import { formatDate } from "@/lib/utils";
 
 interface BlogCardProps {
-  post: BlogPost
+  post: BlogPost;
 }
 
 export function BlogCard({ post }: BlogCardProps) {
@@ -32,5 +32,5 @@ export function BlogCard({ post }: BlogCardProps) {
         ))}
       </div>
     </article>
-  )
+  );
 }

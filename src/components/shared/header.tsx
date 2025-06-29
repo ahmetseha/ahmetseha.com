@@ -41,24 +41,6 @@ export default function Header() {
             <span className="opacity-60">developer</span>
           </div>
         </div>
-
-        <div className="flex flex-row items-center justify-between sm:justify-end w-full mt-8 sm:mt-4 mb-0 sm:mb-4 tracking-tight">
-          <div className="inline-flex items-center">
-            {Object.entries(navItems).map(([name, href]) => (
-              <Link
-                key={name}
-                href={href}
-                className={cn(
-                  pathname === href ? "font-semibold" : "font-normal",
-                  "transition-all hover:text-gray-400 dark:hover:text-white-800 flex align-middle relative py-1 px-2"
-                )}
-              >
-                {name}
-              </Link>
-            ))}
-          </div>
-          <ThemeToogle />
-        </div>
       </nav>
     </header>
   );
