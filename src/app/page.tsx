@@ -6,6 +6,7 @@ import { DATA } from "@/data/resume";
 import Markdown from "react-markdown";
 import ProjectGrid from "./projects/page";
 import Work from "./work/page";
+import About from "./about/page";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -43,7 +44,7 @@ export default function Page() {
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-            <Markdown>{DATA.summary}</Markdown>
+            <About />
           </div>
         </BlurFade>
       </section>

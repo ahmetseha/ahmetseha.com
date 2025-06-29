@@ -1,84 +1,88 @@
-import Container from "@/components/shared/container"
+import Container from "@/components/shared/container";
 
 export default function Work() {
   return (
-    <main className="prose prose-neutral dark:prose-invert">
+    <main className="space-y-6">
       <header>
-        <p>
-          On a mission to create impactful applications that engage users and
-          drive value for businesses. Here's a summary of my journey so far.
+        <p className="text-sm text-muted-foreground font-sans">
+          Creating impactful applications that engage users and drive business
+          value.
+          <strong> Full-stack developer</strong> with expertise in modern web
+          technologies.
         </p>
         <hr className="my-6 border-neutral-200 dark:border-neutral-800" />
       </header>
 
-      <section>
+      <section className="space-y-8">
         <article>
-          <header>
-            <h2 className="font-medium text-2xl mb-1 tracking-tighter">
+          <header className="mb-4">
+            <h2 className="text-2xl font-bold tracking-tighter font-sans">
               Alışgidiş
             </h2>
-            <time className="text-neutral-600 dark:text-neutral-400 text-sm">
+            <time className="text-sm text-muted-foreground font-sans">
               Software Developer, 2025 — present
             </time>
           </header>
-          <p>
-            At Alışgidiş, I work on developing e-commerce solutions including
-            both web and mobile applications. We focus on creating modern,
-            scalable, and user-friendly platforms using cutting-edge
-            technologies.
+          <p className="text-sm text-muted-foreground font-sans mb-4">
+            Developing <strong>e-commerce solutions</strong> for web and mobile
+            platforms. Focus on <strong>scalable, user-friendly</strong>{" "}
+            applications using cutting-edge technologies.
           </p>
-          <ul className="list-disc">
+          <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground font-sans">
             <li>
-              Developing e-commerce web applications and mobile applications
+              <strong>Next.js</strong> & <strong>TypeScript</strong> for robust
+              web applications
             </li>
             <li>
-              Building robust solutions using Next.js, TypeScript, and Tailwind
-              CSS
+              <strong>Mobile app development</strong> for cross-platform
+              solutions
             </li>
-            <li>Implementing modern UI components with shadcn</li>
-            <li>Creating responsive and performant user interfaces</li>
+            <li>
+              <strong>shadcn/ui</strong> components for modern interfaces
+            </li>
+            <li>
+              <strong>Performance optimization</strong> and responsive design
+            </li>
           </ul>
         </article>
 
-        <article className="mt-8">
-          <header>
-            <h2 className="font-medium text-2xl mb-1 tracking-tighter">
+        <article>
+          <header className="mb-4">
+            <h2 className="text-2xl font-bold tracking-tighter font-sans">
               Gordion
             </h2>
-            <time className="text-neutral-600 dark:text-neutral-400 text-sm">
+            <time className="text-sm text-muted-foreground font-sans">
               Software Developer, 2022 — 2025
             </time>
           </header>
-          <p>
-            At Gordion, a company operating in the tourism sector, I contributed
-            to the development of both B2B and B2C applications tailored to our
-            users' needs. My role focused on delivering seamless and visually
-            appealing user experiences using modern web technologies.
+          <p className="text-sm text-muted-foreground font-sans mb-4">
+            Built <strong>B2B and B2C applications</strong> in the tourism
+            sector. Delivered <strong>seamless user experiences</strong> with
+            modern web technologies.
           </p>
-          <ul className="list-disc">
-            <li className="">
-              Developed and maintained scalable B2B and B2C applications,
-              ensuring optimal performance and user satisfaction.
+          <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground font-sans">
+            <li>
+              <strong>Scalable applications</strong> ensuring optimal
+              performance
             </li>
             <li>
-              Leveraged technologies such as React, Next.js, and jQuery to build
-              dynamic and responsive interfaces.
+              <strong>React</strong>, <strong>Next.js</strong> &{" "}
+              <strong>jQuery</strong> for dynamic interfaces
             </li>
             <li>
-              Utilized shadcn and Tailwind CSS for efficient and customizable
-              design implementations.
+              <strong>Tailwind CSS</strong> & <strong>shadcn</strong> for
+              efficient design
             </li>
             <li>
-              Collaborated with cross-functional teams to deliver high-quality,
-              user-focused solutions.
+              <strong>Cross-functional collaboration</strong> for high-quality
+              solutions
             </li>
             <li>
-              Continuously improved existing systems, incorporating feedback and
-              optimizing workflows to meet business goals.
+              <strong>System optimization</strong> and workflow improvements
             </li>
           </ul>
         </article>
       </section>
     </main>
-  )
+  );
 }
