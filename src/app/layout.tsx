@@ -41,7 +41,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TooltipProvider delayDuration={0}>
-            <Header />
             {children}
             <Navbar />
           </TooltipProvider>

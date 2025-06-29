@@ -1,5 +1,6 @@
 import React from "react";
 import { ProjectCard } from "@/components/project-card";
+import BlurFade from "@/components/magicui/blur-fade";
 
 const projects = [
   {
@@ -146,19 +147,35 @@ const projects = [
 
 const ProjectGrid = () => {
   return (
-    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
-      {projects.map((project, idx) => (
-        <ProjectCard
-          key={idx}
-          title={project.title}
-          dates={project.dates}
-          description={project.description}
-          tags={project.tags}
-          image={project.image}
-          links={project.links}
-          href={project.href}
-        />
-      ))}
+    <div className="space-y-12 w-full py-12">
+      <div className="flex flex-col items-center justify-center space-y-4 text-center">
+        <div className="space-y-2">
+          <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
+            My Projects
+          </div>
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+            Check out my latest work
+          </h2>
+          <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            I&apos;ve worked on a variety of projects, from simple websites to
+            complex web applications. Here are a few of my favorites.
+          </p>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
+        {projects.map((project, idx) => (
+          <ProjectCard
+            key={idx}
+            title={project.title}
+            dates={project.dates}
+            description={project.description}
+            tags={project.tags}
+            image={project.image}
+            links={project.links}
+            href={project.href}
+          />
+        ))}
+      </div>
     </div>
   );
 };
