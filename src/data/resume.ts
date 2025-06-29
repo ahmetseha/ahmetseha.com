@@ -1,7 +1,7 @@
 export const DATA = {
   name: "Ahmet Seha",
   initials: "AS",
-  avatarUrl: "/logo.png",
+  avatarUrl: "/my-logo.png",
   description:
     "Frontend Developer specializing in React, Next.js, and Vue.js. Creating accessible, responsive, and user-friendly web applications.",
   summary: `As a dedicated Frontend Developer, I specialize in building dynamic, accessible, and responsive web applications using React, Next.js, and Vue.js. My expertise includes crafting interfaces that not only look great but also meet the highest standards of accessibility and usability.
