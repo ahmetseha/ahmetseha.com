@@ -44,6 +44,11 @@ export default function Page() {
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+            <About />
+          </div>
+        </BlurFade>
+        <BlurFade delay={BLUR_FADE_DELAY * 4}>
+          <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
             <p className="text-sm text-muted-foreground font-sans">
               <strong>Frontend Developer</strong> specializing in modern web
               technologies. Creating <strong>accessible, responsive</strong>{" "}
@@ -52,15 +57,12 @@ export default function Page() {
           </div>
         </BlurFade>
       </section>
-      <section id="work">
-        <BlurFade delay={BLUR_FADE_DELAY * 5}>
-          <h2 className="text-xl font-bold">Work Experience</h2>
-        </BlurFade>
+      {/*    <section id="work">
         <BlurFade delay={BLUR_FADE_DELAY * 7}>
           <Work />
         </BlurFade>
-      </section>
-
+      </section> */}
+      {/* 
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
@@ -70,14 +72,14 @@ export default function Page() {
             <SkillsMarquee3D />
           </BlurFade>
         </div>
-      </section>
-      <section id="projects">
+      </section> */}
+      {/*   <section id="projects">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 12 + 4 * 0.05}>
             <ProjectGrid />
           </BlurFade>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }
