@@ -1,47 +1,67 @@
-import { notFound } from "next/navigation";
-import { getPostBySlug } from "@/lib/mdx";
-import Markdown from "markdown-to-jsx";
-import BlurFade from "@/components/ui/blur-fade";
-import Link from "next/link";
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
-export default async function BlogPostPage({ params }: any) {
-  const post = getPostBySlug(params.slug);
+import { getAllPosts, getPostBySlug } from '@/lib/mdx';
+
+interface Props {
+  params: {
+    slug: string;
+  };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = await getPostBySlug(params.slug);
+
+  if (!post) {
+    return {
+      title: 'Post Not Found',
+      description: "The post you're looking for doesn't exist",
+    };
+  }
+
+  return {
+    title: post.title,
+    description: post.description,
+    authors: [{ name: post.author }],
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: 'article',
+      publishedTime: post.date,
+      authors: [post.author],
+    },
+  };
+}
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+export default async function BlogPost({ params }: Props) {
+  const post = await getPostBySlug(params.slug);
 
   if (!post) {
     notFound();
   }
 
   return (
-    <article className="max-w-3xl mx-auto">
-      <header className="flex flex-col gap-4">
-        <Link
-          href="/blog"
-          className="text-sm text-muted-foreground hover:text-primary transition-colors"
-        >
-          ← Bloga Dön
-        </Link>
-        <h1 className="text-4xl font-bold">{post.title}</h1>
-        <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-          <span>•</span>
-          <span>{post.readingTime}</span>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {post.tags.map((tag) => (
-            <Link
-              key={tag}
-              href={`/blog/tag/${tag}`}
-              className="text-sm px-2 py-1 bg-muted rounded-full text-muted-foreground hover:text-primary transition-colors"
-            >
-              #{tag}
-            </Link>
-          ))}
-        </div>
-      </header>
-      <div className="prose prose-gray dark:prose-invert max-w-none">
-        <BlurFade delay={0.5} duration={0.5}>
-          <Markdown>{post.content}</Markdown>
-        </BlurFade>
+    <article className="prose prose-lg dark:prose-invert mx-auto py-8">
+      <h1>{post.title}</h1>
+      <div className="flex gap-2 text-sm text-gray-500">
+        <time dateTime={post.date}>
+          {new Date(post.date).toLocaleDateString('tr-TR', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </time>
+        <span>•</span>
+        <span>{post.readingTime}</span>
       </div>
+      <div className="mt-8">{post.content}</div>
     </article>
   );
 }
