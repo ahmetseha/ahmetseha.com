@@ -1,12 +1,14 @@
-import BlurFade from "@/components/magicui/blur-fade";
-import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { DATA } from "@/data/resume";
-import ProjectGrid from "./projects/page";
-import Work from "./work/page";
-import About from "./about/page";
-import { SkillsMarquee3D } from "@/components/skills-marquee-3d";
+import BlurFade from '@/components/magicui/blur-fade';
+import BlurFadeText from '@/components/magicui/blur-fade-text';
+import { SkillsMarquee3D } from '@/components/skills-marquee-3d';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+
+import { DATA } from '@/data/resume';
+
+import About from './about/page';
+import ProjectGrid from './projects/page';
+import Work from './work/page';
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -21,7 +23,7 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
                 yOffset={8}
-                text={`Hi, I'm ${DATA.name.split(" ")[0]}`}
+                text={`Hi, I'm ${DATA.name.split(' ')[0]}`}
               />
               <BlurFadeText
                 className="max-w-[600px] md:text-xl"
@@ -50,9 +52,9 @@ export default function Page() {
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
             <p className="text-sm text-muted-foreground font-sans">
-              <strong>Frontend Developer</strong> specializing in modern web
-              technologies. Creating <strong>accessible, responsive</strong>{" "}
-              applications that deliver exceptional user experiences.
+              <strong>Frontend Developer</strong> specializing in modern web technologies. Creating{' '}
+              <strong>accessible, responsive</strong> applications that deliver exceptional user
+              experiences.
             </p>
           </div>
         </BlurFade>
