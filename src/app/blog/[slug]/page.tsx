@@ -4,13 +4,14 @@ import { notFound } from 'next/navigation';
 import { getAllPosts, getPostBySlug } from '@/lib/mdx';
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug);
+  const paramsData = await params;
+  const post = await getPostBySlug(paramsData.slug);
 
   if (!post) {
     return {
@@ -41,7 +42,8 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPost({ params }: Props) {
-  const post = await getPostBySlug(params.slug);
+  const paramsData = await params;
+  const post = await getPostBySlug(paramsData.slug);
 
   if (!post) {
     notFound();

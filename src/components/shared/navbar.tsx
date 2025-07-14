@@ -1,29 +1,28 @@
-"use client";
+'use client';
+
+import React, { useEffect, useState } from 'react';
+
+import Link from 'next/link';
 
 import {
-  CodeXmlIcon,
-  HomeIcon,
-  MailIcon,
   BriefcaseIcon,
-  XIcon,
-  LinkedinIcon,
+  CodeXmlIcon,
   GithubIcon,
+  HomeIcon,
+  LinkedinIcon,
+  MailIcon,
   UserIcon,
-} from "lucide-react";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
+  XIcon,
+} from 'lucide-react';
 
-import ThemeToogle from "../ui/theme-toggle";
-import { buttonVariants } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
-import { Dock, DockIcon } from "@/components/magicui/dock";
+import { Dock, DockIcon } from '@/components/magicui/dock';
+import { buttonVariants } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+
+import { cn } from '@/lib/utils';
+
+import ThemeToogle from '../ui/theme-toggle';
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
@@ -37,26 +36,27 @@ const Icons = {
 
 const DATA = {
   navbar: [
-    { href: "/", icon: HomeIcon, label: "Home" },
+    { href: '/', icon: HomeIcon, label: 'Home' },
     /*  { href: "/about", icon: UserIcon, label: "About" }, */
-    { href: "/projects", icon: CodeXmlIcon, label: "Projects" },
-    { href: "/work", icon: BriefcaseIcon, label: "Work" },
+    { href: '/projects', icon: CodeXmlIcon, label: 'Projects' },
+    { href: '/work', icon: BriefcaseIcon, label: 'Work' },
+    { href: '/blog', icon: MailIcon, label: 'Blog' },
   ],
   contact: {
     social: {
       GitHub: {
-        name: "GitHub",
-        url: "https://github.com/ahmetseha",
+        name: 'GitHub',
+        url: 'https://github.com/ahmetseha',
         icon: Icons.github,
       },
       LinkedIn: {
-        name: "LinkedIn",
-        url: "https://www.linkedin.com/in/ahmetseha/",
+        name: 'LinkedIn',
+        url: 'https://www.linkedin.com/in/ahmetseha/',
         icon: Icons.linkedin,
       },
       X: {
-        name: "X",
-        url: "https://x.com/sehaacar",
+        name: 'X',
+        url: 'https://x.com/sehaacar',
         icon: Icons.x,
       },
     },
@@ -72,8 +72,8 @@ export function Navbar() {
       setIsScrolled(scrollTop > 10);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -81,10 +81,10 @@ export function Navbar() {
       <div className="fixed top-0 inset-x-0 h-16 w-full bg-background to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_bottom,black,transparent)] dark:bg-background"></div>
       <Dock
         className={cn(
-          "z-50 pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-1",
-          "bg-white/40 dark:bg-black/40 backdrop-blur-md border border-white/20 shadow-xl",
-          "[box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] transition-all duration-300 ease-in-out w-full justify-between",
-          isScrolled ? "max-w-4xl" : "w-auto"
+          'z-50 pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-1',
+          'bg-white/40 dark:bg-black/40 backdrop-blur-md border border-white/20 shadow-xl',
+          '[box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] transition-all duration-300 ease-in-out w-full justify-between',
+          isScrolled ? 'max-w-4xl' : 'w-auto'
         )}
       >
         <div className="flex flex-1 gap-2 items-center">
@@ -96,19 +96,17 @@ export function Navbar() {
                   aria-label={item.label}
                   className={cn(
                     buttonVariants({
-                      variant: "ghost",
-                      size: isScrolled ? undefined : "icon",
+                      variant: 'ghost',
+                      size: isScrolled ? undefined : 'icon',
                     }),
                     isScrolled
-                      ? "flex items-center gap-2 px-3 h-12 rounded-full w-auto"
-                      : "size-12 rounded-full"
+                      ? 'flex items-center gap-2 px-3 h-12 rounded-full w-auto'
+                      : 'size-12 rounded-full'
                   )}
                 >
                   <item.icon className="size-4" />
                   {isScrolled && (
-                    <span className="text-sm font-medium hidden sm:inline-block">
-                      {item.label}
-                    </span>
+                    <span className="text-sm font-medium hidden sm:inline-block">{item.label}</span>
                   )}
                 </Link>
               </TooltipTrigger>
@@ -127,8 +125,8 @@ export function Navbar() {
                   href={social.url}
                   aria-label={social.name}
                   className={cn(
-                    buttonVariants({ variant: "ghost", size: "icon" }),
-                    "size-12 rounded-full"
+                    buttonVariants({ variant: 'ghost', size: 'icon' }),
+                    'size-12 rounded-full'
                   )}
                 >
                   <social.icon className="size-4" />

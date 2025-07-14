@@ -1,9 +1,10 @@
-import { BlogCard } from "@/components/blog/blog-card";
-import { BlogLayout } from "@/components/blog/blog-layout";
-import { getAllPosts } from "@/lib/mdx";
+import { BlogCard } from '@/components/blog/blog-card';
+import { BlogLayout } from '@/components/blog/blog-layout';
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+import { getAllPosts } from '@/lib/mdx';
+
+export default async function BlogPage() {
+  const posts = await getAllPosts();
 
   return (
     <BlogLayout>
