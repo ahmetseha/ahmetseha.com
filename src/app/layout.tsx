@@ -1,23 +1,29 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { Navbar } from "@/components/shared/navbar";
-import { ThemeProvider } from "@/components/provider/theme-provider";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Inter as FontSans } from "next/font/google";
-import "./globals.css";
-import { cn } from "@/lib/utils";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import type { Metadata } from 'next';
 
-import PageTransition from "@/components/shared/page-transition";
+import './globals.css';
+
+import { Inter as FontSans } from 'next/font/google';
+
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
+import { ThemeProvider } from '@/components/provider/theme-provider';
+import { Navbar } from '@/components/shared/navbar';
+
+import './globals.css';
+
+import PageTransition from '@/components/shared/page-transition';
+import { TooltipProvider } from '@/components/ui/tooltip';
+
+import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: "Seha Acar",
+  title: 'Seha Acar',
   description: "Seha Acar's personal website",
 };
 const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
+  subsets: ['latin'],
+  variable: '--font-sans',
 });
 
 export default function RootLayout({
@@ -29,7 +35,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6 pt-24 sm:pt-32",
+          'min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6 pt-24 sm:pt-32',
           fontSans.variable
         )}
       >
