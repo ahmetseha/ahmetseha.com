@@ -1,28 +1,29 @@
-import React from "react";
-import { ProjectCard } from "@/components/project-card";
-import BlurFade from "@/components/magicui/blur-fade";
-import BlurFadeText from "@/components/magicui/blur-fade-text";
+import React from 'react';
+
+import BlurFade from '@/components/magicui/blur-fade';
+import BlurFadeText from '@/components/magicui/blur-fade-text';
+import { ProjectCard } from '@/components/project-card';
 
 const BLUR_FADE_DELAY = 0.04;
 
 const projects = [
   {
-    image: "/story-craft.png",
-    title: "story-craft",
-    dates: "Jan 2024 - Feb 2024",
-    href: "https://story-craft-drab.vercel.app/",
+    image: '/story-craft.png',
+    title: 'story-craft',
+    dates: 'Jan 2024 - Feb 2024',
+    href: 'https://story-craft-drab.vercel.app/',
     description:
-      "Modern web teknolojileri ile geliştirilmiş, yapay zeka destekli Türkçe hikaye oluşturucu uygulaması.",
+      'Modern web teknolojileri ile geliştirilmiş, yapay zeka destekli Türkçe hikaye oluşturucu uygulaması.',
     tags: [
-      "React 19",
-      "TypeScript",
-      "Vite",
-      "CSS Modules",
-      "Tailwind CSS",
-      "Node.js",
-      "Express.js",
-      "Google Gemini AI",
-      "CORS",
+      'React 19',
+      'TypeScript',
+      'Vite',
+      'CSS Modules',
+      'Tailwind CSS',
+      'Node.js',
+      'Express.js',
+      'Google Gemini AI',
+      'CORS',
     ],
     links: [
       {
@@ -44,8 +45,8 @@ const projects = [
             <path d="M2 12h20"></path>
           </svg>
         ),
-        type: "Website",
-        href: "https://story-craft-drab.vercel.app/",
+        type: 'Website',
+        href: 'https://story-craft-drab.vercel.app/',
       },
 
       {
@@ -57,19 +58,19 @@ const projects = [
             ></path>
           </svg>
         ),
-        type: "Source",
-        href: "https://github.com/ahmetseha/story-craft",
+        type: 'Source',
+        href: 'https://github.com/ahmetseha/story-craft',
       },
     ],
   },
   {
-    image: "/tr-slugify.png",
-    title: "tr-slugify",
-    dates: "June 2023 - Present",
-    href: "https://tr-slugify-site.vercel.app/",
+    image: '/tr-slugify.png',
+    title: 'tr-slugify',
+    dates: 'June 2023 - Present',
+    href: 'https://tr-slugify-site.vercel.app/',
     description:
       "Türkçe özel karakterleri doğru çeviren ve URL için slug'lar oluşturan npm paketi.",
-    tags: ["TypeScript", "npm"],
+    tags: ['TypeScript', 'npm'],
     links: [
       {
         icon: (
@@ -90,8 +91,8 @@ const projects = [
             <path d="M2 12h20"></path>
           </svg>
         ),
-        type: "Website",
-        href: "https://tr-slugify-site.vercel.app/",
+        type: 'Website',
+        href: 'https://tr-slugify-site.vercel.app/',
       },
       {
         icon: (
@@ -102,25 +103,25 @@ const projects = [
             ></path>
           </svg>
         ),
-        type: "Source",
-        href: "https://github.com/ahmetseha/tr-slugify",
+        type: 'Source',
+        href: 'https://github.com/ahmetseha/tr-slugify',
       },
     ],
   },
   {
-    image: "/path-way.jpg",
-    title: "path-way-app",
-    dates: "April 2023 - September 2023",
-    href: "https://github.com/ahmetseha/path-way-app",
+    image: '/path-way.jpg',
+    title: 'path-way-app',
+    dates: 'April 2023 - September 2023',
+    href: 'https://github.com/ahmetseha/path-way-app',
     description:
       "PathWay, backpacker'lar ve seyahat tutkunları için geliştirilmiş offline çalışabilen seyahat planlama uygulamasıdır. İnternet bağlantısı olmadan da haritaları kullanabilir, gezilerinizi planlayabilir ve rotalarınızı yönetebilirsiniz.",
     tags: [
-      "React Native",
-      "Expo",
-      "TypeScript",
-      "Tailwind CSS",
-      "React Navigation",
-      "React Native Maps",
+      'React Native',
+      'Expo',
+      'TypeScript',
+      'Tailwind CSS',
+      'React Navigation',
+      'React Native Maps',
     ],
     links: [
       {
@@ -132,8 +133,8 @@ const projects = [
             ></path>
           </svg>
         ),
-        type: "Source",
-        href: "https://github.com/ahmetseha/path-way-app",
+        type: 'Source',
+        href: 'https://github.com/ahmetseha/path-way-app',
       },
     ],
   },
@@ -145,19 +146,16 @@ const ProjectGrid = () => {
       <BlurFade delay={BLUR_FADE_DELAY}>
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-              My Projects
-            </div>
             <BlurFadeText
+              containerClassName="justify-center"
               delay={BLUR_FADE_DELAY * 2}
               className="text-3xl font-bold tracking-tighter sm:text-5xl"
               text="Crafting Digital Experiences"
             />
             <BlurFade delay={BLUR_FADE_DELAY * 3}>
               <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                From innovative web applications to elegant user interfaces,
-                each project represents my passion for creating meaningful
-                digital solutions that make a difference.
+                From innovative web applications to elegant user interfaces, each project represents
+                my passion for creating meaningful digital solutions that make a difference.
               </p>
             </BlurFade>
           </div>

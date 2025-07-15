@@ -1,0 +1,496 @@
+---
+title: 'Web Accessibility: Sıklıkla Göz Ardı Edilen HTML Yapıları'
+description: 'Web geliştiricilerin genellikle atladığı ileri seviye erişilebilirlik teknikleri ve nadiren kullanılan ancak kritik öneme sahip HTML yapıları'
+date: '2025-07-15'
+tags: ['accessibility', 'html', 'web development', 'a11y', 'screen readers']
+---
+
+Web erişilebilirliği konusunda temel prensipleri bilen geliştiriciler bile bazı önemli ve ileri seviye teknikleri gözden kaçırabilir. Bu yazıda, genellikle atlanan ancak erişilebilirlik açısından kritik öneme sahip HTML yapılarını ve teknikleri inceleyeceğiz.
+
+## 1. `<dialog>` Elementi ve Modal Erişilebilirliği
+
+Modern web uygulamalarında sıkça kullanılan modallar, erişilebilirlik açısından genellikle sorunludur. Native `<dialog>` elementi bu sorunu çözer, ancak nadiren kullanılır.
+
+```html
+<!-- Erişilebilir olmayan modal yaklaşımı -->
+<div class="modal" id="myModal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Modal içeriği...</p>
+  </div>
+</div>
+
+<!-- İleri seviye erişilebilir modal yaklaşımı -->
+<dialog id="accessibleModal">
+  <h2 id="modalTitle">Modal Başlığı</h2>
+  <div id="modalContent">
+    <p>Modal içeriği burada...</p>
+  </div>
+  <button id="closeModal">Kapat</button>
+</dialog>
+```
+
+```javascript
+// Dialog elementinin erişilebilir kontrolü
+const dialog = document.getElementById('accessibleModal');
+const openButton = document.getElementById('openModal');
+const closeButton = document.getElementById('closeModal');
+
+openButton.addEventListener('click', () => {
+  dialog.showModal();
+  // Odağı modal içine taşı
+  dialog.querySelector('h2').focus();
+});
+
+closeButton.addEventListener('click', () => {
+  dialog.close();
+  // Odağı açan düğmeye geri getir
+  openButton.focus();
+});
+
+// ESC tuşu ile kapatma native olarak desteklenir
+// Focus trap (odak tuzağı) native olarak desteklenir
+```
+
+`<dialog>` elementi, erişilebilirlik için gerekli olan birçok özelliği otomatik olarak sağlar:
+
+- Focus trapping (odak tuzağı)
+- ESC tuşu ile kapatma
+- Arka planın otomatik karartılması
+- Ekran okuyuculara uygun ARIA roller
+
+## 2. `<details>` ve `<summary>` ile Genişletilebilir İçerik
+
+Açılır-kapanır içerikler için genellikle JavaScript ile özel çözümler uygulanır, ancak native `<details>` ve `<summary>` elementleri hem daha erişilebilir hem de daha az kod gerektirir.
+
+```html
+<!-- Yaygın ancak erişilebilirliği düşük yaklaşım -->
+<div class="accordion">
+  <div class="accordion-header" onclick="toggleAccordion(this)">Bölüm 1</div>
+  <div class="accordion-content">
+    <p>İçerik burada...</p>
+  </div>
+</div>
+
+<!-- İleri seviye erişilebilir yaklaşım -->
+<details>
+  <summary>Bölüm 1</summary>
+  <p>İçerik burada...</p>
+  <p>Ek içerik...</p>
+</details>
+```
+
+Bu yapı:
+
+- Klavye erişilebilirliği sağlar
+- Ekran okuyucular için uygun semantik yapı sunar
+- Genişletme/daraltma durumunu otomatik olarak bildirir
+- JavaScript gerektirmez
+
+Özelleştirmek için:
+
+```css
+details {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 0.5em 0.5em 0;
+  margin-bottom: 1em;
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5em;
+  outline: none;
+}
+
+summary:focus {
+  box-shadow: 0 0 0 2px #4f94d4;
+}
+
+details[open] {
+  padding-bottom: 0.5em;
+}
+
+details[open] summary {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 0.5em;
+}
+```
+
+## 3. `<fieldset>` ve `<legend>` ile Form Gruplandırma
+
+Form alanlarını gruplandırmak için `<fieldset>` ve `<legend>` elementleri kritik öneme sahiptir, ancak modern web geliştirmede sıklıkla atlanır.
+
+```html
+<!-- Yaygın ancak erişilebilirliği düşük yaklaşım -->
+<div class="form-section">
+  <h3>Kişisel Bilgiler</h3>
+  <div class="form-group">
+    <label for="name">Ad:</label>
+    <input type="text" id="name" />
+  </div>
+  <div class="form-group">
+    <label for="surname">Soyad:</label>
+    <input type="text" id="surname" />
+  </div>
+</div>
+
+<!-- İleri seviye erişilebilir yaklaşım -->
+<fieldset>
+  <legend>Kişisel Bilgiler</legend>
+
+  <div class="form-group">
+    <label for="name">Ad:</label>
+    <input type="text" id="name" />
+  </div>
+
+  <div class="form-group">
+    <label for="surname">Soyad:</label>
+    <input type="text" id="surname" />
+  </div>
+</fieldset>
+```
+
+Bu yapının önemi:
+
+- Ekran okuyucular, form alanlarını okuduğunda ilgili `<legend>` içeriğini de okur, böylece kullanıcı hangi grup içinde olduğunu bilir
+- Radyo düğmeleri ve onay kutuları için özellikle önemlidir
+- Karmaşık formlarda gezinmeyi kolaylaştırır
+
+Radio butonlar için özellikle kritiktir:
+
+```html
+<fieldset>
+  <legend>Tercih ettiğiniz iletişim yöntemi:</legend>
+
+  <div>
+    <input type="radio" id="contact-email" name="contact" value="email" />
+    <label for="contact-email">E-posta</label>
+  </div>
+
+  <div>
+    <input type="radio" id="contact-phone" name="contact" value="phone" />
+    <label for="contact-phone">Telefon</label>
+  </div>
+
+  <div>
+    <input type="radio" id="contact-mail" name="contact" value="mail" />
+    <label for="contact-mail">Posta</label>
+  </div>
+</fieldset>
+```
+
+## 4. `<time>` Elementi ve Tarih/Saat Erişilebilirliği
+
+Tarih ve saat bilgilerini semantik olarak işaretlemek için `<time>` elementi kullanılmalıdır, ancak çoğu geliştirici bunun farkında değildir.
+
+```html
+<!-- Yaygın ancak erişilebilirliği düşük yaklaşım -->
+<p>Yayın tarihi: 01.12.2023</p>
+<p>Etkinlik saati: 14:30</p>
+
+<!-- İleri seviye erişilebilir yaklaşım -->
+<p>Yayın tarihi: <time datetime="2023-12-01">01.12.2023</time></p>
+<p>Etkinlik saati: <time datetime="2023-12-01T14:30:00+03:00">14:30</time></p>
+```
+
+Bu yapının faydaları:
+
+- Ekran okuyucular tarihi doğru formatta okuyabilir
+- Tarayıcılar ve arama motorları tarihi anlayabilir
+- Kullanıcılar kendi tercih ettikleri tarih formatında görebilir
+- Takvim uygulamalarına kolay entegrasyon sağlar
+
+## 5. `<figure>` ve `<figcaption>` ile Zengin İçerik Açıklamaları
+
+Görsel içerikler için sadece `alt` metni yeterli değildir. `<figure>` ve `<figcaption>` elementleri daha zengin açıklamalar sağlar.
+
+```html
+<!-- Yaygın ancak erişilebilirliği sınırlı yaklaşım -->
+<div class="image-container">
+  <img src="chart-data.png" alt="2023 yılı satış grafiği" />
+  <p class="image-caption">Şekil 1: 2023 yılı çeyreklik satış verileri</p>
+</div>
+
+<!-- İleri seviye erişilebilir yaklaşım -->
+<figure>
+  <img src="chart-data.png" alt="Çubuk grafik: 2023 yılı çeyreklik satış verileri" />
+  <figcaption>
+    <strong>Şekil 1:</strong> 2023 yılı çeyreklik satış verileri. İlk çeyrekte %15 artış, ikinci
+    çeyrekte %22 artış, üçüncü çeyrekte %5 düşüş ve dördüncü çeyrekte %18 artış görülmüştür.
+  </figcaption>
+</figure>
+```
+
+Bu yapının avantajları:
+
+- `alt` metni kısa ve öz tutarken, `<figcaption>` ile detaylı açıklamalar sağlayabilirsiniz
+- Ekran okuyucular bu yapıyı semantik olarak tanır
+- Görsel ve açıklaması arasındaki ilişki programatik olarak belirgindir
+- Sadece görseller için değil, kod blokları, tablolar ve diğer içerikler için de kullanılabilir
+
+## 6. `<dl>`, `<dt>` ve `<dd>` ile Tanım Listeleri
+
+Anahtar-değer çiftleri veya terim-açıklama ilişkileri için `<dl>` (tanım listesi) elementi genellikle göz ardı edilir.
+
+```html
+<!-- Yaygın ancak semantik olmayan yaklaşım -->
+<div class="glossary">
+  <h3>HTML</h3>
+  <p>
+    Hyper Text Markup Language, web sayfalarını oluşturmak için kullanılan standart işaretleme
+    dilidir.
+  </p>
+
+  <h3>CSS</h3>
+  <p>
+    Cascading Style Sheets, HTML öğelerinin ekranda nasıl görüntüleneceğini tanımlayan stil dilidir.
+  </p>
+</div>
+
+<!-- İleri seviye semantik yaklaşım -->
+<dl>
+  <dt>HTML</dt>
+  <dd>
+    Hyper Text Markup Language, web sayfalarını oluşturmak için kullanılan standart işaretleme
+    dilidir.
+  </dd>
+
+  <dt>CSS</dt>
+  <dd>
+    Cascading Style Sheets, HTML öğelerinin ekranda nasıl görüntüleneceğini tanımlayan stil dilidir.
+  </dd>
+
+  <dt>JavaScript</dt>
+  <dd>Web sayfalarını interaktif hale getirmek için kullanılan programlama dilidir.</dd>
+</dl>
+```
+
+Bu yapının kullanım alanları:
+
+- Sözlük veya terimler sözlüğü
+- SSS (Sıkça Sorulan Sorular)
+- Meta veri listeleri (yazar, tarih, kategori vb.)
+- Ürün özellikleri ve detayları
+
+## 7. `<abbr>` ile Kısaltmaların Açıklanması
+
+Kısaltmalar ve akronimler için `<abbr>` elementi kullanılmalıdır, ancak genellikle atlanır.
+
+```html
+<!-- Yaygın ancak erişilebilirliği düşük yaklaşım -->
+<p>Bu web sitesi HTML, CSS ve JS kullanılarak geliştirilmiştir.</p>
+
+<!-- İleri seviye erişilebilir yaklaşım -->
+<p>
+  Bu web sitesi <abbr title="Hyper Text Markup Language">HTML</abbr>,
+  <abbr title="Cascading Style Sheets">CSS</abbr> ve <abbr title="JavaScript">JS</abbr> kullanılarak
+  geliştirilmiştir.
+</p>
+```
+
+Bu yapının faydaları:
+
+- Ekran okuyucular kısaltmanın açılımını okuyabilir
+- Fare ile üzerine gelindiğinde açılımı gösterir
+- Tarayıcılar ve arama motorları içeriği daha iyi anlayabilir
+
+Özelleştirme için:
+
+```css
+abbr {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+```
+
+## 8. `<output>` Elementi ile Dinamik Sonuçlar
+
+Form işlemleri sonucunda oluşan dinamik çıktılar için `<output>` elementi kullanılmalıdır.
+
+```html
+<!-- Yaygın ancak semantik olmayan yaklaşım -->
+<form>
+  <label for="price">Fiyat (₺):</label>
+  <input type="number" id="price" value="100" />
+
+  <label for="quantity">Adet:</label>
+  <input type="number" id="quantity" value="1" />
+
+  <div>Toplam: <span id="total">100</span> ₺</div>
+</form>
+
+<!-- İleri seviye semantik yaklaşım -->
+<form oninput="total.value = (price.valueAsNumber * quantity.valueAsNumber).toFixed(2)">
+  <label for="price">Fiyat (₺):</label>
+  <input type="number" id="price" name="price" value="100" />
+
+  <label for="quantity">Adet:</label>
+  <input type="number" id="quantity" name="quantity" value="1" />
+
+  <div>Toplam: <output name="total" for="price quantity">100.00</output> ₺</div>
+</form>
+```
+
+Bu yapının avantajları:
+
+- Form girişleri ile sonuç arasındaki ilişkiyi programatik olarak tanımlar
+- Ekran okuyucular değişiklikleri bildirebilir
+- `for` özelliği ile hangi alanların sonucu etkilediğini belirtir
+
+## 9. `<meter>` ve `<progress>` Elementleri
+
+Ölçüm değerleri ve ilerleme durumları için özel elementler mevcuttur, ancak nadiren kullanılır.
+
+```html
+<!-- Yaygın ancak semantik olmayan yaklaşım -->
+<div class="progress-bar">
+  <div class="progress" style="width: 70%;">70%</div>
+</div>
+
+<div>Disk kullanımı: 70%</div>
+
+<!-- İleri seviye semantik yaklaşım -->
+<label for="download">İndirme durumu:</label>
+<progress id="download" value="70" max="100">70%</progress>
+
+<label for="disk">Disk kullanımı:</label>
+<meter id="disk" value="70" min="0" max="100" low="30" high="80" optimum="20">70%</meter>
+```
+
+Bu elementlerin özellikleri:
+
+- `<progress>`: Bir görevin tamamlanma oranını gösterir
+- `<meter>`: Bilinen bir aralıktaki ölçümü gösterir (optimum, düşük, yüksek değerler tanımlanabilir)
+- Ekran okuyucular bu değerleri anlamlı şekilde okuyabilir
+- Tarayıcılar native görsel gösterimler sağlar
+
+## 10. `inert` Özelliği ile İçerik Devre Dışı Bırakma
+
+Modern web uygulamalarında, bazı içerikleri geçici olarak etkileşimden ve erişilebilirlikten çıkarmak için `inert` özelliği kullanılabilir.
+
+```html
+<!-- Yaygın ancak sorunlu yaklaşım -->
+<div class="modal-open">
+  <div class="modal">Modal içeriği...</div>
+  <div class="page-content" aria-hidden="true" style="pointer-events: none;">
+    <!-- Sayfa içeriği burada -->
+  </div>
+</div>
+
+<!-- İleri seviye erişilebilir yaklaşım -->
+<div class="modal-open">
+  <div class="modal">Modal içeriği...</div>
+  <div class="page-content" inert>
+    <!-- Sayfa içeriği burada -->
+  </div>
+</div>
+```
+
+`inert` özelliğinin sağladığı avantajlar:
+
+- Klavye odağını engeller
+- Fare ve dokunmatik etkileşimleri engeller
+- Ekran okuyucular tarafından okunmayı engeller
+- Tüm bu özellikleri tek bir özellikle sağlar (aria-hidden, tabindex="-1" ve pointer-events: none kombinasyonunun yerine geçer)
+
+```javascript
+// Modal açıldığında
+function openModal() {
+  document.getElementById('myModal').removeAttribute('hidden');
+  document.getElementById('pageContent').setAttribute('inert', '');
+  // Odağı modal içine taşı
+}
+
+// Modal kapandığında
+function closeModal() {
+  document.getElementById('myModal').setAttribute('hidden', '');
+  document.getElementById('pageContent').removeAttribute('inert');
+  // Odağı geri getir
+}
+```
+
+## 11. `<datalist>` ile Gelişmiş Form Girdileri
+
+Otomatik tamamlama ve öneriler için `<datalist>` elementi kullanılabilir, ancak çoğu geliştirici bunun yerine karmaşık JavaScript çözümleri tercih eder.
+
+```html
+<!-- Yaygın karmaşık yaklaşım -->
+<div class="autocomplete">
+  <label for="country">Ülke:</label>
+  <input type="text" id="country" />
+  <div class="suggestions" hidden>
+    <div class="suggestion">Türkiye</div>
+    <div class="suggestion">Almanya</div>
+    <!-- ... -->
+  </div>
+</div>
+
+<!-- İleri seviye native yaklaşım -->
+<label for="country">Ülke:</label>
+<input type="text" id="country" list="countries" />
+
+<datalist id="countries">
+  <option value="Türkiye"></option>
+  <option value="Almanya"></option>
+  <option value="Fransa"></option>
+  <option value="İtalya"></option>
+  <option value="İspanya"></option>
+</datalist>
+```
+
+Bu yapının avantajları:
+
+- Native tarayıcı desteği ile otomatik tamamlama
+- Klavye erişilebilirliği
+- Mobil cihazlarda native davranış
+- JavaScript gerektirmez
+
+## 12. `<ruby>`, `<rt>` ve `<rp>` ile Fonetik İşaretlemeler
+
+Doğu Asya dilleri veya fonetik açıklamalar için `<ruby>` elementi kullanılabilir.
+
+```html
+<!-- İleri seviye semantik yaklaşım -->
+<p>
+  <ruby> 漢 <rt>かん</rt> 字 <rt>じ</rt> <rp>(</rp><rt>kanji</rt><rp>)</rp> </ruby>
+  Japonca'da Kanji karakterleri.
+</p>
+```
+
+Bu yapı:
+
+- Karakterlerin üzerinde fonetik rehberlik sağlar
+- Ekran okuyucular için doğru telaffuz bilgisi verir
+- Ruby açıklamaları desteklemeyen tarayıcılar için fallback içerir (`<rp>` elementleri)
+
+## Sonuç: İleri Seviye Erişilebilirlik Teknikleri
+
+Bu yazıda incelediğimiz HTML yapıları ve teknikler, genellikle göz ardı edilir ancak erişilebilirlik açısından kritik öneme sahiptir. Bu teknikleri uygulamak:
+
+1. Ekran okuyu kullanıcılar için daha zengin bir deneyim sağlar
+2. Klavye kullanıcıları için daha iyi gezinme imkanı sunar
+3. Semantik olarak daha zengin ve anlamlı bir HTML yapısı oluşturur
+4. Tarayıcıların ve arama motorlarının içeriği daha iyi anlamasını sağlar
+5. Genellikle daha az kod ve daha az JavaScript gerektirerek performansı artırır
+
+Modern web geliştirmede bu ileri seviye teknikleri kullanmak, gerçekten kapsayıcı ve erişilebilir web siteleri oluşturmak için önemli bir adımdır. Unutmayın ki erişilebilirlik, sadece temel kuralları uygulamaktan ibaret değil, sürekli öğrenme ve geliştirme gerektiren bir süreçtir.
+
+```javascript
+// Son bir örnek: Live Regions ile dinamik içerik bildirimi
+const liveRegion = document.getElementById('notifications');
+liveRegion.setAttribute('aria-live', 'polite');
+liveRegion.setAttribute('aria-atomic', 'true');
+
+function showNotification(message) {
+  liveRegion.textContent = message;
+  // Ekran okuyucu kullanıcılar için otomatik olarak okunur
+
+  setTimeout(() => {
+    liveRegion.textContent = '';
+  }, 5000);
+}
+```
+
+İleri seviye erişilebilirlik teknikleri hakkında daha fazla bilgi için [WAI-ARIA uygulamaları](https://www.w3.org/TR/wai-aria-practices-1.2/) ve [WCAG 2.1 AA standartları](https://www.w3.org/TR/WCAG21/) kaynaklarını inceleyebilirsiniz.

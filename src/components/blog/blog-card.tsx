@@ -1,5 +1,6 @@
-import Link from "next/link";
-import { type BlogPost } from "@/types/blog";
+import Link from 'next/link';
+
+import { type BlogPost } from '@/types/blog';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -13,7 +14,14 @@ export function BlogCard({ post }: BlogCardProps) {
           {post.title}
         </h2>
       </Link>
-      <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+        <span>
+          {new Date(post.date).toLocaleDateString('tr-TR', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </span>
         <span>•</span>
         <span>{post.readingTime}</span>
       </div>
