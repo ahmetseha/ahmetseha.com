@@ -1,11 +1,3 @@
-import React from 'react';
-
-import BlurFade from '@/components/magicui/blur-fade';
-import BlurFadeText from '@/components/magicui/blur-fade-text';
-import { ProjectCard } from '@/components/project-card';
-
-const BLUR_FADE_DELAY = 0.04;
-
 const projects = [
   {
     image: '/story-craft.png',
@@ -140,44 +132,4 @@ const projects = [
   },
 ];
 
-const ProjectGrid = () => {
-  return (
-    <div className="space-y-12 w-full pb-12">
-      <BlurFade delay={BLUR_FADE_DELAY}>
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
-            <BlurFadeText
-              containerClassName="justify-center"
-              delay={BLUR_FADE_DELAY * 2}
-              className="text-3xl font-bold tracking-tighter sm:text-5xl"
-              text="Crafting Digital Experiences"
-            />
-            <BlurFade delay={BLUR_FADE_DELAY * 3}>
-              <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                From innovative web applications to elegant user interfaces, each project represents
-                my passion for creating meaningful digital solutions that make a difference.
-              </p>
-            </BlurFade>
-          </div>
-        </div>
-      </BlurFade>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
-        {projects.map((project, idx) => (
-          <BlurFade key={idx} delay={BLUR_FADE_DELAY * 4 + idx * 0.05}>
-            <ProjectCard
-              title={project.title}
-              dates={project.dates}
-              description={project.description}
-              tags={project.tags}
-              image={project.image}
-              links={project.links}
-              href={project.href}
-            />
-          </BlurFade>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default ProjectGrid;
+export default projects;

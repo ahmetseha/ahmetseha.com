@@ -38,7 +38,6 @@ const DATA = {
   navbar: [
     { href: '/', icon: HomeIcon, label: 'Home' },
     /*  { href: "/about", icon: UserIcon, label: "About" }, */
-    { href: '/projects', icon: CodeXmlIcon, label: 'Projects' },
     { href: '/work', icon: BriefcaseIcon, label: 'Work' },
     { href: '/blog', icon: MailIcon, label: 'Blog' },
   ],
