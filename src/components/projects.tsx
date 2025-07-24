@@ -5,7 +5,7 @@ const projects = [
     dates: 'Jan 2024 - Feb 2024',
     href: 'https://story-craft-drab.vercel.app/',
     description:
-      'Modern web teknolojileri ile geliştirilmiş, yapay zeka destekli Türkçe hikaye oluşturucu uygulaması.',
+      'AI-powered Turkish story generator application built with modern web technologies.',
     tags: [
       'React 19',
       'TypeScript',
@@ -61,7 +61,7 @@ const projects = [
     dates: 'June 2023 - Present',
     href: 'https://tr-slugify-site.vercel.app/',
     description:
-      "Türkçe özel karakterleri doğru çeviren ve URL için slug'lar oluşturan npm paketi.",
+      'NPM package that correctly converts Turkish special characters and creates slugs for URLs.',
     tags: ['TypeScript', 'npm'],
     links: [
       {
@@ -106,7 +106,7 @@ const projects = [
     dates: 'April 2023 - September 2023',
     href: 'https://github.com/ahmetseha/path-way-app',
     description:
-      "PathWay, backpacker'lar ve seyahat tutkunları için geliştirilmiş offline çalışabilen seyahat planlama uygulamasıdır. İnternet bağlantısı olmadan da haritaları kullanabilir, gezilerinizi planlayabilir ve rotalarınızı yönetebilirsiniz.",
+      'PathWay is a travel planning application developed for backpackers and travel enthusiasts that works offline. You can use maps, plan your trips, and manage your routes without an internet connection.',
     tags: [
       'React Native',
       'Expo',
