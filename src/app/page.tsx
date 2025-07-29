@@ -159,7 +159,7 @@ export default async function Page() {
                         {post.tags.slice(0, 3).map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-muted text-muted-foreground"
+                            className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-muted text-muted-foreground text-nowrap"
                           >
                             {tag}
                           </span>

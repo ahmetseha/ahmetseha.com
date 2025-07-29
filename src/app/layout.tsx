@@ -8,7 +8,7 @@ import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { ThemeProvider } from '@/components/provider/theme-provider';
-import { Navbar } from '@/components/shared/navbar';
+import { TopHeader } from '@/components/shared/top-header';
 
 import './globals.css';
 
@@ -35,7 +35,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6 pt-24 sm:pt-32',
+          'min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6 pt-24 sm:pt-32 pb-32 sm:pb-24',
           fontSans.variable
         )}
       >
@@ -46,7 +46,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TooltipProvider delayDuration={0}>
-            <Navbar />
+            <TopHeader />
             {children}
           </TooltipProvider>
         </ThemeProvider>
