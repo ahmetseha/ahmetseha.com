@@ -1,11 +1,3 @@
-import BlurFadeText from '@/components/magicui/blur-fade-text';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import BlurFade from '@/components/ui/blur-fade';
-
-import { DATA } from '@/data/resume';
-
-const BLUR_FADE_DELAY = 0.04;
-
 export default function About() {
   return (
     <main className="space-y-6">

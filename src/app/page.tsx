@@ -1,17 +1,12 @@
 import BlurFade from '@/components/magicui/blur-fade';
 import BlurFadeText from '@/components/magicui/blur-fade-text';
 import projects from '@/components/projects';
-import { SkillsMarquee3D } from '@/components/skills-marquee-3d';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
-
-import { getAllPosts } from '@/lib/mdx';
 
 import { DATA } from '@/data/resume';
 
 import About from './about/page';
 import BlogPage from './blog/page';
-import Work from './work/page';
 
 const BLUR_FADE_DELAY = 0.04;
 

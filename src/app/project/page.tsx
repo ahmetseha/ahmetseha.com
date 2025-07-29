@@ -1,5 +1,4 @@
 import BlurFade from '@/components/magicui/blur-fade';
-import BlurFadeText from '@/components/magicui/blur-fade-text';
 import projects from '@/components/projects';
 
 const BLUR_FADE_DELAY = 0.04;

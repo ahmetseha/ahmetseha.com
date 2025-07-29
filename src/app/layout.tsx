@@ -12,7 +12,6 @@ import { TopHeader } from '@/components/shared/top-header';
 
 import './globals.css';
 
-import PageTransition from '@/components/shared/page-transition';
 import { TooltipProvider } from '@/components/ui/tooltip';
 
 import { cn } from '@/lib/utils';
