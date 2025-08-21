@@ -19,6 +19,11 @@ import { cn } from '@/lib/utils';
 export const metadata: Metadata = {
   title: 'Seha Acar',
   description: "Seha Acar's personal website",
+  icons: {
+    icon: '/icon.png',
+    shortcut: '/icon.png',
+    apple: '/icon.png',
+  },
 };
 const fontSans = FontSans({
   subsets: ['latin'],
