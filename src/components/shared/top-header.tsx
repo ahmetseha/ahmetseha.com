@@ -14,9 +14,9 @@ export function TopHeader() {
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-4">
       <div className="text-sm font-medium text-foreground">
         <Link href="/" className="flex items-center gap-2">
-          <Avatar className="size-8">
-            <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-            <AvatarFallback>{DATA.initials}</AvatarFallback>
+          <Avatar className="size-8 rounded-full">
+            <AvatarImage alt={DATA.name} src={DATA.avatarUrl} className="rounded-full" />
+            <AvatarFallback className="rounded-full">{DATA.initials}</AvatarFallback>
           </Avatar>
         </Link>
       </div>

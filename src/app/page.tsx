@@ -30,9 +30,9 @@ export default async function Page() {
               />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-28 border">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                <AvatarFallback>{DATA.initials}</AvatarFallback>
+              <Avatar className="size-28 border rounded-full">
+                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} className="rounded-full" />
+                <AvatarFallback className="rounded-full">{DATA.initials}</AvatarFallback>
               </Avatar>
             </BlurFade>
           </div>
