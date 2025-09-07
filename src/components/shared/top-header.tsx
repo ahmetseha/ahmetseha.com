@@ -11,7 +11,7 @@ import { DATA } from '@/data/resume';
 
 export function TopHeader() {
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-4">
+    <div className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center p-4 lg:p-6 backdrop-blur-md bg-background/80 supports-[backdrop-filter]:bg-background/60 rounded-2xl m-2 mt-0">
       <div className="text-sm font-medium text-foreground">
         <Link href="/" className="flex items-center gap-2">
           <Avatar className="size-8 rounded-full">
