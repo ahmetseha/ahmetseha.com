@@ -11,6 +11,7 @@ import {
   HomeIcon,
   LinkedinIcon,
   MailIcon,
+  PaletteIcon,
   UserIcon,
   XIcon,
 } from 'lucide-react';
@@ -41,6 +42,7 @@ const DATA = {
     /*  { href: "/about", icon: UserIcon, label: "About" }, */
     { href: '/project', icon: CodeXmlIcon, label: 'Project' },
     { href: '/work', icon: BriefcaseIcon, label: 'Work' },
+    { href: '/hobbies', icon: PaletteIcon, label: 'Hobbies' },
     { href: '/blog', icon: MailIcon, label: 'Blog' },
   ],
   contact: {

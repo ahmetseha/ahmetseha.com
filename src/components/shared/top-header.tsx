@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
-import { Bookmark, BookOpen } from 'lucide-react';
+import { Bookmark, BookOpen, PaletteIcon } from 'lucide-react';
 
 import ThemeToogle from '@/components/ui/theme-toggle';
 
@@ -21,6 +21,13 @@ export function TopHeader() {
         </Link>
       </div>
       <div className="flex items-center space-x-2">
+        <Link
+          href="/hobbies"
+          className="p-2 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+          aria-label="Hobbies"
+        >
+          <PaletteIcon className="size-4" />
+        </Link>
         <Link
           href="/bookmarks"
           className="p-2 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
