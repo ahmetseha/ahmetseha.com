@@ -1,3 +1,4 @@
+import Experience from '@/components/experience';
 import BlurFade from '@/components/magicui/blur-fade';
 import BlurFadeText from '@/components/magicui/blur-fade-text';
 import projects from '@/components/projects';
@@ -47,11 +48,19 @@ export default async function Page() {
         </BlurFade>
       </section>
 
+      <section id="experience">
+        <BlurFade delay={BLUR_FADE_DELAY * 4}>
+          <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+            <Experience delay={BLUR_FADE_DELAY * 5} />
+          </div>
+        </BlurFade>
+      </section>
+
       <section id="projects">
-        <BlurFade delay={BLUR_FADE_DELAY * 7}>
+        <BlurFade delay={BLUR_FADE_DELAY * 9}>
           <h2 className="text-2xl font-bold tracking-tighter font-sans mb-4">Projects</h2>
         </BlurFade>
-        <BlurFade delay={BLUR_FADE_DELAY * 8}>
+        <BlurFade delay={BLUR_FADE_DELAY * 10}>
           <div className="space-y-6">
             {projects.map((project, idx) => (
               <div key={idx} className="flex items-start space-x-4 group">
@@ -98,7 +107,7 @@ export default async function Page() {
       </section>
 
       <section id="blog">
-        <BlurFade delay={BLUR_FADE_DELAY * 9}>
+        <BlurFade delay={BLUR_FADE_DELAY * 11}>
           <BlogPage />
         </BlurFade>
       </section>
