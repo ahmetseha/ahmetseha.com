@@ -22,9 +22,7 @@ export default async function BlogPage() {
               yOffset={8}
             />
             <BlurFade delay={BLUR_FADE_DELAY * 2}>
-              <p className="text-sm text-muted-foreground">
-                Teknik, fikir ve yorumlar üzerine makalelerden oluşan bir koleksiyon
-              </p>
+              <p className="text-sm text-muted-foreground">Technical, idea and opinion articles.</p>
             </BlurFade>
           </div>
         </BlurFade>

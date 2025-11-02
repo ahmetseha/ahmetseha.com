@@ -64,11 +64,6 @@ export default async function Page() {
           <div className="space-y-6">
             {projects.map((project, idx) => (
               <div key={idx} className="flex items-start space-x-4 group">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-muted flex items-center justify-center">
-                  <span className="text-xs font-medium text-muted-foreground">
-                    {String(idx + 1).padStart(2, '0')}
-                  </span>
-                </div>
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
                     <h3 className="font-semibold text-base group-hover:text-foreground transition-colors">
