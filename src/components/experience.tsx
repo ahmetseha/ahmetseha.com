@@ -40,10 +40,6 @@ interface ExperienceProps {
 export default function Experience({ delay = BLUR_FADE_DELAY * 5 }: ExperienceProps) {
   return (
     <main>
-      <header>
-        <h2 className="text-2xl font-bold tracking-tighter font-sans mb-4">Experience</h2>
-      </header>
-
       <section>
         {experiences.map((experience, idx) => (
           <article key={idx}>

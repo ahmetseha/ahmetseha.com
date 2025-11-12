@@ -5,7 +5,7 @@ const BLUR_FADE_DELAY = 0.04;
 
 export default function HobbiesPage() {
   return (
-    <main className="flex flex-col space-y-10">
+    <main className="flex flex-col space-y-10 max-w-2xl mx-auto px-6 pt-[240px] pb-24 min-h-screen">
       <section id="hobbies-hero">
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="space-y-4">
