@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { ExternalLink } from 'lucide-react';
 
 import BlurFade from '@/components/magicui/blur-fade';
@@ -9,30 +11,39 @@ export default function ProjectsPage() {
   return (
     <main className="flex flex-col min-h-screen max-w-2xl mx-auto px-6 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
       <section id="projects">
-        <BlurFade delay={BLUR_FADE_DELAY * 2}>
-          <div className="space-y-4">
-            {projects.map((project, idx) => (
-              <div key={idx} className="flex items-start space-x-4 group">
-                <div className="flex-1">
-                  <div className="flex items-center justify-between">
+        <div className="space-y-6">
+          {projects.map((project, idx) => (
+            <BlurFade key={idx} delay={BLUR_FADE_DELAY * (idx + 1)}>
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex gap-4 items-start hover:bg-accent/30 p-3 -m-3 rounded-lg transition-colors duration-200"
+              >
+                {/* Thumbnail */}
+                <div className="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-muted border border-border">
+                  <Image src={project.image} alt={project.title} fill className="object-cover" />
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 min-w-0 flex flex-col justify-between">
+                  {/* Title & Icon */}
+                  <div className="flex items-start justify-between gap-2 mb-3">
                     <h3 className="font-semibold text-base group-hover:text-foreground transition-colors">
                       {project.title}
                     </h3>
-                    <a
-                      href={project.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      <ExternalLink className="size-4" />
-                    </a>
+                    <ExternalLink className="size-4 text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0" />
                   </div>
-                  <p className="text-sm text-muted-foreground mt-1">{project.description}</p>
+
+                  {/* Description */}
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    {project.description}
+                  </p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </BlurFade>
+              </a>
+            </BlurFade>
+          ))}
+        </div>
       </section>
     </main>
   );

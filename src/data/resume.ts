@@ -5,22 +5,27 @@ export const DATA = {
   description:
     'Frontend Developer specializing in React, Next.js, and Vue.js. Creating accessible, responsive, and user-friendly web applications.',
   contact: {
-    email: 'ahmetseha@example.com',
+    email: 'ahmetsehacar@gmail.com',
     social: {
       github: {
         name: 'Github',
         url: 'https://github.com/ahmetseha',
         icon: 'Github',
       },
-      youtube: {
-        name: 'Youtube',
-        url: 'https://youtube.com/@ahmetseha',
-        icon: 'Youtube',
+      twitter: {
+        name: 'Twitter',
+        url: 'https://x.com/ahmetsehadev',
+        icon: 'Twitter',
       },
-      readcv: {
-        name: 'Read.cv',
-        url: 'https://read.cv/ahmetseha',
-        icon: 'AtSign',
+      instagram: {
+        name: 'Instagram',
+        url: 'https://www.instagram.com/seha_dev/',
+        icon: 'Instagram',
+      },
+      bookmarks: {
+        name: 'Bookmarks',
+        url: 'https://raindrop.io/ahmetsehacar',
+        icon: 'Bookmark',
       },
     },
   },

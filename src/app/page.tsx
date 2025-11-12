@@ -1,5 +1,3 @@
-import { AtSign, ExternalLink, Github, Youtube } from 'lucide-react';
-
 import BlurFade from '@/components/magicui/blur-fade';
 
 import { DATA } from '@/data/resume';
@@ -20,39 +18,45 @@ export default async function Page() {
       </section>
 
       <section id="contact">
-        <BlurFade delay={BLUR_FADE_DELAY * 5}>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <BlurFade delay={BLUR_FADE_DELAY * 2}>
+          <div className="flex flex-wrap gap-4 text-sm">
             <a
-              href={DATA.contact.social.youtube.url}
+              href={`mailto:${DATA.contact.email}`}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Mail
+            </a>
+            <a
+              href={DATA.contact.social.twitter.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 p-4 rounded-lg border border-border bg-card hover:bg-accent hover:border-accent-foreground/20 transition-all duration-200 group"
+              className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              <Youtube className="size-5 group-hover:scale-110 transition-transform" />
-              <span className="text-sm font-medium">Youtube</span>
-              <ExternalLink className="ml-auto size-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+              Twitter
             </a>
-
+            <a
+              href={DATA.contact.social.instagram.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Instagram
+            </a>
             <a
               href={DATA.contact.social.github.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 p-4 rounded-lg border border-border bg-card hover:bg-accent hover:border-accent-foreground/20 transition-all duration-200 group"
+              className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              <Github className="size-5 group-hover:scale-110 transition-transform" />
-              <span className="text-sm font-medium">Github</span>
-              <ExternalLink className="ml-auto size-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+              Github
             </a>
-
             <a
-              href={DATA.contact.social.readcv.url}
+              href={DATA.contact.social.bookmarks.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 p-4 rounded-lg border border-border bg-card hover:bg-accent hover:border-accent-foreground/20 transition-all duration-200 group"
+              className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              <AtSign className="size-5 group-hover:scale-110 transition-transform" />
-              <span className="text-sm font-medium">Read.cv</span>
-              <ExternalLink className="ml-auto size-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+              Bookmarks
             </a>
           </div>
         </BlurFade>
