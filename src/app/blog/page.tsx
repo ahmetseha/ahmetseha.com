@@ -10,12 +10,6 @@ export default async function BlogPage() {
 
   return (
     <main className="flex flex-col min-h-screen max-w-2xl mx-auto px-6 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
-      <section id="blog-intro">
-        <BlurFade delay={BLUR_FADE_DELAY}>
-          <p className="text-sm text-muted-foreground">Technical, idea and opinion articles.</p>
-        </BlurFade>
-      </section>
-
       <section id="blog-posts">
         <div className="space-y-4">
           {posts.map((post, index) => (
