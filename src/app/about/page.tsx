@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <main className="space-y-6">
+    <main className="space-y-6 mt-[-12px]">
       <header>
         <p className="text-sm text-muted-foreground font-sans">
           <strong>Frontend Developer</strong> specializing in modern web technologies. Creating{' '}

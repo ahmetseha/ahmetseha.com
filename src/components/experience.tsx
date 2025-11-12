@@ -40,7 +40,7 @@ interface ExperienceProps {
 export default function Experience({ delay = BLUR_FADE_DELAY * 5 }: ExperienceProps) {
   return (
     <main>
-      <section>
+      <section className="mt-[-24px]">
         {experiences.map((experience, idx) => (
           <article key={idx}>
             <h3 className="font-semibold text-lg mb-1">{experience.company}</h3>

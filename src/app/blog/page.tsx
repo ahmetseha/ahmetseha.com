@@ -9,7 +9,7 @@ export default async function BlogPage() {
   const posts = await getAllPosts();
 
   return (
-    <main className="flex flex-col min-h-screen max-w-2xl mx-auto px-6 pt-[240px] pb-24 space-y-12">
+    <main className="flex flex-col min-h-screen max-w-2xl mx-auto px-6 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
       <section id="blog-intro">
         <BlurFade delay={BLUR_FADE_DELAY}>
           <p className="text-sm text-muted-foreground">Technical, idea and opinion articles.</p>
