@@ -76,9 +76,9 @@ export default async function BlogPost({ params }: Props) {
             Blog'a Dön
           </Link>
         </div>
-        
+
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3 sm:mb-4">{post.title}</h1>
-        
+
         <div className="flex gap-2 text-sm text-muted-foreground mb-8 sm:mb-12">
           <time dateTime={post.date}>
             {new Date(post.date).toLocaleDateString('tr-TR', {
@@ -90,8 +90,9 @@ export default async function BlogPost({ params }: Props) {
           <span>•</span>
           <span>{post.readingTime}</span>
         </div>
-        
-        <div className="prose prose-neutral dark:prose-invert max-w-none 
+
+        <div
+          className="prose prose-neutral dark:prose-invert max-w-none 
           prose-headings:font-bold prose-headings:tracking-tight
           prose-h1:text-3xl prose-h1:mb-4
           prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
@@ -102,7 +103,8 @@ export default async function BlogPost({ params }: Props) {
           prose-code:text-foreground prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
           prose-pre:bg-muted prose-pre:border prose-pre:border-border
           prose-ul:my-4 prose-ol:my-4 prose-li:my-1
-          prose-img:rounded-lg prose-img:border prose-img:border-border">
+          prose-img:rounded-lg prose-img:border prose-img:border-border"
+        >
           {post.content}
         </div>
       </article>
