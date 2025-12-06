@@ -4,13 +4,8 @@ import './globals.css';
 
 import { Inter as FontSans } from 'next/font/google';
 
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-
 import { ThemeProvider } from '@/components/provider/theme-provider';
 import { PageHero } from '@/components/shared/page-hero';
-
-import './globals.css';
 
 import { TooltipProvider } from '@/components/ui/tooltip';
 
@@ -54,8 +49,6 @@ export default function RootLayout({
             {children}
           </TooltipProvider>
         </ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );
