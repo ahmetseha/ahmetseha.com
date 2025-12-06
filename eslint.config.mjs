@@ -13,7 +13,7 @@ const eslintConfig = [
       '@next/next/no-page-custom-font': 'off',
       'prettier/prettier': ['error'],
       'no-unused-vars': 'off',
-      'unused-imports/no-unused-imports-ts': 'error',
+      'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [
         'warn',
         {
