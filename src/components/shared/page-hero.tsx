@@ -14,6 +14,7 @@ const navLinks = [
   { href: '/', label: 'intro' },
   { href: '/projects', label: 'projects' },
   { href: '/blog', label: 'blog' },
+  { href: '/thoughts', label: 'thougts' },
   { href: '/work', label: 'work' },
 ];
 
@@ -27,17 +28,17 @@ export function PageHero() {
       {/* Hero Section */}
       <div className="mb-6 sm:mb-8">
         <div className="flex items-start justify-between gap-3 sm:gap-4">
-          <div className="flex-1 min-w-0">
+          <div className="flex flex-col item-center text-center">
             <BlurFadeText
               delay={BLUR_FADE_DELAY}
               className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-1.5 sm:mb-2"
               yOffset={8}
-              text={`Hi, I'm ${DATA.name.split(' ')[0]}`}
+              text={`Hi, I'm ${DATA.name.split(' ')[1]}`}
             />
             <BlurFadeText
               className="text-sm sm:text-base text-muted-foreground leading-relaxed"
               delay={BLUR_FADE_DELAY * 2}
-              text={DATA.description}
+              text={'Software Developer'}
             />
           </div>
           <Avatar className="size-16 sm:size-20 border-2 rounded-full ring-2 ring-transparent hover:ring-primary/20 transition-all duration-200 flex-shrink-0">

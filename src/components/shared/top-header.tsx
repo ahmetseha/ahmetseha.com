@@ -18,6 +18,7 @@ const navItems = [
   { href: '/work', label: 'Work', icon: Briefcase },
   { href: '/hobbies', label: 'Hobbies', icon: PaletteIcon },
   { href: '/bookmarks', label: 'Bookmarks', icon: Bookmark },
+  { href: '/thoughts', label: 'Thougts', icon: BookOpen },
   { href: '/blog', label: 'Blog', icon: BookOpen },
 ];
 
