@@ -51,41 +51,19 @@ const projects = [
           </svg>
         ),
         type: 'Source',
-        href: 'https://github.com/ahmetseha/story-craft',
+        href: 'https://github.com/ahmetseha/tr-slugify',
       },
     ],
   },
   {
-    image: '/tr-slugify.png',
-    title: 'tr-slugify',
-    dates: 'June 2023 - Present',
-    href: 'https://tr-slugify-site.vercel.app/',
+    image: '/git-score-lab.png',
+    title: 'Git Score Lab',
+    dates: 'April 2023 - September 2023',
+    href: 'https://gitscorelab.netlify.app/',
     description:
-      'NPM package that correctly converts Turkish special characters and creates slugs for URLs.',
-    tags: ['TypeScript', 'npm'],
+      'Git Score Lab is a tool that helps you track your Git contributions and see your progress over time.',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Next.js', 'Supabase', 'Netlify'],
     links: [
-      {
-        icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-globe"
-          >
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-            <path d="M2 12h20"></path>
-          </svg>
-        ),
-        type: 'Website',
-        href: 'https://tr-slugify-site.vercel.app/',
-      },
       {
         icon: (
           <svg viewBox="0 0 438.549 438.549" className="w-4 h-4">
@@ -96,7 +74,7 @@ const projects = [
           </svg>
         ),
         type: 'Source',
-        href: 'https://github.com/ahmetseha/tr-slugify',
+        href: 'https://github.com/ahmetseha/path-way-app',
       },
     ],
   },
