@@ -25,19 +25,7 @@ export const THOUGHTS: ThoughtEntry[] = [
     category: 'quote',
     label: 'QUOTE',
     title: 'build, break, rebuild',
-    timestamp: '2025-01-15T09:00:00+03:00',
-  },
-  {
-    id: 'code-context-isolation',
-    category: 'code',
-    label: 'CODE',
-    title: 'RSC context isolation fix',
-    description:
-      'AsyncLocalStorage ile server component renderlarını izole ederek kullanıcı metriklerinin karışmasını engelledim.',
-    code: `asyncLocalStorage.run(newContext, () => {
-  renderReactServerComponent();
-});`,
-    timestamp: '2024-12-21T22:15:00+03:00',
+    timestamp: '2025-12-09T09:00:00+03:00',
   },
   {
     id: 'idea-playlists',
@@ -46,7 +34,7 @@ export const THOUGHTS: ThoughtEntry[] = [
     title: 'CSS deneme playgroundu',
     description:
       'Tailwind + motion tabanlı küçük deneylerimi tek sayfada toplayabileceğim mikro bir playground planlıyorum.',
-    timestamp: '2024-11-03T14:20:00+03:00',
+    timestamp: '2025-12-06T14:20:00+03:00',
   },
   {
     id: 'note-learning',
@@ -55,7 +43,7 @@ export const THOUGHTS: ThoughtEntry[] = [
     title: 'Yazarken öğren',
     description:
       'Kısa notlar ve kod parçaları yayınlamak, öğrendiklerimi kalıcı hale getiriyor. Thoughts sayfası bunu hızlandırmak için burada.',
-    timestamp: '2024-10-18T08:45:00+03:00',
+    timestamp: '2025-12-02T08:45:00+03:00',
   },
   {
     id: 'book-shoe-dog',
@@ -64,6 +52,6 @@ export const THOUGHTS: ThoughtEntry[] = [
     title: 'Shoe Dog – Phil Knight',
     description:
       'Nike’ın hikâyesi, ürün takıntısını kullanıcı deneyimiyle nasıl bağlayabileceğimi yeniden düşünmemi sağladı.',
-    timestamp: '2024-09-05T20:00:00+03:00',
+    timestamp: '2025-11-25T20:00:00+03:00',
   },
 ];
