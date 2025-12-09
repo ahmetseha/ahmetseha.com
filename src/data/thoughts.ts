@@ -21,13 +21,6 @@ export const THOUGHT_CATEGORIES: { value: 'all' | ThoughtCategory; label: string
 
 export const THOUGHTS: ThoughtEntry[] = [
   {
-    id: 'quote-build-break',
-    category: 'quote',
-    label: 'QUOTE',
-    title: 'build, break, rebuild',
-    timestamp: '2025-12-09T09:00:00+03:00',
-  },
-  {
     id: 'idea-playlists',
     category: 'idea',
     label: 'IDEA',

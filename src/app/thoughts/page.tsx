@@ -40,9 +40,9 @@ export default function ThoughtsPage() {
         {sortedThoughts.map((thought, index) => (
           <BlurFade key={thought.id} delay={BLUR_FADE_DELAY * (2 + index)}>
             <article className="space-y-4">
-              <div className="flex flex-wrap items-center justify-between gap-2 text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
-                <span>{thought.label}</span>
-                <div className="flex items-center gap-2 text-[0.7rem] tracking-normal uppercase">
+              <div className="flex items-center justify-between gap-4">
+                <h3 className="text-base font-semibold text-foreground">{thought.title}</h3>
+                <div className="flex items-center gap-2 text-[0.7rem] uppercase tracking-normal text-muted-foreground flex-shrink-0">
                   <span className="font-mono text-xs text-muted-foreground">
                     {formatClockTime(thought.timestamp)}
                   </span>
@@ -54,7 +54,6 @@ export default function ThoughtsPage() {
               </div>
 
               <div className="space-y-3">
-                <h3 className="text-lg font-semibold text-foreground">{thought.title}</h3>
                 {thought.description && (
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {thought.description}
