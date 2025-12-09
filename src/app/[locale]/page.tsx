@@ -1,12 +1,15 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
 import BlurFade from '@/components/magicui/blur-fade';
-
 import { DATA } from '@/data/resume';
-
 import About from './about/page';
 
 const BLUR_FADE_DELAY = 0.04;
 
-export default async function Page() {
+export default function Page() {
+  const t = useTranslations('HomePage');
+
   return (
     <main className="flex flex-col min-h-screen max-w-2xl mx-auto px-6 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
       <section id="about">
@@ -24,7 +27,7 @@ export default async function Page() {
               href={`mailto:${DATA.contact.email}`}
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              Mail
+              {t('mail')}
             </a>
             <a
               href={DATA.contact.social.twitter.url}
@@ -32,7 +35,7 @@ export default async function Page() {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              Twitter
+              {t('twitter')}
             </a>
             <a
               href={DATA.contact.social.instagram.url}
@@ -40,7 +43,7 @@ export default async function Page() {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              Instagram
+              {t('instagram')}
             </a>
             <a
               href={DATA.contact.social.github.url}
@@ -48,7 +51,7 @@ export default async function Page() {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              Github
+              {t('github')}
             </a>
             <a
               href={DATA.contact.social.bookmarks.url}
@@ -56,17 +59,11 @@ export default async function Page() {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              Bookmarks
+              {t('bookmarks')}
             </a>
           </div>
         </BlurFade>
       </section>
-
-      {/* <section id="blog">
-        <BlurFade delay={BLUR_FADE_DELAY * 11}>
-          <BlogPage />
-        </BlurFade>
-      </section> */}
     </main>
   );
 }

@@ -1,0 +1,83 @@
+{
+  "Navigation": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımda",
+    "projects": "Projeler",
+    "thoughts": "Düşünceler",
+    "contact": "İletişim"
+  },
+  "HomePage": {
+    "intro": "Merhaba, ben Ahmet Seha",
+    "description": "Yazılım mühendisiyim. Web teknolojileri, kullanıcı deneyimi ve tasarım ile ilgileniyorum.",
+    "about": "Hakkında",
+    "contact": "İletişim",
+    "mail": "Mail",
+    "twitter": "Twitter",
+    "instagram": "Instagram",
+    "github": "Github",
+    "bookmarks": "Yer İmleri"
+  },
+  "AboutPage": {
+    "intro": "<strong>Frontend Geliştirici</strong> modern web teknolojileri konusunda uzmanlaşmış. Olağanüstü kullanıcı deneyimleri sunan <strong>erişilebilir, duyarlı</strong> uygulamalar geliştiriyorum.",
+    "section1": {
+      "text": "<strong>React</strong>, <strong>Next.js</strong> ve <strong>Vue.js</strong> kullanarak <strong>dinamik web uygulamaları</strong> geliştiriyorum. Ölçeklenebilir, sürdürülebilir çözümler için <strong>TypeScript</strong> ve modern tasarım desenlerine odaklanıyorum.",
+      "list": {
+        "item1": "<strong>Önce erişilebilirlik</strong> yaklaşımı",
+        "item2": "Tüm cihazlar için <strong>duyarlı tasarım</strong>",
+        "item3": "<strong>Performans optimizasyonu</strong> ve en iyi uygulamalar",
+        "item4": "<strong>Kullanıcı deneyimi</strong> odaklı geliştirme"
+      }
+    },
+    "section2": {
+      "text": "<strong>Tasarım prensipleri</strong> ve <strong>UX uygulamaları</strong> konusunda güçlü bir temele sahibim. Tasarımcılarla etkili işbirliği yaparak kusursuz çözümler üretiyorum.",
+      "list": {
+        "item1": "<strong>Tasarım sistemi</strong> uygulaması",
+        "item2": "<strong>Çapraz fonksiyonlu</strong> takım işbirliği",
+        "item3": "<strong>Problem çözme</strong> ve kullanıcı odaklı tasarım",
+        "item4": "<strong>Cilalı, etkili</strong> ürün teslimi"
+      }
+    }
+  },
+  "ProjectsPage": {
+    "title": "Projeler",
+    "items": {
+      "git-score-lab": {
+        "description": "Git katkılarınızı takip etmenize ve zaman içindeki ilerlemenizi görmenize yardımcı olan bir araç."
+      },
+      "tr-slugify": {
+        "description": "Türkçe özel karakterleri doğru şekilde dönüştüren ve URL'ler için slug oluşturan NPM paketi."
+      },
+      "story-craft": {
+        "description": "Modern web teknolojileri ile geliştirilmiş yapay zeka destekli Türkçe hikaye oluşturma uygulaması."
+      },
+      "path-way-app": {
+        "description": "Sırt çantalı gezginler ve seyahat tutkunları için geliştirilen, çevrimdışı çalışan seyahat planlama uygulaması."
+      }
+    }
+  },
+  "ThoughtsPage": {
+    "title": "Kısa düşünceler",
+    "time": {
+      "just_now": "Az önce",
+      "minutes_ago": "{count} dakika önce",
+      "hours_ago": "{count} saat önce",
+      "days_ago": "{count} gün önce",
+      "months_ago": "{count} ay önce",
+      "years_ago": "{count} yıl önce"
+    },
+    "items": {
+      "idea-playlists": {
+        "title": "CSS deneme playgroundu",
+        "description": "Tailwind + motion tabanlı küçük deneylerimi tek sayfada toplayabileceğim mikro bir playground planlıyorum."
+      },
+      "note-learning": {
+        "title": "Yazarken öğren",
+        "description": "Kısa notlar ve kod parçaları yayınlamak, öğrendiklerimi kalıcı hale getiriyor. Thoughts sayfası bunu hızlandırmak için burada."
+      },
+      "book-shoe-dog": {
+        "title": "Shoe Dog – Phil Knight",
+        "description": "Nike’ın hikâyesi, ürün takıntısını kullanıcı deneyimiyle nasıl bağlayabileceğimi yeniden düşünmemi sağladı."
+      }
+    }
+  }
+}

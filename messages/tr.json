@@ -1,0 +1,83 @@
+{
+  "Navigation": {
+    "intro": "Intro",
+    "projects": "Projects",
+    "blog": "Blog",
+    "thoughts": "Thoughts",
+    "work": "Work",
+    "bookmarks": "Bookmarks",
+    "hobbies": "Hobbies"
+  },
+  "Hero": {
+    "greeting": "Selam, ben {name}",
+    "role": "Ürün odaklı yazılım mühendisiyim. Detaylara önem veririm, kullanıcı deneyimini ön planda tutarım.",
+    "status": "İş arıyorum"
+  },
+  "HomePage": {
+    "mail": "Mail",
+    "twitter": "Twitter",
+    "instagram": "Instagram",
+    "github": "Github",
+    "bookmarks": "Bookmarks"
+  },
+  "AboutPage": {
+    "intro": "Merhaba! Ben <strong>Seha</strong>, ürün odaklı bir yazılım mühendisiyim. Kullanıcı deneyimini ön planda tutarak, detaylara önem veren çözümler geliştiriyorum.",
+    "section1": {
+      "text": "Yazılım geliştirme sürecinde sadece kod yazmakla kalmıyor, <strong>kullanıcı ihtiyaçlarını</strong> anlamaya ve <strong>ürün tasarımına</strong> katkıda bulunmaya önem veriyorum. İşte odaklandığım alanlar:",
+      "list": {
+        "item1": "<strong>Frontend Geliştirme:</strong> React, Next.js, TypeScript ile modern ve performanslı web uygulamaları",
+        "item2": "<strong>Kullanıcı Deneyimi:</strong> Detaylara önem veren, erişilebilir ve kullanıcı dostu arayüzler",
+        "item3": "<strong>Ürün Düşüncesi:</strong> Teknik kararları kullanıcı ihtiyaçları ve iş hedefleriyle dengelemek",
+        "item4": "<strong>Performans:</strong> Hızlı, optimize edilmiş ve ölçeklenebilir çözümler"
+      }
+    },
+    "section2": {
+      "text": "Açık kaynak projelere katkıda bulunmayı, yeni teknolojileri öğrenmeyi ve deneyimlerimi paylaşmayı seviyorum. Şu anda:",
+      "list": {
+        "item1": "<strong>Modern web teknolojileri</strong> ile çalışıyorum",
+        "item2": "<strong>Kullanıcı deneyimi</strong> ve tasarım sistemleri üzerine araştırma yapıyorum",
+        "item3": "<strong>Açık kaynak</strong> projelere katkıda bulunuyorum",
+        "item4": "<strong>Yeni fırsatlar</strong> için açığım"
+      }
+    }
+  },
+  "Projects": {
+    "story-craft": {
+      "title": "story-craft",
+      "description": "Modern web teknolojileri ile geliştirilmiş yapay zeka destekli Türkçe hikaye oluşturucu uygulama."
+    },
+    "tr-slugify": {
+      "title": "tr-slugify",
+      "description": "Türkçe özel karakterleri doğru şekilde dönüştüren ve URL'ler için slug oluşturan NPM paketi."
+    },
+    "git-score-lab": {
+      "title": "Git Score Lab",
+      "description": "Git katkılarınızı takip etmenize ve ilerlemenizi görmenize yardımcı olan bir araç."
+    },
+    "path-way-app": {
+      "title": "path-way-app",
+      "description": "Çevrimdışı çalışan, sırt çantalı gezginler ve seyahat tutkunları için geliştirilmiş bir seyahat planlama uygulaması. İnternet bağlantısı olmadan haritaları kullanabilir, gezilerinizi planlayabilir ve rotalarınızı yönetebilirsiniz."
+    }
+  },
+  "Thoughts": {
+    "quote-build-break": {
+      "title": "build, break, rebuild"
+    },
+    "code-context-isolation": {
+      "title": "RSC context isolation fix",
+      "description": "AsyncLocalStorage ile server component renderlarını izole ederek kullanıcı metriklerinin karışmasını engelledim."
+    },
+    "idea-playlists": {
+      "title": "CSS deneme playgroundu",
+      "description": "Tailwind + motion tabanlı küçük deneylerimi tek sayfada toplayabileceğim mikro bir playground planlıyorum."
+    },
+    "note-learning": {
+      "title": "Yazarken öğren",
+      "description": "Kısa notlar ve kod parçaları yayınlamak, öğrendiklerimi kalıcı hale getiriyor. Thoughts sayfası bunu hızlandırmak için burada."
+    },
+    "book-shoe-dog": {
+      "title": "Shoe Dog – Phil Knight",
+      "description": "Nike'ın hikâyesi, ürün takıntısını kullanıcı deneyimiyle nasıl bağlayabileceğimi yeniden düşünmemi sağladı."
+    }
+  }
+}

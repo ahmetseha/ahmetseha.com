@@ -1,0 +1,83 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "thoughts": "Thoughts",
+    "contact": "Contact"
+  },
+  "HomePage": {
+    "intro": "Hi, I'm Ahmet Seha",
+    "description": "I'm a software engineer interested in web technologies, user experience, and design.",
+    "about": "About",
+    "contact": "Contact",
+    "mail": "Mail",
+    "twitter": "Twitter",
+    "instagram": "Instagram",
+    "github": "Github",
+    "bookmarks": "Bookmarks"
+  },
+  "AboutPage": {
+    "intro": "<strong>Frontend Developer</strong> specializing in modern web technologies. Creating <strong>accessible, responsive</strong> applications that deliver exceptional user experiences.",
+    "section1": {
+      "text": "Building <strong>dynamic web applications</strong> using <strong>React</strong>, <strong>Next.js</strong>, and <strong>Vue.js</strong>. Focus on <strong>TypeScript</strong> and modern design patterns for scalable, maintainable solutions.",
+      "list": {
+        "item1": "<strong>Accessibility-first</strong> development approach",
+        "item2": "<strong>Responsive design</strong> for all devices",
+        "item3": "<strong>Performance optimization</strong> and best practices",
+        "item4": "<strong>User experience</strong> focused development"
+      }
+    },
+    "section2": {
+      "text": "Strong foundation in <strong>design principles</strong> and <strong>UX practices</strong>. Effective collaboration with designers to create seamless solutions.",
+      "list": {
+        "item1": "<strong>Design system</strong> implementation",
+        "item2": "<strong>Cross-functional</strong> team collaboration",
+        "item3": "<strong>Problem-solving</strong> and user-centered design",
+        "item4": "<strong>Polished, impactful</strong> product delivery"
+      }
+    }
+  },
+  "ProjectsPage": {
+    "title": "Projects",
+    "items": {
+      "git-score-lab": {
+        "description": "A tool that helps you track your Git contributions and see your progress over time."
+      },
+      "tr-slugify": {
+        "description": "NPM package that correctly converts Turkish special characters and creates slugs for URLs."
+      },
+      "story-craft": {
+        "description": "AI-powered Turkish story generator application built with modern web technologies."
+      },
+      "path-way-app": {
+        "description": "PathWay is a travel planning application developed for backpackers and travel enthusiasts that works offline."
+      }
+    }
+  },
+  "ThoughtsPage": {
+    "title": "Short thoughts",
+    "time": {
+      "just_now": "Just now",
+      "minutes_ago": "{count}m ago",
+      "hours_ago": "{count}h ago",
+      "days_ago": "{count}d ago",
+      "months_ago": "{count}mo ago",
+      "years_ago": "{count}y ago"
+    },
+    "items": {
+      "idea-playlists": {
+        "title": "CSS playground experiments",
+        "description": "Planning a micro playground where I can collect my small Tailwind + motion based experiments in a single page."
+      },
+      "note-learning": {
+        "title": "Learn by writing",
+        "description": "Publishing short notes and code snippets makes what I learn permanent. The Thoughts page is here to accelerate this."
+      },
+      "book-shoe-dog": {
+        "title": "Shoe Dog – Phil Knight",
+        "description": "The story of Nike made me rethink how I can connect product obsession with user experience."
+      }
+    }
+  }
+}

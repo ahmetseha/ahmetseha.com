@@ -1,0 +1,83 @@
+{
+  "Navigation": {
+    "intro": "Intro",
+    "projects": "Projects",
+    "blog": "Blog",
+    "thoughts": "Thoughts",
+    "work": "Work",
+    "bookmarks": "Bookmarks",
+    "hobbies": "Hobbies"
+  },
+  "Hero": {
+    "greeting": "Hi, I'm {name}",
+    "role": "Product-oriented software engineer. I care about details and prioritize user experience.",
+    "status": "Open to work"
+  },
+  "HomePage": {
+    "mail": "Mail",
+    "twitter": "Twitter",
+    "instagram": "Instagram",
+    "github": "Github",
+    "bookmarks": "Bookmarks"
+  },
+  "AboutPage": {
+    "intro": "Hi! I'm <strong>Seha</strong>, a product-oriented software engineer. I develop solutions that prioritize user experience and pay attention to details.",
+    "section1": {
+      "text": "In the software development process, I not only write code but also focus on understanding <strong>user needs</strong> and contributing to <strong>product design</strong>. Here are the areas I focus on:",
+      "list": {
+        "item1": "<strong>Frontend Development:</strong> Modern and performant web applications with React, Next.js, TypeScript",
+        "item2": "<strong>User Experience:</strong> Detail-oriented, accessible, and user-friendly interfaces",
+        "item3": "<strong>Product Thinking:</strong> Balancing technical decisions with user needs and business goals",
+        "item4": "<strong>Performance:</strong> Fast, optimized, and scalable solutions"
+      }
+    },
+    "section2": {
+      "text": "I love contributing to open source projects, learning new technologies, and sharing my experiences. Currently, I am:",
+      "list": {
+        "item1": "Working with <strong>modern web technologies</strong>",
+        "item2": "Researching <strong>user experience</strong> and design systems",
+        "item3": "Contributing to <strong>open source</strong> projects",
+        "item4": "Open to <strong>new opportunities</strong>"
+      }
+    }
+  },
+  "Projects": {
+    "story-craft": {
+      "title": "story-craft",
+      "description": "AI-powered Turkish story generator application built with modern web technologies."
+    },
+    "tr-slugify": {
+      "title": "tr-slugify",
+      "description": "NPM package that correctly converts Turkish special characters and creates slugs for URLs."
+    },
+    "git-score-lab": {
+      "title": "Git Score Lab",
+      "description": "A tool that helps you track your Git contributions and see your progress over time."
+    },
+    "path-way-app": {
+      "title": "path-way-app",
+      "description": "A travel planning application developed for backpackers and travel enthusiasts that works offline. You can use maps, plan your trips, and manage your routes without an internet connection."
+    }
+  },
+  "Thoughts": {
+    "quote-build-break": {
+      "title": "build, break, rebuild"
+    },
+    "code-context-isolation": {
+      "title": "RSC context isolation fix",
+      "description": "Isolated server component renders with AsyncLocalStorage to prevent user metrics from mixing."
+    },
+    "idea-playlists": {
+      "title": "CSS experiment playground",
+      "description": "Planning a micro playground where I can collect my small experiments based on Tailwind + motion on a single page."
+    },
+    "note-learning": {
+      "title": "Learn by writing",
+      "description": "Publishing short notes and code snippets makes what I learn permanent. The Thoughts page is here to speed this up."
+    },
+    "book-shoe-dog": {
+      "title": "Shoe Dog – Phil Knight",
+      "description": "Nike's story made me rethink how I can connect product obsession with user experience."
+    }
+  }
+}

@@ -1,9 +1,8 @@
 'use client';
 
 import BlurFade from '@/components/magicui/blur-fade';
-import BlurFadeText from '@/components/magicui/blur-fade-text';
 
-import { THOUGHTS } from '@/data/thoughts';
+import { useThoughts } from '@/data/thoughts';
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -30,7 +29,9 @@ const formatRelativeTime = (timestamp: string) => {
 };
 
 export default function ThoughtsPage() {
-  const sortedThoughts = [...THOUGHTS].sort(
+  const thoughts = useThoughts();
+  
+  const sortedThoughts = [...thoughts].sort(
     (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
   );
 

@@ -1,13 +1,17 @@
+'use client';
+
 import Image from 'next/image';
 
 import { ExternalLink } from 'lucide-react';
 
 import BlurFade from '@/components/magicui/blur-fade';
-import projects from '@/components/projects';
+import { useProjects } from '@/components/projects';
 
 const BLUR_FADE_DELAY = 0.04;
 
 export default function ProjectsPage() {
+  const projects = useProjects();
+
   return (
     <main className="flex flex-col min-h-screen max-w-2xl mx-auto px-6 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
       <section id="projects">
