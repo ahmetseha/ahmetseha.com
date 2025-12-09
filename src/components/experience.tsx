@@ -45,18 +45,18 @@ export default function Experience({ delay = BLUR_FADE_DELAY * 5 }: ExperiencePr
 
   return (
     <main>
-      <section className="mt-[-24px]">
+      <section className="mt-[-24px] space-y-8">
         {experiences.map((experience, idx) => (
           <article key={idx}>
-            <h3 className="font-semibold text-lg mb-1">{experience.company}</h3>
-            <p className="text-sm text-muted-foreground mb-2">
+            <h3 className="font-semibold text-xl mb-2 text-foreground">{experience.company}</h3>
+            <p className="text-base text-muted-foreground mb-3">
               {experience.position}
               {experience.location && `, ${experience.location}`} • {experience.period}
             </p>
 
-            <p className="text-sm text-muted-foreground font-sans mb-4">{experience.description}</p>
+            <p className="text-base text-muted-foreground font-sans mb-4 leading-relaxed">{experience.description}</p>
 
-            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground font-sans">
+            <ul className="list-disc list-inside space-y-2 text-base text-muted-foreground font-sans">
               {experience.highlights.map((highlight, highlightIdx) => (
                 <li key={highlightIdx}>{highlight}</li>
               ))}

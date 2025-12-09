@@ -14,7 +14,7 @@ export default function Page() {
     <main className="flex flex-col min-h-screen max-w-2xl mx-auto px-6 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY}>
-          <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+          <div className="prose max-w-full text-pretty font-sans text-base text-foreground dark:prose-invert">
             <About />
           </div>
         </BlurFade>

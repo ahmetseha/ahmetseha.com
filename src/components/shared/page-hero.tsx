@@ -70,7 +70,7 @@ export function PageHero() {
 
       {/* Navigation Links and Language Switcher */}
       <div className="flex items-center justify-between overflow-x-auto scrollbar-hide pb-2">
-        <nav className="flex items-center gap-4 sm:gap-6 text-sm">
+        <nav className="flex items-center gap-4 sm:gap-6 text-base">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
 
@@ -92,7 +92,7 @@ export function PageHero() {
 
         <button
           onClick={toggleLanguage}
-          className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors border border-border/50 rounded-full px-2 py-1 ml-4"
+          className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors border border-border/50 rounded-full px-2.5 py-1 ml-4"
         >
           {locale === 'tr' ? 'EN' : 'TR'}
         </button>

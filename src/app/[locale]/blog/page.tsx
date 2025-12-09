@@ -22,7 +22,7 @@ export default async function BlogPage() {
                   <div className="flex items-center justify-between">
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="font-semibold text-base group-hover:text-foreground transition-colors hover:underline"
+                      className="font-semibold text-lg group-hover:text-foreground transition-colors hover:underline text-foreground"
                     >
                       {post.title}
                     </Link>
@@ -32,8 +32,8 @@ export default async function BlogPage() {
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
+                        width="18"
+                        height="18"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
@@ -47,9 +47,9 @@ export default async function BlogPage() {
                       </svg>
                     </Link>
                   </div>
-                  <p className="text-sm text-muted-foreground mt-1">{post.description}</p>
-                  <div className="flex items-center space-x-2 mt-2">
-                    <span className="text-xs text-muted-foreground">
+                  <p className="text-base text-muted-foreground mt-2">{post.description}</p>
+                  <div className="flex items-center space-x-2 mt-3">
+                    <span className="text-sm text-muted-foreground">
                       {new Date(post.date).toLocaleDateString(locale === 'tr' ? 'tr-TR' : 'en-US', {
                         year: 'numeric',
                         month: 'long',
@@ -61,13 +61,13 @@ export default async function BlogPage() {
                         {post.tags.slice(0, 3).map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-muted text-muted-foreground text-nowrap"
+                            className="inline-flex items-center px-2 py-1 rounded-full text-sm bg-muted text-muted-foreground text-nowrap"
                           >
                             {tag}
                           </span>
                         ))}
                         {post.tags.length > 3 && (
-                          <span className="text-xs text-muted-foreground">
+                          <span className="text-sm text-muted-foreground">
                             +{post.tags.length - 3}
                           </span>
                         )}

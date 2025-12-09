@@ -56,12 +56,12 @@ export default async function BlogPost({ params }: Props) {
         <div className="mb-6 sm:mb-8">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="inline-flex items-center gap-2 text-base text-foreground hover:text-foreground/80 transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
+              width="18"
+              height="18"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -77,9 +77,9 @@ export default async function BlogPost({ params }: Props) {
           </Link>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3 sm:mb-4">{post.title}</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3 sm:mb-4 text-foreground">{post.title}</h1>
 
-        <div className="flex gap-2 text-sm text-muted-foreground mb-8 sm:mb-12">
+        <div className="flex gap-2 text-base text-muted-foreground mb-8 sm:mb-12">
           <time dateTime={post.date}>
             {new Date(post.date).toLocaleDateString('tr-TR', {
               day: 'numeric',
@@ -93,16 +93,16 @@ export default async function BlogPost({ params }: Props) {
 
         <div
           className="prose prose-neutral dark:prose-invert max-w-none 
-          prose-headings:font-bold prose-headings:tracking-tight
+          prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground
           prose-h1:text-3xl prose-h1:mb-4
           prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
           prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3
-          prose-p:text-base prose-p:leading-7 prose-p:mb-4
+          prose-p:text-base prose-p:leading-7 prose-p:mb-4 prose-p:text-foreground
           prose-a:text-foreground prose-a:underline prose-a:decoration-muted-foreground/50 hover:prose-a:decoration-foreground
           prose-strong:font-semibold prose-strong:text-foreground
           prose-code:text-foreground prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
           prose-pre:bg-muted prose-pre:border prose-pre:border-border
-          prose-ul:my-4 prose-ol:my-4 prose-li:my-1
+          prose-ul:my-4 prose-ul:text-foreground prose-ol:my-4 prose-ol:text-foreground prose-li:my-1 prose-li:text-foreground
           prose-img:rounded-lg prose-img:border prose-img:border-border"
         >
           {post.content}

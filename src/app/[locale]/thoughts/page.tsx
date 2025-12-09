@@ -30,7 +30,7 @@ const formatRelativeTime = (timestamp: string) => {
 
 export default function ThoughtsPage() {
   const thoughts = useThoughts();
-  
+
   const sortedThoughts = [...thoughts].sort(
     (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
   );
@@ -42,9 +42,9 @@ export default function ThoughtsPage() {
           <BlurFade key={thought.id} delay={BLUR_FADE_DELAY * (2 + index)}>
             <article className="space-y-4">
               <div className="flex items-center justify-between gap-4">
-                <h3 className="text-base font-semibold text-foreground">{thought.title}</h3>
-                <div className="flex items-center gap-2 text-[0.7rem] uppercase tracking-normal text-muted-foreground flex-shrink-0">
-                  <span className="font-mono text-xs text-muted-foreground">
+                <h3 className="text-lg font-semibold text-foreground">{thought.title}</h3>
+                <div className="flex items-center gap-2 text-xs uppercase tracking-normal text-muted-foreground flex-shrink-0">
+                  <span className="font-mono text-sm text-muted-foreground">
                     {formatClockTime(thought.timestamp)}
                   </span>
                   <span className="text-muted-foreground/60">•</span>
@@ -56,12 +56,12 @@ export default function ThoughtsPage() {
 
               <div className="space-y-3">
                 {thought.description && (
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-base text-muted-foreground leading-relaxed">
                     {thought.description}
                   </p>
                 )}
                 {thought.code && (
-                  <pre className="bg-muted border border-border rounded-2xl p-4 text-sm text-muted-foreground/90 whitespace-pre-wrap">
+                  <pre className="bg-muted border border-border rounded-2xl p-4 text-base text-muted-foreground/90 whitespace-pre-wrap">
                     <code>{thought.code}</code>
                   </pre>
                 )}

@@ -35,14 +35,14 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* Content */}
-                <div className="space-y-1">
+                <div className="space-y-2">
                   <div className="flex items-center justify-between gap-2">
-                    <h3 className="font-semibold text-base tracking-tight text-foreground">
+                    <h3 className="font-semibold text-lg tracking-tight text-foreground">
                       {project.title}
                     </h3>
                     <ExternalLink className="size-4 text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                   </div>
-                  <p className="text-sm text-muted-foreground line-clamp-2">
+                  <p className="text-base text-muted-foreground line-clamp-2">
                     {project.description}
                   </p>
                 </div>
