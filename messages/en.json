@@ -21,25 +21,8 @@
     "bookmarks": "Bookmarks"
   },
   "AboutPage": {
-    "intro": "Hi! I'm <strong>Seha</strong>, a product-oriented software engineer. I develop solutions that prioritize user experience and pay attention to details.",
-    "section1": {
-      "text": "In the software development process, I not only write code but also focus on understanding <strong>user needs</strong> and contributing to <strong>product design</strong>. Here are the areas I focus on:",
-      "list": {
-        "item1": "<strong>Frontend Development:</strong> Modern and performant web applications with React, Next.js, TypeScript",
-        "item2": "<strong>User Experience:</strong> Detail-oriented, accessible, and user-friendly interfaces",
-        "item3": "<strong>Product Thinking:</strong> Balancing technical decisions with user needs and business goals",
-        "item4": "<strong>Performance:</strong> Fast, optimized, and scalable solutions"
-      }
-    },
-    "section2": {
-      "text": "I love contributing to open source projects, learning new technologies, and sharing my experiences. Currently, I am:",
-      "list": {
-        "item1": "Working with <strong>modern web technologies</strong>",
-        "item2": "Researching <strong>user experience</strong> and design systems",
-        "item3": "Contributing to <strong>open source</strong> projects",
-        "item4": "Open to <strong>new opportunities</strong>"
-      }
-    }
+    "paragraph1": "Writing, designing, and building are simply different ends of the same line for me. I enjoy frontend development, trying out new technologies, creating small experimental projects, and turning ideas into quick prototypes. Outside of that, I spend my time exploring games, photography, robotics, and 3D design—things that keep my creativity alive.",
+    "paragraph2": "This site exists to share the inspirations behind my work, the technical details I figure out along the way, and the background of the projects I'm currently exploring. Sometimes it's a game idea, sometimes a visual design experiment, sometimes just a thought that caught my attention during the day… all small notes from my ongoing journey."
   },
   "Work": {
     "alisgidis": {

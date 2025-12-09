@@ -22,7 +22,7 @@ export function PageHero() {
   const navLinks = [
     { href: '/', label: t('intro') },
     { href: '/projects', label: t('projects') },
-    // { href: '/blog', label: t('blog') },
+    { href: '/blog', label: t('blog') },
     { href: '/thoughts', label: t('thoughts') },
     { href: '/work', label: t('work') },
   ];
