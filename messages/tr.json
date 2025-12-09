@@ -41,6 +41,29 @@
       }
     }
   },
+  "Work": {
+    "alisgidis": {
+      "position": "Senior Frontend Developer",
+      "description": "Web ve mobil platformlar için kapsamlı e-ticaret çözümleri geliştirdi. Online alışveriş deneyimini iyileştirmek ve iş büyümesini desteklemek için en güncel teknolojileri kullanarak ölçeklenebilir, kullanıcı dostu uygulamalar oluşturdu.",
+      "highlights": [
+        "Optimal performans için Next.js ve TypeScript kullanarak güçlü web uygulamaları geliştirdim",
+        "Modern kullanıcı arayüzleri için shadcn/ui bileşenlerini kullandım",
+        "Tüm platformlarda performans optimizasyonları ve responsive tasarım prensiplerini uyguladım",
+        "Kusursuz kullanıcı deneyimleri sunmak için tasarım ve backend ekipleriyle işbirliği yaptım"
+      ]
+    },
+    "gordion": {
+      "position": "Frontend Developer",
+      "description": "Turizm sektöründe hem B2B hem de B2C uygulamalarının geliştirilmesine katkıda bulundum. Modern web teknolojilerini kullanarak kusursuz ve görsel olarak çekici kullanıcı deneyimleri sunmaya, optimal performans ve kullanıcı memnuniyetini sağlamaya odaklandım.",
+      "highlights": [
+        "Optimal performansı sağlayan ölçeklenebilir uygulamalar geliştirdim ve sürdürdüm",
+        "Dinamik ve responsive arayüzler oluşturmak için React, Next.js ve jQuery kullandım",
+        "Verimli ve özelleştirilebilir tasarım uygulamaları için shadcn ve Tailwind CSS kullandım",
+        "Yüksek kaliteli, kullanıcı odaklı çözümler sunmak için çapraz fonksiyonel ekiplerle işbirliği yaptım",
+        "Geri bildirimleri dahil ederek ve iş akışlarını optimize ederek mevcut sistemleri sürekli geliştirdim"
+      ]
+    }
+  },
   "Projects": {
     "story-craft": {
       "title": "story-craft",

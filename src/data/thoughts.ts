@@ -17,24 +17,6 @@ export function useThoughts() {
 
   const THOUGHTS: ThoughtEntry[] = [
     {
-      id: 'quote-build-break',
-      category: 'quote',
-      label: 'QUOTE',
-      title: t('quote-build-break.title'),
-      timestamp: '2025-12-09T09:00:00+03:00',
-    },
-    {
-      id: 'code-context-isolation',
-      category: 'code',
-      label: 'CODE',
-      title: t('code-context-isolation.title'),
-      description: t('code-context-isolation.description'),
-      code: `asyncLocalStorage.run(newContext, () => {
-  renderReactServerComponent();
-});`,
-      timestamp: '2025-12-08T22:15:00+03:00',
-    },
-    {
       id: 'idea-playlists',
       category: 'idea',
       label: 'IDEA',

@@ -41,6 +41,29 @@
       }
     }
   },
+  "Work": {
+    "alisgidis": {
+      "position": "Senior Frontend Developer",
+      "description": "Developing comprehensive e-commerce solutions for both web and mobile platforms. Focus on creating scalable, user-friendly applications using cutting-edge technologies to enhance the online shopping experience and drive business growth.",
+      "highlights": [
+        "Developing robust web applications using Next.js & TypeScript for optimal performance",
+        "Utilizing shadcn/ui components for modern and intuitive user interfaces",
+        "Implementing performance optimizations and responsive design principles across all platforms",
+        "Collaborating with design and backend teams to deliver seamless user experiences"
+      ]
+    },
+    "gordion": {
+      "position": "Frontend Developer",
+      "description": "Contributed to the development of both B2B and B2C applications in the tourism sector. Focused on delivering seamless and visually appealing user experiences using modern web technologies while ensuring optimal performance and user satisfaction.",
+      "highlights": [
+        "Developed and maintained scalable applications ensuring optimal performance",
+        "Leveraged React, Next.js, and jQuery to build dynamic and responsive interfaces",
+        "Utilized shadcn and Tailwind CSS for efficient and customizable design implementations",
+        "Collaborated with cross-functional teams to deliver high-quality, user-focused solutions",
+        "Continuously improved existing systems, incorporating feedback and optimizing workflows"
+      ]
+    }
+  },
   "Projects": {
     "story-craft": {
       "title": "story-craft",
@@ -65,19 +88,19 @@
     },
     "code-context-isolation": {
       "title": "RSC context isolation fix",
-      "description": "Isolated server component renders with AsyncLocalStorage to prevent user metrics from mixing."
+      "description": "AsyncLocalStorage ile server component renderlarını izole ederek kullanıcı metriklerinin karışmasını engelledim."
     },
     "idea-playlists": {
-      "title": "CSS experiment playground",
-      "description": "Planning a micro playground where I can collect my small experiments based on Tailwind + motion on a single page."
+      "title": "CSS deneme playgroundu",
+      "description": "Tailwind + motion tabanlı küçük deneylerimi tek sayfada toplayabileceğim mikro bir playground planlıyorum."
     },
     "note-learning": {
-      "title": "Learn by writing",
-      "description": "Publishing short notes and code snippets makes what I learn permanent. The Thoughts page is here to speed this up."
+      "title": "Yazarken öğren",
+      "description": "Kısa notlar ve kod parçaları yayınlamak, öğrendiklerimi kalıcı hale getiriyor. Thoughts sayfası bunu hızlandırmak için burada."
     },
     "book-shoe-dog": {
       "title": "Shoe Dog – Phil Knight",
-      "description": "Nike's story made me rethink how I can connect product obsession with user experience."
+      "description": "Nike'ın hikâyesi, ürün takıntısını kullanıcı deneyimiyle nasıl bağlayabileceğimi yeniden düşünmemi sağladı."
     }
   }
 }
