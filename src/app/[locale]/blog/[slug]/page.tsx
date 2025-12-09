@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
+import { getLocale, getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 import { notFound } from 'next/navigation';
 
 import { getAllPosts, getPostBySlug } from '@/lib/mdx';
@@ -7,6 +8,7 @@ import { getAllPosts, getPostBySlug } from '@/lib/mdx';
 interface Props {
   params: Promise<{
     slug: string;
+    locale: string;
   }>;
 }
 
@@ -45,6 +47,8 @@ export async function generateStaticParams() {
 export default async function BlogPost({ params }: Props) {
   const paramsData = await params;
   const post = await getPostBySlug(paramsData.slug);
+  const locale = await getLocale();
+  const t = await getTranslations('Blog');
 
   if (!post) {
     notFound();
@@ -73,7 +77,7 @@ export default async function BlogPost({ params }: Props) {
               <path d="m12 19-7-7 7-7" />
               <path d="M19 12H5" />
             </svg>
-            Blog'a Dön
+            {t('backToBlog')}
           </Link>
         </div>
 
@@ -81,7 +85,7 @@ export default async function BlogPost({ params }: Props) {
 
         <div className="flex gap-2 text-base text-muted-foreground mb-8 sm:mb-12">
           <time dateTime={post.date}>
-            {new Date(post.date).toLocaleDateString('tr-TR', {
+            {new Date(post.date).toLocaleDateString(locale === 'tr' ? 'tr-TR' : 'en-US', {
               day: 'numeric',
               month: 'long',
               year: 'numeric',

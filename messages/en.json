@@ -24,6 +24,9 @@
     "paragraph1": "Writing, designing, and building are simply different ends of the same line for me. I enjoy frontend development, trying out new technologies, creating small experimental projects, and turning ideas into quick prototypes. Outside of that, I spend my time exploring games, photography, robotics, and 3D design—things that keep my creativity alive.",
     "paragraph2": "This site exists to share the inspirations behind my work, the technical details I figure out along the way, and the background of the projects I'm currently exploring. Sometimes it's a game idea, sometimes a visual design experiment, sometimes just a thought that caught my attention during the day… all small notes from my ongoing journey."
   },
+  "Blog": {
+    "backToBlog": "Back to Blog"
+  },
   "Work": {
     "alisgidis": {
       "position": "Senior Frontend Developer",

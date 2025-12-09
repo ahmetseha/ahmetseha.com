@@ -24,6 +24,9 @@
     "paragraph1": "Benim için yazılım, tasarım ve üretmek aynı çizginin farklı uçları. Frontend geliştirmeyi, yeni teknolojiler denemeyi, küçük deneysel projeler çıkarmayı ve fikirleri hızlıca prototipe dönüştürmeyi seviyorum. Vaktimin geri kalanında oyun, fotoğrafçılık, robotik ve 3D tasarım gibi alanlarda kendimi besleyen işler yapıyorum.",
     "paragraph2": "Bu site, ilham aldığım şeyleri, çözdüğüm teknik ayrıntıları ve üzerinde çalıştığım projelerin arka planını paylaşmak için var. Bazen bir oyun fikri, bazen bir görsel tasarım denemesi, bazen de günlük hayatın içinden aklıma takılan bir düşünce… Hepsi yolculuğumun küçük notları."
   },
+  "Blog": {
+    "backToBlog": "Blog'a Dön"
+  },
   "Work": {
     "alisgidis": {
       "position": "Senior Frontend Developer",
