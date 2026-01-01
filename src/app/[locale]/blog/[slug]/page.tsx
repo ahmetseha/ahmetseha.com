@@ -1,9 +1,11 @@
 import { Metadata } from 'next';
-import { getLocale, getTranslations } from 'next-intl/server';
-import { Link } from '@/i18n/navigation';
 import { notFound } from 'next/navigation';
 
+import { getLocale, getTranslations } from 'next-intl/server';
+
 import { getAllPosts, getPostBySlug } from '@/lib/mdx';
+
+import { Link } from '@/i18n/navigation';
 
 interface Props {
   params: Promise<{
@@ -39,9 +41,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  const locales = ['en', 'tr'];
+
+  return posts.flatMap((post) =>
+    locales.map((locale) => ({
+      locale,
+      slug: post.slug,
+    }))
+  );
 }
 
 export default async function BlogPost({ params }: Props) {
@@ -81,7 +88,9 @@ export default async function BlogPost({ params }: Props) {
           </Link>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3 sm:mb-4 text-foreground">{post.title}</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3 sm:mb-4 text-foreground">
+          {post.title}
+        </h1>
 
         <div className="flex gap-2 text-base text-muted-foreground mb-8 sm:mb-12">
           <time dateTime={post.date}>
