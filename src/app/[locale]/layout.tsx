@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
@@ -7,8 +8,8 @@ import '../globals.css';
 import { Inter as FontSans } from 'next/font/google';
 
 import { ThemeProvider } from '@/components/provider/theme-provider';
+import { GridBackground } from '@/components/shared/grid-background';
 import { PageHero } from '@/components/shared/page-hero';
-
 import { TooltipProvider } from '@/components/ui/tooltip';
 
 import { cn } from '@/lib/utils';
@@ -29,7 +30,7 @@ const fontSans = FontSans({
 
 export default async function RootLayout({
   children,
-  params
+  params,
 }: Readonly<{
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
@@ -41,10 +42,11 @@ export default async function RootLayout({
     <html lang={locale}>
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased',
+          'min-h-screen bg-background font-sans antialiased relative',
           fontSans.variable
         )}
       >
+        <GridBackground />
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
@@ -53,8 +55,10 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             <TooltipProvider delayDuration={0}>
-              <PageHero />
-              {children}
+              <div className="relative z-10">
+                <PageHero />
+                {children}
+              </div>
             </TooltipProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

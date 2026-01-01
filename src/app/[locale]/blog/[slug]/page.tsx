@@ -105,7 +105,7 @@ export default async function BlogPost({ params }: Props) {
         </div>
 
         <div
-          className="prose prose-neutral dark:prose-invert max-w-none 
+          className="prose prose-neutral max-w-none 
           prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground
           prose-h1:text-3xl prose-h1:mb-4
           prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4

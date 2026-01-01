@@ -42,7 +42,7 @@ export default function ProjectsPage() {
                     </h3>
                     <ExternalLink className="size-4 text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                   </div>
-                  <p className="text-base text-muted-foreground line-clamp-2">
+                  <p className="text-base text-foreground font-sans leading-relaxed line-clamp-2">
                     {project.description}
                   </p>
                 </div>

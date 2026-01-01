@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+
 import BlurFade from '@/components/magicui/blur-fade';
 
 const BLUR_FADE_DELAY = 0.04;
@@ -54,9 +55,11 @@ export default function Experience({ delay = BLUR_FADE_DELAY * 5 }: ExperiencePr
               {experience.location && `, ${experience.location}`} • {experience.period}
             </p>
 
-            <p className="text-base text-muted-foreground font-sans mb-4 leading-relaxed">{experience.description}</p>
+            <p className="text-base text-foreground font-sans mb-4 leading-relaxed">
+              {experience.description}
+            </p>
 
-            <ul className="list-disc list-inside space-y-2 text-base text-muted-foreground font-sans">
+            <ul className="list-disc list-inside space-y-2 text-base text-foreground font-sans">
               {experience.highlights.map((highlight, highlightIdx) => (
                 <li key={highlightIdx}>{highlight}</li>
               ))}

@@ -1,9 +1,10 @@
 import { getLocale } from 'next-intl/server';
-import { Link } from '@/i18n/navigation';
 
 import BlurFade from '@/components/magicui/blur-fade';
 
 import { getAllPosts } from '@/lib/mdx';
+
+import { Link } from '@/i18n/navigation';
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -47,7 +48,9 @@ export default async function BlogPage() {
                       </svg>
                     </Link>
                   </div>
-                  <p className="text-base text-muted-foreground mt-2">{post.description}</p>
+                  <p className="text-base text-foreground font-sans leading-relaxed mt-2">
+                    {post.description}
+                  </p>
                   <div className="flex items-center space-x-2 mt-3">
                     <span className="text-sm text-muted-foreground">
                       {new Date(post.date).toLocaleDateString(locale === 'tr' ? 'tr-TR' : 'en-US', {

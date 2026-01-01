@@ -17,7 +17,7 @@ export const DATA = {
       },
       instagram: {
         name: 'Instagram',
-        url: 'https://www.instagram.com/seha_dev/',
+        url: 'https://www.instagram.com/ahmetseha_/',
         icon: 'Instagram',
       },
       bookmarks: {

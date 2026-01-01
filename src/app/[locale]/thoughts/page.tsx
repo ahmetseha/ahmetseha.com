@@ -68,7 +68,7 @@ export default function ThoughtsPage() {
 
               <div className="space-y-3">
                 {thought.description && (
-                  <p className="text-base text-muted-foreground leading-relaxed">
+                  <p className="text-base text-foreground font-sans leading-relaxed">
                     {thought.description}
                   </p>
                 )}
