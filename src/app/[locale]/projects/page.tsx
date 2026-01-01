@@ -13,7 +13,7 @@ export default function ProjectsPage() {
   const projects = useProjects();
 
   return (
-    <main className="flex flex-col min-h-screen max-w-2xl mx-auto px-6 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
+    <main className="flex flex-col min-h-screen max-w-2xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
       <section id="projects">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {projects.map((project, idx) => (

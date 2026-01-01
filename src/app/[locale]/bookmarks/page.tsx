@@ -5,7 +5,7 @@ import Section from '@/components/shared/section';
 
 export default function BookmarksPage() {
   return (
-    <main className="flex flex-col min-h-screen max-w-2xl mx-auto px-6 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
+    <main className="flex flex-col min-h-screen max-w-2xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
       <section id="bookmarks-intro">
         <h2 className="text-2xl font-bold tracking-tight font-sans mb-6">Yer İmleri</h2>
         <p className="text-base text-foreground font-sans leading-relaxed">

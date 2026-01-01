@@ -48,7 +48,7 @@ export default function ThoughtsPage() {
   );
 
   return (
-    <main className="flex flex-col min-h-screen max-w-2xl mx-auto px-6 pb-20 space-y-12">
+    <main className="flex flex-col min-h-screen max-w-2xl mx-auto px-4 sm:px-6 pb-20 space-y-12">
       <section id="thoughts-list" className="space-y-10">
         {sortedThoughts.map((thought, index) => (
           <BlurFade key={thought.id} delay={BLUR_FADE_DELAY * (2 + index)}>

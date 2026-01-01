@@ -14,7 +14,7 @@ export default function Page() {
   const t = useTranslations('HomePage');
 
   return (
-    <main className="flex flex-col min-h-screen max-w-2xl mx-auto px-6 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
+    <main className="flex flex-col min-h-screen max-w-2xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24 space-y-8 sm:space-y-12">
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY}>
           <div className="prose max-w-full text-pretty font-sans text-base text-foreground">

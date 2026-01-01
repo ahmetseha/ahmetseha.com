@@ -1,7 +1,6 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { Link, usePathname, useRouter } from '@/i18n/navigation';
 
 import BlurFadeText from '@/components/magicui/blur-fade-text';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -9,6 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 
 import { DATA } from '@/data/resume';
+import { Link, usePathname, useRouter } from '@/i18n/navigation';
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -33,7 +33,7 @@ export function PageHero() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-6 pt-12 sm:pt-32 pb-6 sm:pb-8">
+    <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 pt-12 sm:pt-32 pb-6 sm:pb-8">
       {/* Hero Section */}
       <div className="mb-6 sm:mb-8">
         <div className="flex items-center justify-between gap-3 sm:gap-4">
@@ -69,8 +69,8 @@ export function PageHero() {
       </div>
 
       {/* Navigation Links and Language Switcher */}
-      <div className="flex items-center justify-between overflow-x-auto scrollbar-hide pb-2">
-        <nav className="flex items-center gap-4 sm:gap-6 text-base">
+      <div className="flex items-center justify-between overflow-x-auto scrollbar-hide pb-2 -mx-1 px-1">
+        <nav className="flex items-center gap-2.5 sm:gap-6 text-sm sm:text-base">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
 
@@ -79,7 +79,7 @@ export function PageHero() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'rounded-md transition-colors duration-200 whitespace-nowrap py-1',
+                  'rounded-md transition-colors duration-200 whitespace-nowrap py-1 px-1.5 sm:px-0',
                   'hover:text-foreground hover:bg-accent/50',
                   isActive ? 'text-foreground font-medium' : 'text-muted-foreground'
                 )}
@@ -92,7 +92,7 @@ export function PageHero() {
 
         <button
           onClick={toggleLanguage}
-          className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors border border-border/50 rounded-full px-2.5 py-1 ml-4"
+          className="text-xs sm:text-sm font-medium text-muted-foreground hover:text-foreground transition-colors border border-border/50 rounded-full px-2 sm:px-2.5 py-1 ml-2 sm:ml-4 flex-shrink-0"
         >
           {locale === 'tr' ? 'EN' : 'TR'}
         </button>
