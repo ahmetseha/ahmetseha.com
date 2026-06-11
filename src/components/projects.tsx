@@ -23,7 +23,7 @@ export function useProjects() {
     },
     {
       id: 'seha-studio',
-      image: '/seha-studio.png',
+      image: '/seha-studio-v2.png',
       title: t('seha-studio.title'),
       dates: '2025 - Present',
       href: 'https://seha.studio/',
@@ -39,7 +39,7 @@ export function useProjects() {
     },
     {
       id: 'prompt-trace',
-      image: '/prompt-trace.png',
+      image: '/prompt-trace-v2.png',
       title: t('prompt-trace.title'),
       dates: 'October 2025 - Present',
       href: 'https://ahmetseha.github.io/prompt-trace/',
