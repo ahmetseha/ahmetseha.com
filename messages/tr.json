@@ -18,7 +18,8 @@
     "twitter": "Twitter",
     "instagram": "Instagram",
     "github": "Github",
-    "bookmarks": "Bookmarks"
+    "bookmarks": "Bookmarks",
+    "resume": "CV"
   },
   "AboutPage": {
     "paragraph1": "Benim için yazılım, tasarım ve üretmek aynı çizginin farklı uçları. Frontend geliştirmeyi, yeni teknolojiler denemeyi, küçük deneysel projeler çıkarmayı ve fikirleri hızlıca prototipe dönüştürmeyi seviyorum. Vaktimin geri kalanında oyun, fotoğrafçılık, robotik ve 3D tasarım gibi alanlarda kendimi besleyen işler yapıyorum.",
@@ -28,16 +29,6 @@
     "backToBlog": "Blog'a Dön"
   },
   "Work": {
-    "seha-studio": {
-      "position": "Kurucu / Frontend Geliştirici",
-      "description": "Ürün arayüzleri, küçük açık kaynak araçlar, AI iş akışları ve maker deneylerini bir araya getiren kişisel stüdyom. Merak ettiğim fikirleri küçük deneylere, yazılı notlara ve günlük işlerde kullanılabilen araçlara dönüştürüyorum.",
-      "highlights": [
-        "GitScoreLab, PromptTrace ve tr-slugify gibi açık kaynak araçları ve deneyleri tasarlayıp geliştirdim",
-        "Arayüzün hissine, kodun temizliğine ve projelerin zamanla anlaşılır kalmasına önem veriyorum",
-        "Frontend mühendisliği, arayüz tasarımı ve ürün düşüncesini tek bir üretim hattında birleştiriyorum",
-        "3D baskı / maker çalışmaları ve saha notları için yaşayan bir arşiv yürütüyorum"
-      ]
-    },
     "alisgidis": {
       "position": "Senior Frontend Developer",
       "description": "Web ve mobil platformlar için kapsamlı e-ticaret çözümleri geliştirdi. Online alışveriş deneyimini iyileştirmek ve iş büyümesini desteklemek için en güncel teknolojileri kullanarak ölçeklenebilir, kullanıcı dostu uygulamalar oluşturdu.",
@@ -61,6 +52,14 @@
     }
   },
   "Projects": {
+    "clariole": {
+      "title": "Clariole",
+      "description": "CV'leri hem ATS sistemleri tarafından okunabilir hem de işe alımcılar için ikna edici hâle getiren bir CV analiz aracı. Sahte ATS puanı vermeden ayrıştırma riski, ilan uyumu, eksik anahtar kelimeler, zayıf maddeler ve okunabilirlik açısından dürüst geri bildirim sunar."
+    },
+    "seha-studio": {
+      "title": "Seha Studio",
+      "description": "Yazılım, açık kaynak araçlar, AI iş akışları ve 3D / maker çalışmalarını bir araya getiren kişisel stüdyo ve arşiv sitem. Seçili işlerimi, notlarımı ve yazılarımı paylaştığım bir vitrin."
+    },
     "prompt-trace": {
       "title": "PromptTrace",
       "description": "Yerel AI araç geçmişinizi tarayıp her prompt'u 6 kalite boyutunda puanlayan, yeniden kullanılabilir şablonlar çıkaran ve iş akışı kalıplarını tespit eden, tamamen yerel çalışan açık kaynak CLI aracı."

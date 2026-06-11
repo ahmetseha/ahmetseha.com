@@ -6,6 +6,38 @@ export function useProjects() {
 
   return [
     {
+      id: 'clariole',
+      image: '/clariole.png',
+      title: t('clariole.title'),
+      dates: '2025 - Present',
+      href: 'https://clariole.vercel.app/',
+      description: t('clariole.description'),
+      tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+      links: [
+        {
+          icon: <Globe className="size-3" />,
+          type: 'Website',
+          href: 'https://clariole.vercel.app/',
+        },
+      ],
+    },
+    {
+      id: 'seha-studio',
+      image: '/seha-studio.png',
+      title: t('seha-studio.title'),
+      dates: '2025 - Present',
+      href: 'https://seha.studio/',
+      description: t('seha-studio.description'),
+      tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+      links: [
+        {
+          icon: <Globe className="size-3" />,
+          type: 'Website',
+          href: 'https://seha.studio/',
+        },
+      ],
+    },
+    {
       id: 'prompt-trace',
       image: '/prompt-trace.png',
       title: t('prompt-trace.title'),

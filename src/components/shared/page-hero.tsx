@@ -24,7 +24,6 @@ export function PageHero() {
     { href: '/', label: t('intro') },
     { href: '/projects', label: t('projects') },
     { href: '/blog', label: t('blog') },
-    { href: '/thoughts', label: t('thoughts') },
     { href: '/work', label: t('work') },
   ];
 
