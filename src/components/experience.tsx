@@ -15,6 +15,20 @@ export default function Experience({ delay = BLUR_FADE_DELAY * 5 }: ExperiencePr
 
   const experiences = [
     {
+      id: 'seha-studio',
+      company: 'Seha Studio',
+      position: t('seha-studio.position'),
+      period: '2025 – Present',
+      location: 'Personal',
+      description: t('seha-studio.description'),
+      highlights: [
+        t('seha-studio.highlights.0'),
+        t('seha-studio.highlights.1'),
+        t('seha-studio.highlights.2'),
+        t('seha-studio.highlights.3'),
+      ],
+    },
+    {
       id: 'alisgidis',
       company: 'Alışgidiş',
       position: t('alisgidis.position'),

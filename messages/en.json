@@ -29,6 +29,16 @@
     "backToBlog": "Back to Blog"
   },
   "Work": {
+    "seha-studio": {
+      "position": "Founder / Frontend Developer",
+      "description": "My personal studio bringing together product surfaces, small open-source tools, AI workflows, and maker experiments. I turn ideas I'm curious about into small experiments, written notes, and tools usable in everyday work.",
+      "highlights": [
+        "Designed and built open-source tools and experiments such as GitScoreLab, PromptTrace, and tr-slugify",
+        "Care about the feel of an interface, clean code, and keeping projects understandable over time",
+        "Combine frontend engineering, interface design, and product thinking into a single workflow",
+        "Maintain a living archive for 3D printing / maker work and field notes"
+      ]
+    },
     "alisgidis": {
       "position": "Senior Frontend Developer",
       "description": "Developing comprehensive e-commerce solutions for both web and mobile platforms. Focus on creating scalable, user-friendly applications using cutting-edge technologies to enhance the online shopping experience and drive business growth.",
