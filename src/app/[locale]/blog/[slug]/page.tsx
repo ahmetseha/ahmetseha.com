@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { getLocale, getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getAllPosts, getPostBySlug } from '@/lib/mdx';
 
@@ -53,6 +53,7 @@ export async function generateStaticParams() {
 
 export default async function BlogPost({ params }: Props) {
   const paramsData = await params;
+  setRequestLocale(paramsData.locale);
   const post = await getPostBySlug(paramsData.slug);
   const locale = await getLocale();
   const t = await getTranslations('Blog');
@@ -92,7 +93,7 @@ export default async function BlogPost({ params }: Props) {
           {post.title}
         </h1>
 
-        <div className="flex gap-2 text-base text-muted-foreground mb-8 sm:mb-12">
+        <div className="flex gap-2 font-mono text-sm text-muted-foreground mb-8 sm:mb-12">
           <time dateTime={post.date}>
             {new Date(post.date).toLocaleDateString(locale === 'tr' ? 'tr-TR' : 'en-US', {
               day: 'numeric',

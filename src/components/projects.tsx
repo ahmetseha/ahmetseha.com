@@ -6,6 +6,27 @@ export function useProjects() {
 
   return [
     {
+      id: 'prompt-trace',
+      image: '/prompt-trace.png',
+      title: t('prompt-trace.title'),
+      dates: 'October 2025 - Present',
+      href: 'https://ahmetseha.github.io/prompt-trace/',
+      description: t('prompt-trace.description'),
+      tags: ['TypeScript', 'Node.js', 'CLI', 'SQLite', 'Local-first', 'AI'],
+      links: [
+        {
+          icon: <Globe className="size-3" />,
+          type: 'Website',
+          href: 'https://ahmetseha.github.io/prompt-trace/',
+        },
+        {
+          icon: <Github className="size-3" />,
+          type: 'Source',
+          href: 'https://github.com/ahmetseha/prompt-trace',
+        },
+      ],
+    },
+    {
       id: 'git-score-lab',
       image: '/git-score-lab.png',
       title: t('git-score-lab.title'),

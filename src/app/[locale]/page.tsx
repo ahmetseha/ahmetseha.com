@@ -1,17 +1,21 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import BlurFade from '@/components/magicui/blur-fade';
+import { About } from '@/components/about';
 
 import { DATA } from '@/data/resume';
 
-import About from './about/page';
-
 const BLUR_FADE_DELAY = 0.04;
 
-export default function Page() {
-  const t = useTranslations('HomePage');
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const t = await getTranslations('HomePage');
 
   return (
     <main className="flex flex-col min-h-screen max-w-2xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24 space-y-8 sm:space-y-12">

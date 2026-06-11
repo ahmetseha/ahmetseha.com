@@ -28,6 +28,16 @@
     "backToBlog": "Blog'a Dön"
   },
   "Work": {
+    "seha-studio": {
+      "position": "Kurucu / Frontend Geliştirici",
+      "description": "Ürün arayüzleri, küçük açık kaynak araçlar, AI iş akışları ve maker deneylerini bir araya getiren kişisel stüdyom. Merak ettiğim fikirleri küçük deneylere, yazılı notlara ve günlük işlerde kullanılabilen araçlara dönüştürüyorum.",
+      "highlights": [
+        "GitScoreLab, PromptTrace ve tr-slugify gibi açık kaynak araçları ve deneyleri tasarlayıp geliştirdim",
+        "Arayüzün hissine, kodun temizliğine ve projelerin zamanla anlaşılır kalmasına önem veriyorum",
+        "Frontend mühendisliği, arayüz tasarımı ve ürün düşüncesini tek bir üretim hattında birleştiriyorum",
+        "3D baskı / maker çalışmaları ve saha notları için yaşayan bir arşiv yürütüyorum"
+      ]
+    },
     "alisgidis": {
       "position": "Senior Frontend Developer",
       "description": "Web ve mobil platformlar için kapsamlı e-ticaret çözümleri geliştirdi. Online alışveriş deneyimini iyileştirmek ve iş büyümesini desteklemek için en güncel teknolojileri kullanarak ölçeklenebilir, kullanıcı dostu uygulamalar oluşturdu.",
@@ -51,6 +61,10 @@
     }
   },
   "Projects": {
+    "prompt-trace": {
+      "title": "PromptTrace",
+      "description": "Yerel AI araç geçmişinizi tarayıp her prompt'u 6 kalite boyutunda puanlayan, yeniden kullanılabilir şablonlar çıkaran ve iş akışı kalıplarını tespit eden, tamamen yerel çalışan açık kaynak CLI aracı."
+    },
     "story-craft": {
       "title": "story-craft",
       "description": "Modern web teknolojileri ile geliştirilmiş yapay zeka destekli Türkçe hikaye oluşturucu uygulama."

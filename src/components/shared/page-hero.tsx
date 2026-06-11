@@ -1,9 +1,10 @@
 'use client';
 
+import Image from 'next/image';
+
 import { useLocale, useTranslations } from 'next-intl';
 
 import BlurFadeText from '@/components/magicui/blur-fade-text';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 import { cn } from '@/lib/utils';
 
@@ -59,10 +60,15 @@ export function PageHero() {
           </div>
           <div className="relative flex flex-col items-end gap-2">
             <Link href="/" aria-label="Back to intro" className="rounded-full">
-              <Avatar className="size-16 sm:size-20 border-2 rounded-full ring-2 ring-transparent hover:ring-primary/20 transition-all duration-200 flex-shrink-0">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} className="rounded-full" />
-                <AvatarFallback className="rounded-full">{DATA.initials}</AvatarFallback>
-              </Avatar>
+              <Image
+                src={DATA.avatarUrl}
+                alt={DATA.name}
+                width={80}
+                height={80}
+                priority
+                sizes="(max-width: 640px) 64px, 80px"
+                className="size-16 sm:size-20 flex-shrink-0 rounded-full border-2 object-cover ring-2 ring-transparent transition-all duration-200 hover:ring-primary/20"
+              />
             </Link>
           </div>
         </div>
@@ -70,7 +76,7 @@ export function PageHero() {
 
       {/* Navigation Links and Language Switcher */}
       <div className="flex items-center justify-between overflow-x-auto scrollbar-hide pb-2 -mx-1 px-1">
-        <nav className="flex items-center gap-2.5 sm:gap-6 text-sm sm:text-base">
+        <nav className="flex items-center gap-3 sm:gap-6 font-mono text-xs sm:text-sm uppercase tracking-wider">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
 
@@ -80,8 +86,8 @@ export function PageHero() {
                 href={link.href}
                 className={cn(
                   'rounded-md transition-colors duration-200 whitespace-nowrap py-1 px-1.5 sm:px-0',
-                  'hover:text-foreground hover:bg-accent/50',
-                  isActive ? 'text-foreground font-medium' : 'text-muted-foreground'
+                  'hover:text-foreground',
+                  isActive ? 'text-primary' : 'text-muted-foreground'
                 )}
               >
                 {link.label}
@@ -92,7 +98,7 @@ export function PageHero() {
 
         <button
           onClick={toggleLanguage}
-          className="text-xs sm:text-sm font-medium text-muted-foreground hover:text-foreground transition-colors border border-border/50 rounded-full px-2 sm:px-2.5 py-1 ml-2 sm:ml-4 flex-shrink-0"
+          className="font-mono text-xs sm:text-sm font-medium text-muted-foreground hover:text-primary transition-colors border border-border rounded-full px-2 sm:px-2.5 py-1 ml-2 sm:ml-4 flex-shrink-0"
         >
           {locale === 'tr' ? 'EN' : 'TR'}
         </button>

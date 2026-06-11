@@ -1,17 +1,19 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 
 import '../globals.css';
 
-import { Inter as FontSans } from 'next/font/google';
+import { Inter as FontSans, JetBrains_Mono as FontMono } from 'next/font/google';
 
 import { ThemeProvider } from '@/components/provider/theme-provider';
 import { GridBackground } from '@/components/shared/grid-background';
 import { PageHero } from '@/components/shared/page-hero';
 import { TooltipProvider } from '@/components/ui/tooltip';
 
+import { routing } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
@@ -28,6 +30,15 @@ const fontSans = FontSans({
   variable: '--font-sans',
 });
 
+const fontMono = FontMono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+});
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export default async function RootLayout({
   children,
   params,
@@ -36,22 +47,31 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
+
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  // Statik render için locale'i isteğe sabitler (next-intl).
+  setRequestLocale(locale);
+
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className="dark" suppressHydrationWarning>
       <body
         className={cn(
           'min-h-screen bg-background font-sans antialiased relative',
-          fontSans.variable
+          fontSans.variable,
+          fontMono.variable
         )}
       >
         <GridBackground />
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="theme"
-            enableSystem
+            defaultTheme="dark"
+            forcedTheme="dark"
             disableTransitionOnChange
           >
             <TooltipProvider delayDuration={0}>

@@ -15,6 +15,20 @@ export default function Experience({ delay = BLUR_FADE_DELAY * 5 }: ExperiencePr
 
   const experiences = [
     {
+      id: 'seha-studio',
+      company: 'Seha Studio',
+      position: t('seha-studio.position'),
+      period: '2025 – Present',
+      location: 'Personal',
+      description: t('seha-studio.description'),
+      highlights: [
+        t('seha-studio.highlights.0'),
+        t('seha-studio.highlights.1'),
+        t('seha-studio.highlights.2'),
+        t('seha-studio.highlights.3'),
+      ],
+    },
+    {
       id: 'alisgidis',
       company: 'Alışgidiş',
       position: t('alisgidis.position'),
@@ -50,7 +64,7 @@ export default function Experience({ delay = BLUR_FADE_DELAY * 5 }: ExperiencePr
         {experiences.map((experience, idx) => (
           <article key={idx}>
             <h3 className="font-semibold text-xl mb-2 text-foreground">{experience.company}</h3>
-            <p className="text-base text-muted-foreground mb-3">
+            <p className="font-mono text-sm text-muted-foreground mb-3">
               {experience.position}
               {experience.location && `, ${experience.location}`} • {experience.period}
             </p>

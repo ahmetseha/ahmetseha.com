@@ -1,4 +1,4 @@
-import { getLocale } from 'next-intl/server';
+import { getLocale, setRequestLocale } from 'next-intl/server';
 
 import BlurFade from '@/components/magicui/blur-fade';
 
@@ -8,7 +8,14 @@ import { Link } from '@/i18n/navigation';
 
 const BLUR_FADE_DELAY = 0.04;
 
-export default async function BlogPage() {
+export default async function BlogPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale: localeParam } = await params;
+  setRequestLocale(localeParam);
+
   const locale = await getLocale();
   const posts = await getAllPosts();
 
@@ -52,7 +59,7 @@ export default async function BlogPage() {
                     {post.description}
                   </p>
                   <div className="flex items-center space-x-2 mt-3">
-                    <span className="text-sm text-muted-foreground">
+                    <span className="font-mono text-sm text-muted-foreground">
                       {new Date(post.date).toLocaleDateString(locale === 'tr' ? 'tr-TR' : 'en-US', {
                         year: 'numeric',
                         month: 'long',
@@ -64,7 +71,7 @@ export default async function BlogPage() {
                         {post.tags.slice(0, 3).map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            className="inline-flex items-center px-2 py-1 rounded-full text-sm bg-muted text-muted-foreground text-nowrap"
+                            className="inline-flex items-center px-2 py-1 rounded-full font-mono text-xs bg-muted text-muted-foreground text-nowrap"
                           >
                             {tag}
                           </span>
