@@ -38,6 +38,22 @@ export function useProjects() {
       ],
     },
     {
+      id: 'registry-doctor',
+      image: '/registry-doctor.svg',
+      title: t('registry-doctor.title'),
+      dates: '2026 - Present',
+      href: 'https://registry-doctor-web.vercel.app/',
+      description: t('registry-doctor.description'),
+      tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'Vercel'],
+      links: [
+        {
+          icon: <Globe className="size-3" />,
+          type: 'Website',
+          href: 'https://registry-doctor-web.vercel.app/',
+        },
+      ],
+    },
+    {
       id: 'prompt-trace',
       image: '/prompt-trace-v2.png',
       title: t('prompt-trace.title'),

@@ -70,6 +70,10 @@
       "title": "Seha Studio",
       "description": "Yazılım, açık kaynak araçlar, AI iş akışları ve 3D / maker çalışmalarını bir araya getiren kişisel stüdyo ve arşiv sitem. Seçili işlerimi, notlarımı ve yazılarımı paylaştığım bir vitrin."
     },
+    "registry-doctor": {
+      "title": "RegistryDoctor",
+      "description": "shadcn/ui projelerinde setup, token, erişilebilirlik, component kalitesi ve registry hazırlığını tarayan; bulguları odaklı bir dashboard'a ve starter registry dosyalarına dönüştüren audit aracı."
+    },
     "prompt-trace": {
       "title": "PromptTrace",
       "description": "Yerel AI araç geçmişinizi tarayıp her prompt'u 6 kalite boyutunda puanlayan, yeniden kullanılabilir şablonlar çıkaran ve iş akışı kalıplarını tespit eden, tamamen yerel çalışan açık kaynak CLI aracı."

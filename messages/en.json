@@ -70,6 +70,10 @@
       "title": "Seha Studio",
       "description": "My personal studio and archive site bringing together software, open-source tools, AI workflows, and 3D / maker work. A showcase for selected work, notes, and writing."
     },
+    "registry-doctor": {
+      "title": "RegistryDoctor",
+      "description": "A shadcn/ui audit tool that scans setup, tokens, accessibility, component quality, and registry readiness, then turns findings into a focused dashboard and starter registry files."
+    },
     "prompt-trace": {
       "title": "PromptTrace",
       "description": "Open-source, local-first CLI that scans your AI tool histories, scores every prompt across 6 quality dimensions, extracts reusable templates, and detects workflow patterns."
