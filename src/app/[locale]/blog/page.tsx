@@ -1,4 +1,4 @@
-import { getLocale, setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 
 import BlurFade from '@/components/magicui/blur-fade';
 
@@ -16,7 +16,6 @@ export default async function BlogPage({
   const { locale: localeParam } = await params;
   setRequestLocale(localeParam);
 
-  const locale = await getLocale();
   const posts = await getAllPosts();
 
   return (
@@ -60,7 +59,7 @@ export default async function BlogPage({
                   </p>
                   <div className="flex items-center space-x-2 mt-3">
                     <span className="font-mono text-sm text-muted-foreground">
-                      {new Date(post.date).toLocaleDateString(locale === 'tr' ? 'tr-TR' : 'en-US', {
+                      {new Date(post.date).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric',

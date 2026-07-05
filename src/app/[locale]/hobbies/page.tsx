@@ -18,7 +18,7 @@ export default function HobbiesPage() {
             <BlurFadeText
               className="max-w-[600px] md:text-xl text-muted-foreground"
               delay={BLUR_FADE_DELAY * 2}
-              text="Yaratıcılık, teknoloji ve sanatın kesiştiği noktada hobilerimin hikayesi"
+              text="A small record of the hobbies where creativity, technology, and craft overlap"
             />
           </div>
         </div>

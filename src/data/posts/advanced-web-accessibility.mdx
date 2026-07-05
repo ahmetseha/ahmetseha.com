@@ -1,496 +1,228 @@
 ---
-title: 'Web Accessibility: Sıklıkla Göz Ardı Edilen HTML Yapıları'
-description: 'Web geliştiricilerin genellikle atladığı ileri seviye erişilebilirlik teknikleri ve nadiren kullanılan ancak kritik öneme sahip HTML yapıları'
+title: 'Web Accessibility: Overlooked HTML Patterns'
+description: 'Advanced accessibility techniques and native HTML elements that web developers often miss.'
 date: '2025-07-15'
 tags: ['accessibility', 'html', 'web development', 'a11y', 'screen readers']
 ---
 
-Web erişilebilirliği konusunda temel prensipleri bilen geliştiriciler bile bazı önemli ve ileri seviye teknikleri gözden kaçırabilir. Bu yazıda, genellikle atlanan ancak erişilebilirlik açısından kritik öneme sahip HTML yapılarını ve teknikleri inceleyeceğiz.
+Even developers who know the basics of web accessibility can miss useful native HTML features.
+This post collects patterns that reduce custom JavaScript, improve semantics, and make interfaces
+easier to navigate with keyboards and assistive technologies.
 
-## 1. `<dialog>` Elementi ve Modal Erişilebilirliği
+## 1. `<dialog>` for Accessible Modals
 
-Modern web uygulamalarında sıkça kullanılan modallar, erişilebilirlik açısından genellikle sorunludur. Native `<dialog>` elementi bu sorunu çözer, ancak nadiren kullanılır.
+Custom modal implementations often miss focus management, escape-key behavior, or background
+inertness. The native `<dialog>` element provides a better baseline.
 
 ```html
-<!-- Erişilebilir olmayan modal yaklaşımı -->
+<!-- Less accessible modal pattern -->
 <div class="modal" id="myModal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>Modal içeriği...</p>
+    <p>Modal content...</p>
   </div>
 </div>
 
-<!-- İleri seviye erişilebilir modal yaklaşımı -->
+<!-- Native accessible modal pattern -->
 <dialog id="accessibleModal">
-  <h2 id="modalTitle">Modal Başlığı</h2>
+  <h2 id="modalTitle">Modal Title</h2>
   <div id="modalContent">
-    <p>Modal içeriği burada...</p>
+    <p>Modal content goes here...</p>
   </div>
-  <button id="closeModal">Kapat</button>
+  <button id="closeModal">Close</button>
 </dialog>
 ```
 
 ```javascript
-// Dialog elementinin erişilebilir kontrolü
 const dialog = document.getElementById('accessibleModal');
 const openButton = document.getElementById('openModal');
 const closeButton = document.getElementById('closeModal');
 
 openButton.addEventListener('click', () => {
   dialog.showModal();
-  // Odağı modal içine taşı
   dialog.querySelector('h2').focus();
 });
 
 closeButton.addEventListener('click', () => {
   dialog.close();
-  // Odağı açan düğmeye geri getir
   openButton.focus();
 });
-
-// ESC tuşu ile kapatma native olarak desteklenir
-// Focus trap (odak tuzağı) native olarak desteklenir
 ```
 
-`<dialog>` elementi, erişilebilirlik için gerekli olan birçok özelliği otomatik olarak sağlar:
+`<dialog>` gives you native escape-key handling, focus behavior, and the correct semantics for a
+modal surface.
 
-- Focus trapping (odak tuzağı)
-- ESC tuşu ile kapatma
-- Arka planın otomatik karartılması
-- Ekran okuyuculara uygun ARIA roller
+## 2. `<details>` and `<summary>` for Disclosure UI
 
-## 2. `<details>` ve `<summary>` ile Genişletilebilir İçerik
-
-Açılır-kapanır içerikler için genellikle JavaScript ile özel çözümler uygulanır, ancak native `<details>` ve `<summary>` elementleri hem daha erişilebilir hem de daha az kod gerektirir.
+Expandable content is often built with custom JavaScript, but native disclosure elements already
+provide keyboard support and state semantics.
 
 ```html
-<!-- Yaygın ancak erişilebilirliği düşük yaklaşım -->
-<div class="accordion">
-  <div class="accordion-header" onclick="toggleAccordion(this)">Bölüm 1</div>
-  <div class="accordion-content">
-    <p>İçerik burada...</p>
-  </div>
-</div>
-
-<!-- İleri seviye erişilebilir yaklaşım -->
 <details>
-  <summary>Bölüm 1</summary>
-  <p>İçerik burada...</p>
-  <p>Ek içerik...</p>
+  <summary>Section 1</summary>
+  <p>Content goes here...</p>
+  <p>Additional content...</p>
 </details>
 ```
 
-Bu yapı:
+This pattern is keyboard accessible, screen-reader friendly, and does not require JavaScript for the
+core interaction.
 
-- Klavye erişilebilirliği sağlar
-- Ekran okuyucular için uygun semantik yapı sunar
-- Genişletme/daraltma durumunu otomatik olarak bildirir
-- JavaScript gerektirmez
+## 3. `<fieldset>` and `<legend>` for Form Groups
 
-Özelleştirmek için:
-
-```css
-details {
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  padding: 0.5em 0.5em 0;
-  margin-bottom: 1em;
-}
-
-summary {
-  font-weight: bold;
-  cursor: pointer;
-  padding: 0.5em;
-  outline: none;
-}
-
-summary:focus {
-  box-shadow: 0 0 0 2px #4f94d4;
-}
-
-details[open] {
-  padding-bottom: 0.5em;
-}
-
-details[open] summary {
-  border-bottom: 1px solid #aaa;
-  margin-bottom: 0.5em;
-}
-```
-
-## 3. `<fieldset>` ve `<legend>` ile Form Gruplandırma
-
-Form alanlarını gruplandırmak için `<fieldset>` ve `<legend>` elementleri kritik öneme sahiptir, ancak modern web geliştirmede sıklıkla atlanır.
-
-```html
-<!-- Yaygın ancak erişilebilirliği düşük yaklaşım -->
-<div class="form-section">
-  <h3>Kişisel Bilgiler</h3>
-  <div class="form-group">
-    <label for="name">Ad:</label>
-    <input type="text" id="name" />
-  </div>
-  <div class="form-group">
-    <label for="surname">Soyad:</label>
-    <input type="text" id="surname" />
-  </div>
-</div>
-
-<!-- İleri seviye erişilebilir yaklaşım -->
-<fieldset>
-  <legend>Kişisel Bilgiler</legend>
-
-  <div class="form-group">
-    <label for="name">Ad:</label>
-    <input type="text" id="name" />
-  </div>
-
-  <div class="form-group">
-    <label for="surname">Soyad:</label>
-    <input type="text" id="surname" />
-  </div>
-</fieldset>
-```
-
-Bu yapının önemi:
-
-- Ekran okuyucular, form alanlarını okuduğunda ilgili `<legend>` içeriğini de okur, böylece kullanıcı hangi grup içinde olduğunu bilir
-- Radyo düğmeleri ve onay kutuları için özellikle önemlidir
-- Karmaşık formlarda gezinmeyi kolaylaştırır
-
-Radio butonlar için özellikle kritiktir:
+Use `<fieldset>` and `<legend>` when a group of fields belongs together, especially radio buttons
+and checkboxes.
 
 ```html
 <fieldset>
-  <legend>Tercih ettiğiniz iletişim yöntemi:</legend>
+  <legend>Preferred contact method:</legend>
 
   <div>
     <input type="radio" id="contact-email" name="contact" value="email" />
-    <label for="contact-email">E-posta</label>
+    <label for="contact-email">Email</label>
   </div>
 
   <div>
     <input type="radio" id="contact-phone" name="contact" value="phone" />
-    <label for="contact-phone">Telefon</label>
-  </div>
-
-  <div>
-    <input type="radio" id="contact-mail" name="contact" value="mail" />
-    <label for="contact-mail">Posta</label>
+    <label for="contact-phone">Phone</label>
   </div>
 </fieldset>
 ```
 
-## 4. `<time>` Elementi ve Tarih/Saat Erişilebilirliği
+Screen readers announce the group label along with each control, which helps users understand the
+context of the current field.
 
-Tarih ve saat bilgilerini semantik olarak işaretlemek için `<time>` elementi kullanılmalıdır, ancak çoğu geliştirici bunun farkında değildir.
+## 4. `<time>` for Dates and Times
+
+Dates should be machine-readable as well as human-readable.
 
 ```html
-<!-- Yaygın ancak erişilebilirliği düşük yaklaşım -->
-<p>Yayın tarihi: 01.12.2023</p>
-<p>Etkinlik saati: 14:30</p>
-
-<!-- İleri seviye erişilebilir yaklaşım -->
-<p>Yayın tarihi: <time datetime="2023-12-01">01.12.2023</time></p>
-<p>Etkinlik saati: <time datetime="2023-12-01T14:30:00+03:00">14:30</time></p>
+<p>Published: <time datetime="2023-12-01">December 1, 2023</time></p>
+<p>Event time: <time datetime="2023-12-01T14:30:00+03:00">2:30 PM</time></p>
 ```
 
-Bu yapının faydaları:
+This helps assistive technologies, browsers, search engines, and calendar integrations understand
+the value correctly.
 
-- Ekran okuyucular tarihi doğru formatta okuyabilir
-- Tarayıcılar ve arama motorları tarihi anlayabilir
-- Kullanıcılar kendi tercih ettikleri tarih formatında görebilir
-- Takvim uygulamalarına kolay entegrasyon sağlar
+## 5. `<figure>` and `<figcaption>` for Rich Media
 
-## 5. `<figure>` ve `<figcaption>` ile Zengin İçerik Açıklamaları
-
-Görsel içerikler için sadece `alt` metni yeterli değildir. `<figure>` ve `<figcaption>` elementleri daha zengin açıklamalar sağlar.
+`alt` text should stay concise. When an image needs more explanation, pair it with a caption.
 
 ```html
-<!-- Yaygın ancak erişilebilirliği sınırlı yaklaşım -->
-<div class="image-container">
-  <img src="chart-data.png" alt="2023 yılı satış grafiği" />
-  <p class="image-caption">Şekil 1: 2023 yılı çeyreklik satış verileri</p>
-</div>
-
-<!-- İleri seviye erişilebilir yaklaşım -->
 <figure>
-  <img src="chart-data.png" alt="Çubuk grafik: 2023 yılı çeyreklik satış verileri" />
+  <img src="chart-data.png" alt="Bar chart showing quarterly sales in 2023" />
   <figcaption>
-    <strong>Şekil 1:</strong> 2023 yılı çeyreklik satış verileri. İlk çeyrekte %15 artış, ikinci
-    çeyrekte %22 artış, üçüncü çeyrekte %5 düşüş ve dördüncü çeyrekte %18 artış görülmüştür.
+    <strong>Figure 1:</strong> Quarterly sales for 2023, with growth in Q1, Q2, and Q4 and a small
+    dip in Q3.
   </figcaption>
 </figure>
 ```
 
-Bu yapının avantajları:
+The relationship between the media and its explanation becomes programmatic, not just visual.
 
-- `alt` metni kısa ve öz tutarken, `<figcaption>` ile detaylı açıklamalar sağlayabilirsiniz
-- Ekran okuyucular bu yapıyı semantik olarak tanır
-- Görsel ve açıklaması arasındaki ilişki programatik olarak belirgindir
-- Sadece görseller için değil, kod blokları, tablolar ve diğer içerikler için de kullanılabilir
+## 6. `<dl>`, `<dt>`, and `<dd>` for Definition Lists
 
-## 6. `<dl>`, `<dt>` ve `<dd>` ile Tanım Listeleri
-
-Anahtar-değer çiftleri veya terim-açıklama ilişkileri için `<dl>` (tanım listesi) elementi genellikle göz ardı edilir.
+Definition lists are useful for glossary entries, FAQ-style metadata, product specs, and other
+key-value content.
 
 ```html
-<!-- Yaygın ancak semantik olmayan yaklaşım -->
-<div class="glossary">
-  <h3>HTML</h3>
-  <p>
-    Hyper Text Markup Language, web sayfalarını oluşturmak için kullanılan standart işaretleme
-    dilidir.
-  </p>
-
-  <h3>CSS</h3>
-  <p>
-    Cascading Style Sheets, HTML öğelerinin ekranda nasıl görüntüleneceğini tanımlayan stil dilidir.
-  </p>
-</div>
-
-<!-- İleri seviye semantik yaklaşım -->
 <dl>
   <dt>HTML</dt>
-  <dd>
-    Hyper Text Markup Language, web sayfalarını oluşturmak için kullanılan standart işaretleme
-    dilidir.
-  </dd>
+  <dd>HyperText Markup Language, the standard markup language for documents on the web.</dd>
 
   <dt>CSS</dt>
-  <dd>
-    Cascading Style Sheets, HTML öğelerinin ekranda nasıl görüntüleneceğini tanımlayan stil dilidir.
-  </dd>
-
-  <dt>JavaScript</dt>
-  <dd>Web sayfalarını interaktif hale getirmek için kullanılan programlama dilidir.</dd>
+  <dd>Cascading Style Sheets, the language used to describe visual presentation.</dd>
 </dl>
 ```
 
-Bu yapının kullanım alanları:
+## 7. `<abbr>` for Acronyms
 
-- Sözlük veya terimler sözlüğü
-- SSS (Sıkça Sorulan Sorular)
-- Meta veri listeleri (yazar, tarih, kategori vb.)
-- Ürün özellikleri ve detayları
-
-## 7. `<abbr>` ile Kısaltmaların Açıklanması
-
-Kısaltmalar ve akronimler için `<abbr>` elementi kullanılmalıdır, ancak genellikle atlanır.
+Use `<abbr>` when an abbreviation may not be obvious.
 
 ```html
-<!-- Yaygın ancak erişilebilirliği düşük yaklaşım -->
-<p>Bu web sitesi HTML, CSS ve JS kullanılarak geliştirilmiştir.</p>
-
-<!-- İleri seviye erişilebilir yaklaşım -->
 <p>
-  Bu web sitesi <abbr title="Hyper Text Markup Language">HTML</abbr>,
-  <abbr title="Cascading Style Sheets">CSS</abbr> ve <abbr title="JavaScript">JS</abbr> kullanılarak
-  geliştirilmiştir.
+  This website uses <abbr title="HyperText Markup Language">HTML</abbr>,
+  <abbr title="Cascading Style Sheets">CSS</abbr>, and
+  <abbr title="JavaScript">JS</abbr>.
 </p>
 ```
 
-Bu yapının faydaları:
+## 8. `<output>` for Dynamic Results
 
-- Ekran okuyucular kısaltmanın açılımını okuyabilir
-- Fare ile üzerine gelindiğinde açılımı gösterir
-- Tarayıcılar ve arama motorları içeriği daha iyi anlayabilir
-
-Özelleştirme için:
-
-```css
-abbr {
-  text-decoration: underline dotted;
-  cursor: help;
-}
-```
-
-## 8. `<output>` Elementi ile Dinamik Sonuçlar
-
-Form işlemleri sonucunda oluşan dinamik çıktılar için `<output>` elementi kullanılmalıdır.
+When a form calculates a result, `<output>` describes the relationship between inputs and the
+computed value.
 
 ```html
-<!-- Yaygın ancak semantik olmayan yaklaşım -->
-<form>
-  <label for="price">Fiyat (₺):</label>
-  <input type="number" id="price" value="100" />
-
-  <label for="quantity">Adet:</label>
-  <input type="number" id="quantity" value="1" />
-
-  <div>Toplam: <span id="total">100</span> ₺</div>
-</form>
-
-<!-- İleri seviye semantik yaklaşım -->
 <form oninput="total.value = (price.valueAsNumber * quantity.valueAsNumber).toFixed(2)">
-  <label for="price">Fiyat (₺):</label>
+  <label for="price">Price:</label>
   <input type="number" id="price" name="price" value="100" />
 
-  <label for="quantity">Adet:</label>
+  <label for="quantity">Quantity:</label>
   <input type="number" id="quantity" name="quantity" value="1" />
 
-  <div>Toplam: <output name="total" for="price quantity">100.00</output> ₺</div>
+  <div>Total: <output name="total" for="price quantity">100.00</output></div>
 </form>
 ```
 
-Bu yapının avantajları:
+## 9. `<meter>` and `<progress>`
 
-- Form girişleri ile sonuç arasındaki ilişkiyi programatik olarak tanımlar
-- Ekran okuyucular değişiklikleri bildirebilir
-- `for` özelliği ile hangi alanların sonucu etkilediğini belirtir
-
-## 9. `<meter>` ve `<progress>` Elementleri
-
-Ölçüm değerleri ve ilerleme durumları için özel elementler mevcuttur, ancak nadiren kullanılır.
+Use `<progress>` for task completion and `<meter>` for a value within a known range.
 
 ```html
-<!-- Yaygın ancak semantik olmayan yaklaşım -->
-<div class="progress-bar">
-  <div class="progress" style="width: 70%;">70%</div>
-</div>
-
-<div>Disk kullanımı: 70%</div>
-
-<!-- İleri seviye semantik yaklaşım -->
-<label for="download">İndirme durumu:</label>
+<label for="download">Download progress:</label>
 <progress id="download" value="70" max="100">70%</progress>
 
-<label for="disk">Disk kullanımı:</label>
+<label for="disk">Disk usage:</label>
 <meter id="disk" value="70" min="0" max="100" low="30" high="80" optimum="20">70%</meter>
 ```
 
-Bu elementlerin özellikleri:
+## 10. `inert` for Temporarily Disabled Content
 
-- `<progress>`: Bir görevin tamamlanma oranını gösterir
-- `<meter>`: Bilinen bir aralıktaki ölçümü gösterir (optimum, düşük, yüksek değerler tanımlanabilir)
-- Ekran okuyucular bu değerleri anlamlı şekilde okuyabilir
-- Tarayıcılar native görsel gösterimler sağlar
-
-## 10. `inert` Özelliği ile İçerik Devre Dışı Bırakma
-
-Modern web uygulamalarında, bazı içerikleri geçici olarak etkileşimden ve erişilebilirlikten çıkarmak için `inert` özelliği kullanılabilir.
+`inert` removes a subtree from keyboard focus, pointer interaction, and assistive technology access.
+It is useful when a modal or blocking panel is open.
 
 ```html
-<!-- Yaygın ancak sorunlu yaklaşım -->
 <div class="modal-open">
-  <div class="modal">Modal içeriği...</div>
-  <div class="page-content" aria-hidden="true" style="pointer-events: none;">
-    <!-- Sayfa içeriği burada -->
-  </div>
-</div>
-
-<!-- İleri seviye erişilebilir yaklaşım -->
-<div class="modal-open">
-  <div class="modal">Modal içeriği...</div>
+  <div class="modal">Modal content...</div>
   <div class="page-content" inert>
-    <!-- Sayfa içeriği burada -->
+    Page content goes here.
   </div>
 </div>
 ```
 
-`inert` özelliğinin sağladığı avantajlar:
+## 11. `<datalist>` for Native Suggestions
 
-- Klavye odağını engeller
-- Fare ve dokunmatik etkileşimleri engeller
-- Ekran okuyucular tarafından okunmayı engeller
-- Tüm bu özellikleri tek bir özellikle sağlar (aria-hidden, tabindex="-1" ve pointer-events: none kombinasyonunun yerine geçer)
-
-```javascript
-// Modal açıldığında
-function openModal() {
-  document.getElementById('myModal').removeAttribute('hidden');
-  document.getElementById('pageContent').setAttribute('inert', '');
-  // Odağı modal içine taşı
-}
-
-// Modal kapandığında
-function closeModal() {
-  document.getElementById('myModal').setAttribute('hidden', '');
-  document.getElementById('pageContent').removeAttribute('inert');
-  // Odağı geri getir
-}
-```
-
-## 11. `<datalist>` ile Gelişmiş Form Girdileri
-
-Otomatik tamamlama ve öneriler için `<datalist>` elementi kullanılabilir, ancak çoğu geliştirici bunun yerine karmaşık JavaScript çözümleri tercih eder.
+`<datalist>` gives text inputs native suggestions without a full custom autocomplete component.
 
 ```html
-<!-- Yaygın karmaşık yaklaşım -->
-<div class="autocomplete">
-  <label for="country">Ülke:</label>
-  <input type="text" id="country" />
-  <div class="suggestions" hidden>
-    <div class="suggestion">Türkiye</div>
-    <div class="suggestion">Almanya</div>
-    <!-- ... -->
-  </div>
-</div>
-
-<!-- İleri seviye native yaklaşım -->
-<label for="country">Ülke:</label>
+<label for="country">Country:</label>
 <input type="text" id="country" list="countries" />
 
 <datalist id="countries">
-  <option value="Türkiye"></option>
-  <option value="Almanya"></option>
-  <option value="Fransa"></option>
-  <option value="İtalya"></option>
-  <option value="İspanya"></option>
+  <option value="United States"></option>
+  <option value="Germany"></option>
+  <option value="France"></option>
+  <option value="Italy"></option>
+  <option value="Spain"></option>
 </datalist>
 ```
 
-Bu yapının avantajları:
+## 12. `<ruby>`, `<rt>`, and `<rp>` for Pronunciation
 
-- Native tarayıcı desteği ile otomatik tamamlama
-- Klavye erişilebilirliği
-- Mobil cihazlarda native davranış
-- JavaScript gerektirmez
-
-## 12. `<ruby>`, `<rt>` ve `<rp>` ile Fonetik İşaretlemeler
-
-Doğu Asya dilleri veya fonetik açıklamalar için `<ruby>` elementi kullanılabilir.
+Ruby annotations are useful for East Asian text and other pronunciation notes.
 
 ```html
-<!-- İleri seviye semantik yaklaşım -->
 <p>
   <ruby> 漢 <rt>かん</rt> 字 <rt>じ</rt> <rp>(</rp><rt>kanji</rt><rp>)</rp> </ruby>
-  Japonca'da Kanji karakterleri.
+  are characters used in Japanese.
 </p>
 ```
 
-Bu yapı:
+## Conclusion
 
-- Karakterlerin üzerinde fonetik rehberlik sağlar
-- Ekran okuyucular için doğru telaffuz bilgisi verir
-- Ruby açıklamaları desteklemeyen tarayıcılar için fallback içerir (`<rp>` elementleri)
+These HTML features are easy to overlook, but they improve accessibility, reduce custom JavaScript,
+and create clearer document semantics. Good accessibility is not only about following a checklist;
+it is an ongoing practice of choosing the platform feature that gives users the strongest baseline.
 
-## Sonuç: İleri Seviye Erişilebilirlik Teknikleri
-
-Bu yazıda incelediğimiz HTML yapıları ve teknikler, genellikle göz ardı edilir ancak erişilebilirlik açısından kritik öneme sahiptir. Bu teknikleri uygulamak:
-
-1. Ekran okuyu kullanıcılar için daha zengin bir deneyim sağlar
-2. Klavye kullanıcıları için daha iyi gezinme imkanı sunar
-3. Semantik olarak daha zengin ve anlamlı bir HTML yapısı oluşturur
-4. Tarayıcıların ve arama motorlarının içeriği daha iyi anlamasını sağlar
-5. Genellikle daha az kod ve daha az JavaScript gerektirerek performansı artırır
-
-Modern web geliştirmede bu ileri seviye teknikleri kullanmak, gerçekten kapsayıcı ve erişilebilir web siteleri oluşturmak için önemli bir adımdır. Unutmayın ki erişilebilirlik, sadece temel kuralları uygulamaktan ibaret değil, sürekli öğrenme ve geliştirme gerektiren bir süreçtir.
-
-```javascript
-// Son bir örnek: Live Regions ile dinamik içerik bildirimi
-const liveRegion = document.getElementById('notifications');
-liveRegion.setAttribute('aria-live', 'polite');
-liveRegion.setAttribute('aria-atomic', 'true');
-
-function showNotification(message) {
-  liveRegion.textContent = message;
-  // Ekran okuyucu kullanıcılar için otomatik olarak okunur
-
-  setTimeout(() => {
-    liveRegion.textContent = '';
-  }, 5000);
-}
-```
-
-İleri seviye erişilebilirlik teknikleri hakkında daha fazla bilgi için [WAI-ARIA uygulamaları](https://www.w3.org/TR/wai-aria-practices-1.2/) ve [WCAG 2.1 AA standartları](https://www.w3.org/TR/WCAG21/) kaynaklarını inceleyebilirsiniz.
+For more, see the [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.2/) and
+the [WCAG 2.1 AA guidelines](https://www.w3.org/TR/WCAG21/).

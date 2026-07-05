@@ -52,7 +52,7 @@ export default async function RootLayout({
     notFound();
   }
 
-  // Statik render için locale'i isteğe sabitler (next-intl).
+  // Keep next-intl request state fixed for static rendering.
   setRequestLocale(locale);
 
   const messages = await getMessages();

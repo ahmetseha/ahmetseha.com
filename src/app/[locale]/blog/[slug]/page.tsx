@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getAllPosts, getPostBySlug } from '@/lib/mdx';
 
 import { Link } from '@/i18n/navigation';
+import { routing } from '@/i18n/navigation';
 
 interface Props {
   params: Promise<{
@@ -41,10 +42,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
-  const locales = ['en', 'tr'];
 
   return posts.flatMap((post) =>
-    locales.map((locale) => ({
+    routing.locales.map((locale) => ({
       locale,
       slug: post.slug,
     }))
@@ -55,7 +55,6 @@ export default async function BlogPost({ params }: Props) {
   const paramsData = await params;
   setRequestLocale(paramsData.locale);
   const post = await getPostBySlug(paramsData.slug);
-  const locale = await getLocale();
   const t = await getTranslations('Blog');
 
   if (!post) {
@@ -95,7 +94,7 @@ export default async function BlogPost({ params }: Props) {
 
         <div className="flex gap-2 font-mono text-sm text-muted-foreground mb-8 sm:mb-12">
           <time dateTime={post.date}>
-            {new Date(post.date).toLocaleDateString(locale === 'tr' ? 'tr-TR' : 'en-US', {
+            {new Date(post.date).toLocaleDateString('en-US', {
               day: 'numeric',
               month: 'long',
               year: 'numeric',

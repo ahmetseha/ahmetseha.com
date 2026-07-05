@@ -101,19 +101,19 @@
     },
     "code-context-isolation": {
       "title": "RSC context isolation fix",
-      "description": "AsyncLocalStorage ile server component renderlarını izole ederek kullanıcı metriklerinin karışmasını engelledim."
+      "description": "I isolated server component renders with AsyncLocalStorage to keep user metrics from leaking across requests."
     },
     "idea-playlists": {
-      "title": "CSS deneme playgroundu",
-      "description": "Tailwind + motion tabanlı küçük deneylerimi tek sayfada toplayabileceğim mikro bir playground planlıyorum."
+      "title": "CSS experiment playground",
+      "description": "I am planning a small playground to collect my Tailwind and motion experiments in one place."
     },
     "note-learning": {
-      "title": "Yazarken öğren",
-      "description": "Kısa notlar ve kod parçaları yayınlamak, öğrendiklerimi kalıcı hale getiriyor. Thoughts sayfası bunu hızlandırmak için burada."
+      "title": "Learn by writing",
+      "description": "Publishing short notes and snippets helps make what I learn stick. The Thoughts page is here to make that habit easier."
     },
     "book-shoe-dog": {
       "title": "Shoe Dog – Phil Knight",
-      "description": "Nike'ın hikâyesi, ürün takıntısını kullanıcı deneyimiyle nasıl bağlayabileceğimi yeniden düşünmemi sağladı."
+      "description": "Nike's story made me rethink how product obsession can connect with user experience."
     }
   }
 }

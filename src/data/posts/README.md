@@ -1,65 +1,65 @@
-# Blog Yazıları Klasörü
+# Blog Posts Folder
 
-Bu klasör, blog için MDX formatında yazılmış içerikleri barındırır. Her bir MDX dosyası bir blog yazısını temsil eder.
+This folder contains blog content written in MDX. Each MDX file represents one blog post.
 
-## Dosya Yapısı
+## File Structure
 
-Her bir blog yazısı aşağıdaki yapıya sahip olmalıdır:
+Each blog post should follow this structure:
 
 ```md
 ---
-title: 'Yazı Başlığı'
-description: 'Yazının kısa açıklaması'
+title: 'Post Title'
+description: 'Short post description'
 date: 'YYYY-MM-DD'
-tags: ['etiket1', 'etiket2', 'etiket3']
+tags: ['tag1', 'tag2', 'tag3']
 ---
 
-Yazı içeriği buraya gelir...
+Post content goes here...
 ```
 
-## Yazı Yazma Kuralları
+## Writing Guidelines
 
-1. **Samimi ve Doğal Dil**: Yazılarınızda robot gibi değil, samimi ve doğal bir dil kullanın. Okuyucuyla konuşuyormuş gibi yazın.
+1. **Natural Voice**: Write with a clear, human tone. Avoid stiff or overly formal phrasing.
 
-2. **Başlık Hiyerarşisi**: Başlıkları doğru bir hiyerarşi ile kullanın (h1 > h2 > h3...).
+2. **Heading Hierarchy**: Use headings in a correct hierarchy (`h1 > h2 > h3...`).
 
-3. **Kod Örnekleri**: Kod örneklerini uygun şekilde belirtin:
+3. **Code Examples**: Format code examples clearly:
 
 ```js
-// JavaScript kodu
-const hello = 'Merhaba Dünya';
+// JavaScript code
+const hello = 'Hello world';
 console.log(hello);
 ```
 
-4. **Erişilebilirlik**: Görseller için alt metinleri ekleyin ve erişilebilirlik prensiplerine uyun.
+4. **Accessibility**: Add alt text for images and follow accessibility principles.
 
-5. **Etiketler**: İlgili etiketleri ekleyin, bu sayede yazılarınız kategorize edilebilir.
+5. **Tags**: Add relevant tags so posts can be categorized.
 
-## MDX Özellikleri
+## MDX Features
 
-MDX, Markdown'a JSX ekleme imkanı sunar. Bu sayede yazılarınızda React bileşenleri kullanabilirsiniz:
+MDX lets you add JSX to Markdown, so posts can use React components:
 
 ```jsx
 import { Button } from 'components/ui/button';
 
-# Interaktif İçerik
+# Interactive Content
 
-<Button>Tıkla Bana</Button>
+<Button>Click me</Button>
 ```
 
-## Yazı Ekleme Süreci
+## Adding a Post
 
-1. Bu klasöre yeni bir `.mdx` dosyası ekleyin
-2. Yukarıdaki yapıya uygun şekilde içeriği oluşturun
-3. Yazınızı test edin ve gerekli düzeltmeleri yapın
-4. Değişiklikleri commit edin
+1. Add a new `.mdx` file to this folder.
+2. Create the content using the structure above.
+3. Test the post and make any needed fixes.
+4. Commit the changes.
 
-## Mevcut Yazılar
+## Existing Posts
 
-- `my-portfolio-project.mdx`: Portfolio projesi hakkında bilgiler
-- `web-accessibility-guide.mdx`: Web erişilebilirliği rehberi
-- `advanced-web-accessibility.mdx`: İleri seviye web erişilebilirliği teknikleri
+- `my-portfolio-project.mdx`: Notes about the portfolio project
+- `web-accessibility-guide.mdx`: Web accessibility guide
+- `advanced-web-accessibility.mdx`: Advanced web accessibility techniques
 
 ---
 
-Bu README dosyası, blog yazılarının tutarlı bir şekilde oluşturulması ve yönetilmesi için bir kılavuz olarak hazırlanmıştır.
+This README is a guide for creating and maintaining blog posts consistently.

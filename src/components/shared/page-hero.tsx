@@ -2,14 +2,14 @@
 
 import Image from 'next/image';
 
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 import BlurFadeText from '@/components/magicui/blur-fade-text';
 
 import { cn } from '@/lib/utils';
 
 import { DATA } from '@/data/resume';
-import { Link, usePathname, useRouter } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -17,8 +17,6 @@ export function PageHero() {
   const pathname = usePathname();
   const t = useTranslations('Navigation');
   const tHero = useTranslations('Hero');
-  const locale = useLocale();
-  const router = useRouter();
 
   const navLinks = [
     { href: '/', label: t('intro') },
@@ -26,11 +24,6 @@ export function PageHero() {
     { href: '/blog', label: t('blog') },
     { href: '/work', label: t('work') },
   ];
-
-  const toggleLanguage = () => {
-    const nextLocale = locale === 'tr' ? 'en' : 'tr';
-    router.replace(pathname, { locale: nextLocale });
-  };
 
   return (
     <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 pt-12 sm:pt-32 pb-6 sm:pb-8">
@@ -58,23 +51,26 @@ export function PageHero() {
             </div> */}
           </div>
           <div className="relative flex flex-col items-end gap-2">
-            <Link href="/" aria-label="Back to intro" className="rounded-full">
+            <Link
+              href="/"
+              aria-label="Back to intro"
+              className="relative size-16 sm:size-20 flex-shrink-0 overflow-hidden rounded-full border-2 ring-2 ring-transparent transition-all duration-200 hover:ring-primary/20"
+            >
               <Image
                 src={DATA.avatarUrl}
                 alt={DATA.name}
-                width={80}
-                height={80}
+                fill
                 priority
                 sizes="(max-width: 640px) 64px, 80px"
-                className="size-16 sm:size-20 flex-shrink-0 rounded-full border-2 object-cover ring-2 ring-transparent transition-all duration-200 hover:ring-primary/20"
+                className="object-cover"
               />
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Navigation Links and Language Switcher */}
-      <div className="flex items-center justify-between overflow-x-auto scrollbar-hide pb-2 -mx-1 px-1">
+      {/* Navigation Links */}
+      <div className="overflow-x-auto scrollbar-hide pb-2 -mx-1 px-1">
         <nav className="flex items-center gap-3 sm:gap-6 font-mono text-xs sm:text-sm uppercase tracking-wider">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
@@ -94,13 +90,6 @@ export function PageHero() {
             );
           })}
         </nav>
-
-        <button
-          onClick={toggleLanguage}
-          className="font-mono text-xs sm:text-sm font-medium text-muted-foreground hover:text-primary transition-colors border border-border rounded-full px-2 sm:px-2.5 py-1 ml-2 sm:ml-4 flex-shrink-0"
-        >
-          {locale === 'tr' ? 'EN' : 'TR'}
-        </button>
       </div>
     </div>
   );
