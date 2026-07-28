@@ -61,7 +61,44 @@
       ]
     }
   },
+  "ProjectCategories": {
+    "eyebrow": "Selected work",
+    "title": "Projects, sorted by what they became.",
+    "description": "Apps, web products, open-source tools, and small packages—each grouped by how you can use them.",
+    "apps": {
+      "title": "Apps",
+      "description": "Mobile products designed for focused, everyday use."
+    },
+    "web": {
+      "title": "Web Products",
+      "description": "Live websites and product experiments built around a clear problem."
+    },
+    "tools": {
+      "title": "Developer Tools",
+      "description": "Open-source utilities that make development workflows easier."
+    },
+    "npm": {
+      "title": "NPM Packages",
+      "description": "Small, reusable packages published for other developers."
+    }
+  },
   "Projects": {
+    "pikofocus": {
+      "title": "PikoFocus",
+      "description": "A calm, child-friendly visual focus app with short games for matching colors and shapes, memory, counting, and gentle attention practice. No accounts, no ads, and no child data collection."
+    },
+    "sukuntiles": {
+      "title": "SukunTiles",
+      "description": "A cozy tile puzzle game made for quiet focus and gentle progress. Explore calm visual worlds, swap tiles into place, and build a personal gallery without timers or noisy distractions."
+    },
+    "kaloricam": {
+      "title": "KaloriCam",
+      "description": "A simple calorie assistant that analyzes a meal photo and shows an estimated calorie value in seconds—without accounts, long forms, or a complicated tracking flow."
+    },
+    "soul-garden": {
+      "title": "Soul Garden: Reflex",
+      "description": "A fast-paced survival game where you dodge obstacles, unlock abilities, and test your reflexes across Normal, Zen, and Twin game modes."
+    },
     "clariole": {
       "title": "Clariole",
       "description": "A CV analysis tool that makes your resume readable by ATS systems and convincing to people. It checks parsing risk, job-description alignment, missing keywords, weak bullets, and recruiter readability — without fake ATS promises."
@@ -78,10 +115,6 @@
       "title": "PromptTrace",
       "description": "Open-source, local-first CLI that scans your AI tool histories, scores every prompt across 6 quality dimensions, extracts reusable templates, and detects workflow patterns."
     },
-    "story-craft": {
-      "title": "story-craft",
-      "description": "AI-powered Turkish story generator application built with modern web technologies."
-    },
     "tr-slugify": {
       "title": "tr-slugify",
       "description": "NPM package that correctly converts Turkish special characters and creates slugs for URLs."
@@ -89,10 +122,6 @@
     "git-score-lab": {
       "title": "Git Score Lab",
       "description": "A tool that helps you track your Git contributions and see your progress over time."
-    },
-    "path-way-app": {
-      "title": "path-way-app",
-      "description": "A travel planning application developed for backpackers and travel enthusiasts that works offline. You can use maps, plan your trips, and manage your routes without an internet connection."
     }
   },
   "Thoughts": {
