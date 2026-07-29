@@ -142,12 +142,16 @@ export default function ProjectsPage() {
       </BlurFade>
 
       <div className="space-y-12 sm:space-y-16">
-        {categoryOrder.map((category) => {
+        {categoryOrder.map((category, categoryIndex) => {
           const categoryProjects = projects.filter((project) => project.category === category);
 
           return (
             <section key={category} id={category} className="scroll-mt-8">
-              <div className="mb-4 flex items-end justify-between gap-4 border-t pt-4 sm:mb-6 sm:pt-5">
+              <div
+                className={`mb-4 flex items-end justify-between gap-4 sm:mb-6 ${
+                  categoryIndex === 0 ? '' : 'border-t pt-4 sm:pt-5'
+                }`}
+              >
                 <div className="min-w-0">
                   <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
                     {t(`${category}.title`)}
