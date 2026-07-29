@@ -141,43 +141,40 @@ export default function ProjectsPage() {
         </header>
       </BlurFade>
 
-      <div className="space-y-12 sm:space-y-20">
-        {categoryOrder.map((category, categoryIndex) => {
+      <div className="space-y-12 sm:space-y-16">
+        {categoryOrder.map((category) => {
           const categoryProjects = projects.filter((project) => project.category === category);
 
           return (
-            <BlurFade key={category} delay={BLUR_FADE_DELAY * (categoryIndex + 2)}>
-              <section id={category} className="scroll-mt-8">
-                <div className="mb-4 flex items-end justify-between gap-4 border-t pt-4 sm:mb-6 sm:pt-5">
-                  <div className="min-w-0">
-                    <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
-                      {t(`${category}.title`)}
-                    </h2>
-                    <p className="mt-0.5 max-w-md text-xs leading-relaxed text-muted-foreground sm:mt-1 sm:text-sm">
-                      {t(`${category}.description`)}
-                    </p>
-                  </div>
-                  <span className="shrink-0 pb-0.5 font-mono text-[9px] uppercase tracking-wider text-muted-foreground/50 sm:text-[10px]">
-                    {categoryProjects.length}{' '}
-                    {categoryProjects.length === 1 ? 'project' : 'projects'}
-                  </span>
+            <section key={category} id={category} className="scroll-mt-8">
+              <div className="mb-4 flex items-end justify-between gap-4 border-t pt-4 sm:mb-6 sm:pt-5">
+                <div className="min-w-0">
+                  <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
+                    {t(`${category}.title`)}
+                  </h2>
+                  <p className="mt-0.5 max-w-md text-xs leading-relaxed text-muted-foreground sm:mt-1 sm:text-sm">
+                    {t(`${category}.description`)}
+                  </p>
                 </div>
+                <span className="shrink-0 pb-0.5 font-mono text-[9px] uppercase tracking-wider text-muted-foreground/50 sm:text-[10px]">
+                  {categoryProjects.length} {categoryProjects.length === 1 ? 'project' : 'projects'}
+                </span>
+              </div>
 
-                {category === 'apps' ? (
-                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
-                    {categoryProjects.map((project) => (
-                      <AppCard key={project.id} project={project} />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    {categoryProjects.map((project) => (
-                      <ProjectCard key={project.id} project={project} />
-                    ))}
-                  </div>
-                )}
-              </section>
-            </BlurFade>
+              {category === 'apps' ? (
+                <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                  {categoryProjects.map((project) => (
+                    <AppCard key={project.id} project={project} />
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  {categoryProjects.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
+                  ))}
+                </div>
+              )}
+            </section>
           );
         })}
       </div>
