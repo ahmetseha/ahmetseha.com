@@ -1,17 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-
 import Image from 'next/image';
 
-import {
-  ArrowUpRight,
-  ExternalLink,
-  Globe2,
-  Package,
-  Smartphone,
-  TerminalSquare,
-} from 'lucide-react';
+import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import BlurFade from '@/components/magicui/blur-fade';
@@ -20,13 +11,6 @@ import { useProjects, type Project, type ProjectCategory } from '@/components/pr
 const BLUR_FADE_DELAY = 0.04;
 
 const categoryOrder: ProjectCategory[] = ['apps', 'web', 'tools', 'npm'];
-
-const categoryIcons = {
-  apps: Smartphone,
-  web: Globe2,
-  tools: TerminalSquare,
-  npm: Package,
-};
 
 function ProjectLinks({ project }: { project: Project }) {
   return (
@@ -37,7 +21,7 @@ function ProjectLinks({ project }: { project: Project }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-10 items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary sm:min-h-0 sm:px-2.5 sm:py-1"
+          className="inline-flex min-h-10 items-center gap-1.5 rounded-md border border-white/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground transition-colors hover:border-white/20 hover:text-foreground sm:min-h-0 sm:px-2.5 sm:py-1"
         >
           {link.icon}
           {link.type}
@@ -62,205 +46,47 @@ function ProjectTags({ project }: { project: Project }) {
   );
 }
 
-function AppVisualPreview({ project, mobile = false }: { project: Project; mobile?: boolean }) {
+function AppCard({ project }: { project: Project }) {
   return (
     <a
       href={project.href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`Open ${project.title} on the App Store`}
-      className={
-        mobile
-          ? 'relative mx-3 block min-h-[258px] overflow-hidden rounded-[18px] border border-white/10'
-          : 'relative block min-h-[340px] overflow-hidden rounded-2xl border border-white/10'
-      }
-      style={{ backgroundColor: project.showcaseSurface ?? '#f5f1e8' }}
+      className="group relative flex min-h-[138px] flex-col rounded-xl border bg-card/45 p-3 transition-colors hover:border-white/20 hover:bg-card/75 sm:min-h-[218px] sm:p-5"
     >
-      <div
-        className={`absolute left-1/2 flex -translate-x-1/2 items-end justify-center ${
-          mobile ? '-bottom-8 w-[120%] gap-2' : '-bottom-12 w-[116%] gap-3'
-        }`}
-      >
-        {project.screenshots?.map((screenshot, index) => (
-          <div
-            key={screenshot}
-            className={`relative aspect-[600/1300] w-[31%] shrink-0 overflow-hidden rounded-t-[18px] border-[3px] border-[#191720] shadow-2xl transition-transform duration-500 group-hover:-translate-y-2 ${
-              index === 1 ? '-translate-y-5' : ''
-            }`}
-          >
-            <Image
-              src={screenshot}
-              alt={`${project.title} screenshot ${index + 1}`}
-              fill
-              sizes="(max-width: 640px) 30vw, 150px"
-              className="object-cover"
-            />
-          </div>
-        ))}
-      </div>
-      <span
-        className={`absolute grid size-9 place-items-center rounded-full bg-[#191720] text-white shadow-lg transition-transform duration-300 group-hover:rotate-45 ${
-          mobile ? 'right-3 top-3' : 'right-4 top-4'
-        }`}
-      >
-        <ArrowUpRight className="size-4" />
-      </span>
-    </a>
-  );
-}
-
-function AppShowcaseCard({ project }: { project: Project }) {
-  return (
-    <article
-      className="group relative overflow-hidden rounded-3xl border bg-[#17151f]"
-      style={{ borderColor: `${project.showcaseAccent ?? '#ffe600'}40` }}
-    >
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `radial-gradient(circle at 15% 10%, ${
-            project.showcaseAccent ?? '#ffe600'
-          }22, transparent 34%), radial-gradient(circle at 85% 80%, ${
-            project.showcaseAccent ?? '#ffe600'
-          }18, transparent 38%)`,
-        }}
-      />
-
-      <div className="relative grid gap-0 sm:hidden">
-        <div className="flex items-center gap-3 px-4 pb-3 pt-4">
-          <div className="relative size-14 shrink-0 overflow-hidden rounded-2xl ring-1 ring-white/10">
-            <Image
-              src={project.image}
-              alt={`${project.title} app icon`}
-              fill
-              sizes="56px"
-              className="object-cover"
-            />
-          </div>
-          <div className="min-w-0">
-            <p
-              className="mb-1 font-mono text-[9px] uppercase tracking-[0.18em]"
-              style={{ color: project.showcaseAccent ?? '#ffe600' }}
-            >
-              On the App Store
-            </p>
-            <h3 className="line-clamp-2 text-xl font-semibold leading-tight tracking-tight">
-              {project.title}
-            </h3>
-          </div>
+      <div className="flex items-start justify-between gap-2">
+        <div className="relative size-11 shrink-0 overflow-hidden rounded-[13px] ring-1 ring-white/10 sm:size-14 sm:rounded-2xl">
+          <Image
+            src={project.image}
+            alt={`${project.title} app icon`}
+            fill
+            sizes="(max-width: 640px) 44px, 56px"
+            className="object-cover"
+          />
         </div>
+        <span className="grid size-7 shrink-0 place-items-center rounded-full border text-muted-foreground transition-colors group-hover:border-white/20 group-hover:text-foreground sm:size-8">
+          <ArrowUpRight className="size-3.5" />
+        </span>
+      </div>
 
-        <AppVisualPreview project={project} mobile />
-
-        <p className="px-4 pt-4 text-[13px] leading-relaxed text-muted-foreground">
+      <div className="mt-auto pt-3 sm:pt-5">
+        <p className="mb-1 font-mono text-[8px] uppercase tracking-[0.16em] text-muted-foreground/60 sm:text-[9px]">
+          {project.tags[2] ?? 'iOS'} · App Store
+        </p>
+        <h3 className="line-clamp-2 text-sm font-semibold leading-snug tracking-tight sm:text-lg">
+          {project.title}
+        </h3>
+        <p className="mt-2 hidden line-clamp-3 text-xs leading-relaxed text-muted-foreground sm:block">
           {project.description}
         </p>
-
-        <div className="space-y-3 px-4 pb-4 pt-3">
-          <ProjectTags project={project} />
-          <ProjectLinks project={project} />
-        </div>
       </div>
-
-      <div className="relative hidden gap-8 p-7 sm:grid sm:grid-cols-[0.9fr_1.1fr]">
-        <div className="flex flex-col justify-between gap-8">
-          <div>
-            <div className="mb-5 flex items-center gap-3">
-              <div className="relative size-20 overflow-hidden rounded-[22px] ring-1 ring-white/10">
-                <Image
-                  src={project.image}
-                  alt={`${project.title} app icon`}
-                  fill
-                  sizes="80px"
-                  className="object-cover"
-                />
-              </div>
-              <div>
-                <p
-                  className="mb-1 font-mono text-[10px] uppercase tracking-[0.2em]"
-                  style={{ color: project.showcaseAccent ?? '#ffe600' }}
-                >
-                  On the App Store
-                </p>
-                <h3 className="text-2xl font-semibold tracking-tight">{project.title}</h3>
-              </div>
-            </div>
-
-            <p className="text-sm leading-relaxed text-muted-foreground">{project.description}</p>
-          </div>
-
-          <div className="space-y-3">
-            <ProjectTags project={project} />
-            <ProjectLinks project={project} />
-          </div>
-        </div>
-
-        <AppVisualPreview project={project} />
-      </div>
-    </article>
-  );
-}
-
-function AppSwitcher({
-  apps,
-  selectedAppId,
-  onSelect,
-}: {
-  apps: Project[];
-  selectedAppId: string;
-  onSelect: (id: string) => void;
-}) {
-  return (
-    <div
-      role="tablist"
-      aria-label="Published apps"
-      className="mb-3 grid grid-cols-4 gap-1.5 sm:mb-4 sm:flex sm:gap-2"
-    >
-      {apps.map((app) => {
-        const isSelected = app.id === selectedAppId;
-
-        return (
-          <button
-            key={app.id}
-            type="button"
-            role="tab"
-            aria-selected={isSelected}
-            aria-controls={`app-panel-${app.id}`}
-            onClick={() => onSelect(app.id)}
-            className="group/app flex min-w-0 flex-col items-center justify-center gap-1.5 rounded-xl border bg-card/60 px-1 py-2 text-center transition-all duration-200 hover:border-white/20 sm:flex-1 sm:flex-row sm:justify-start sm:gap-2.5 sm:rounded-2xl sm:p-2.5 sm:text-left"
-            style={
-              isSelected
-                ? {
-                    borderColor: `${app.showcaseAccent ?? '#ffe600'}80`,
-                    backgroundColor: `${app.showcaseAccent ?? '#ffe600'}10`,
-                  }
-                : undefined
-            }
-          >
-            <span className="relative size-10 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/10">
-              <Image src={app.image} alt="" fill sizes="40px" className="object-cover" />
-            </span>
-            <span className="min-w-0 max-w-full">
-              <span
-                className="block max-w-full truncate text-[9px] font-semibold leading-tight transition-colors sm:text-xs"
-                style={isSelected ? { color: app.showcaseAccent ?? '#ffe600' } : undefined}
-              >
-                {app.title}
-              </span>
-              <span className="mt-0.5 hidden font-mono text-[9px] uppercase tracking-wider text-muted-foreground/60 sm:block">
-                {app.tags[2] ?? 'iOS'}
-              </span>
-            </span>
-          </button>
-        );
-      })}
-    </div>
+    </a>
   );
 }
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="group overflow-hidden rounded-2xl border bg-card/65 transition-colors hover:border-primary/30">
+    <article className="group overflow-hidden rounded-xl border bg-card/45 transition-colors hover:border-white/20">
       <a href={project.href} target="_blank" rel="noopener noreferrer" className="block">
         <div className="relative aspect-[16/9] w-full overflow-hidden border-b bg-muted/20">
           <Image
@@ -298,9 +124,6 @@ function ProjectCard({ project }: { project: Project }) {
 export default function ProjectsPage() {
   const projects = useProjects();
   const t = useTranslations('ProjectCategories');
-  const apps = projects.filter((project) => project.category === 'apps');
-  const [selectedAppId, setSelectedAppId] = useState(apps[0]?.id ?? '');
-  const selectedApp = apps.find((app) => app.id === selectedAppId) ?? apps[0];
 
   return (
     <main className="mx-auto flex min-h-screen max-w-2xl flex-col px-4 pb-14 sm:px-6 sm:pb-24">
@@ -321,43 +144,30 @@ export default function ProjectsPage() {
       <div className="space-y-12 sm:space-y-20">
         {categoryOrder.map((category, categoryIndex) => {
           const categoryProjects = projects.filter((project) => project.category === category);
-          const CategoryIcon = categoryIcons[category];
 
           return (
             <BlurFade key={category} delay={BLUR_FADE_DELAY * (categoryIndex + 2)}>
               <section id={category} className="scroll-mt-8">
-                <div className="mb-4 flex items-start justify-between gap-3 sm:mb-6 sm:items-end sm:gap-4">
-                  <div className="flex min-w-0 items-start gap-2.5 sm:gap-3">
-                    <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg border bg-secondary/80 text-primary sm:size-9 sm:rounded-xl">
-                      <CategoryIcon className="size-4" />
-                    </span>
-                    <div className="min-w-0">
-                      <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
-                        {t(`${category}.title`)}
-                      </h2>
-                      <p className="mt-0.5 max-w-md text-xs leading-relaxed text-muted-foreground sm:mt-1 sm:text-sm">
-                        {t(`${category}.description`)}
-                      </p>
-                    </div>
+                <div className="mb-4 flex items-end justify-between gap-4 border-t pt-4 sm:mb-6 sm:pt-5">
+                  <div className="min-w-0">
+                    <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
+                      {t(`${category}.title`)}
+                    </h2>
+                    <p className="mt-0.5 max-w-md text-xs leading-relaxed text-muted-foreground sm:mt-1 sm:text-sm">
+                      {t(`${category}.description`)}
+                    </p>
                   </div>
-                  <span className="shrink-0 pt-1 font-mono text-[9px] text-muted-foreground/60 sm:pb-0.5 sm:pt-0 sm:text-[10px]">
-                    {String(categoryIndex + 1).padStart(2, '0')} /{' '}
-                    {String(categoryProjects.length).padStart(2, '0')}
+                  <span className="shrink-0 pb-0.5 font-mono text-[9px] uppercase tracking-wider text-muted-foreground/50 sm:text-[10px]">
+                    {categoryProjects.length}{' '}
+                    {categoryProjects.length === 1 ? 'project' : 'projects'}
                   </span>
                 </div>
 
-                {category === 'apps' && selectedApp ? (
-                  <div>
-                    <AppSwitcher
-                      apps={categoryProjects}
-                      selectedAppId={selectedApp.id}
-                      onSelect={setSelectedAppId}
-                    />
-                    <div key={selectedApp.id} id={`app-panel-${selectedApp.id}`} role="tabpanel">
-                      <BlurFade delay={0.01}>
-                        <AppShowcaseCard project={selectedApp} />
-                      </BlurFade>
-                    </div>
+                {category === 'apps' ? (
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                    {categoryProjects.map((project) => (
+                      <AppCard key={project.id} project={project} />
+                    ))}
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

@@ -62,12 +62,12 @@
     }
   },
   "ProjectCategories": {
-    "eyebrow": "Selected work",
-    "title": "Projects, sorted by what they became.",
-    "description": "Apps, web products, open-source tools, and small packages—each grouped by how you can use them.",
+    "eyebrow": "Portfolio",
+    "title": "Selected Projects",
+    "description": "A selection of applications, digital products, and developer tools I have designed and built.",
     "apps": {
       "title": "Apps",
-      "description": "Mobile products designed for focused, everyday use."
+      "description": "Published iOS products available on the App Store."
     },
     "web": {
       "title": "Web Products",
