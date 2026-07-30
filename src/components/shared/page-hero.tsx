@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import BlurFadeText from '@/components/magicui/blur-fade-text';
+import { HoverBeam } from '@/components/ui/hover-beam';
 
 import { cn } from '@/lib/utils';
 
@@ -51,20 +52,26 @@ export function PageHero() {
             </div> */}
           </div>
           <div className="relative flex flex-col items-end gap-2">
-            <Link
-              href="/"
-              aria-label="Back to intro"
-              className="relative size-16 sm:size-20 flex-shrink-0 overflow-hidden rounded-full border-2 ring-2 ring-transparent transition-all duration-200 hover:ring-primary/20"
+            <HoverBeam
+              preset="control"
+              borderRadius={999}
+              className="size-16 rounded-full sm:size-20"
             >
-              <Image
-                src={DATA.avatarUrl}
-                alt={DATA.name}
-                fill
-                priority
-                sizes="(max-width: 640px) 64px, 80px"
-                className="object-cover"
-              />
-            </Link>
+              <Link
+                href="/"
+                aria-label="Back to intro"
+                className="relative block size-16 flex-shrink-0 overflow-hidden rounded-full border-2 ring-2 ring-transparent transition-all duration-200 hover:ring-primary/20 sm:size-20"
+              >
+                <Image
+                  src={DATA.avatarUrl}
+                  alt={DATA.name}
+                  fill
+                  priority
+                  sizes="(max-width: 640px) 64px, 80px"
+                  className="object-cover"
+                />
+              </Link>
+            </HoverBeam>
           </div>
         </div>
       </div>

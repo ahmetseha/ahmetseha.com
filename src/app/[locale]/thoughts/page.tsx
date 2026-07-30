@@ -1,6 +1,7 @@
 'use client';
 
 import BlurFade from '@/components/magicui/blur-fade';
+import { HoverBeam } from '@/components/ui/hover-beam';
 
 import { useThoughts } from '@/data/thoughts';
 
@@ -61,9 +62,11 @@ export default function ThoughtsPage() {
                   </p>
                 )}
                 {thought.code && (
-                  <pre className="bg-muted border border-border rounded-2xl p-4 text-base text-muted-foreground/90 whitespace-pre-wrap">
-                    <code>{thought.code}</code>
-                  </pre>
+                  <HoverBeam className="rounded-2xl">
+                    <pre className="whitespace-pre-wrap rounded-2xl border border-border bg-muted p-4 text-base text-muted-foreground/90">
+                      <code>{thought.code}</code>
+                    </pre>
+                  </HoverBeam>
                 )}
               </div>
             </article>
