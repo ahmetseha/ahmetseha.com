@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, Clock3 } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
+import { BlogTableOfContents } from '@/components/blog-table-of-contents';
 import BlurFade from '@/components/magicui/blur-fade';
 
 import { getAllPosts, getPostBySlug } from '@/lib/mdx';
@@ -131,20 +132,9 @@ export default async function BlogPost({ params }: Props) {
               <summary className="cursor-pointer list-none font-mono text-[10px] uppercase tracking-[0.14em] text-primary [&::-webkit-details-marker]:hidden">
                 On this page
               </summary>
-              <nav className="mt-4" aria-label="Table of contents">
-                <ol className="space-y-3">
-                  {post.headings.map((heading) => (
-                    <li key={heading.id} className={heading.level === 3 ? 'pl-3' : undefined}>
-                      <a
-                        href={`#${heading.id}`}
-                        className="block text-sm leading-relaxed text-zinc-300 transition-colors hover:text-primary"
-                      >
-                        {heading.text}
-                      </a>
-                    </li>
-                  ))}
-                </ol>
-              </nav>
+              <div className="mt-4">
+                <BlogTableOfContents headings={post.headings} variant="mobile" />
+              </div>
             </details>
           )}
 
@@ -152,9 +142,9 @@ export default async function BlogPost({ params }: Props) {
             <div
               className="prose prose-invert min-w-0 max-w-none
             prose-headings:scroll-mt-8 prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-foreground
-            prose-h1:mb-4 prose-h1:text-3xl
-            prose-h2:mb-4 prose-h2:mt-12 prose-h2:text-2xl
-            prose-h3:mb-3 prose-h3:mt-8 prose-h3:text-xl
+              prose-h1:mb-4 prose-h1:text-3xl
+              prose-h2:mb-4 prose-h2:mt-12 prose-h2:border-b prose-h2:border-zinc-800 prose-h2:pb-3 prose-h2:text-2xl prose-h2:text-primary
+              prose-h3:mb-3 prose-h3:mt-8 prose-h3:text-xl prose-h3:text-[#f5e66a]
             prose-p:mb-5 prose-p:text-base prose-p:leading-8 prose-p:text-zinc-300
             prose-a:text-foreground prose-a:underline prose-a:decoration-primary/50 hover:prose-a:decoration-primary
             prose-strong:font-semibold prose-strong:text-foreground
@@ -172,20 +162,7 @@ export default async function BlogPost({ params }: Props) {
                 <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.16em] text-primary">
                   On this page
                 </p>
-                <nav aria-label="Table of contents">
-                  <ol className="space-y-3.5">
-                    {post.headings.map((heading) => (
-                      <li key={heading.id} className={heading.level === 3 ? 'pl-3' : undefined}>
-                        <a
-                          href={`#${heading.id}`}
-                          className="block font-mono text-[10px] leading-relaxed text-zinc-400 transition-colors hover:text-primary focus-visible:text-primary focus-visible:outline-none"
-                        >
-                          {heading.text}
-                        </a>
-                      </li>
-                    ))}
-                  </ol>
-                </nav>
+                <BlogTableOfContents headings={post.headings} />
               </aside>
             )}
           </div>
