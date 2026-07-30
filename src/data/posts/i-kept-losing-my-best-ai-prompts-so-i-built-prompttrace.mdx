@@ -1,0 +1,290 @@
+---
+title: 'I Kept Losing My Best AI Prompts, So I Built PromptTrace'
+description: 'Why I built a local-first tool that turns scattered AI coding histories into reusable prompts, templates, and workflow patterns.'
+date: '2026-07-09'
+readingTime: '5 min'
+author: 'Ahmet Seha'
+category: 'Developer Tools'
+tags: ['developer tools', 'ai', 'programming', 'open source', 'prompt engineering']
+---
+
+AI coding tools are becoming a normal part of my daily development workflow.
+
+I use tools like Cursor, Claude Code, Codex CLI, Copilot, and other AI-assisted coding environments
+almost every day. They help me move faster, test ideas quickly, refactor code, debug problems, and
+build small products with much less friction.
+
+But after using these tools for a while, I noticed a small but annoying problem:
+
+**I was losing my best prompts.**
+
+Not because they disappeared completely, but because they were buried inside different tools,
+projects, sessions, and histories.
+
+Sometimes I wrote a really good prompt that gave me exactly the result I wanted. Sometimes I
+created a useful workflow for debugging, refactoring, or building a new feature. Sometimes I
+repeated the same idea in different projects without realizing it.
+
+And every time, the same question came to my mind:
+
+**Why don’t we treat prompts like part of our development workflow?**
+
+That question became the starting point for **PromptTrace**.
+
+## The Problem With AI Prompt History
+
+When we talk about AI tools for developers, we usually focus on the output.
+
+Did the AI generate good code?  
+Did it fix the bug?  
+Did it understand the task?  
+Did it save time?
+
+But we do not talk enough about the input.
+
+The prompt is where the workflow starts.
+
+A good prompt can save minutes or even hours. A bad prompt can create confusion, wrong code,
+unnecessary follow-up messages, and sometimes more work than doing it manually.
+
+For developers, prompts are not just random messages anymore. They are becoming reusable pieces of
+thinking.
+
+A prompt can describe:
+
+- a bug investigation flow
+- a refactor strategy
+- a component generation pattern
+- a testing approach
+- a code review checklist
+- a project setup instruction
+- a debugging method
+- a documentation structure
+
+But most of the time, these prompts stay hidden inside tool histories.
+
+That means we cannot easily search them, compare them, improve them, or reuse them later.
+
+This felt like a missing layer in the AI coding workflow.
+
+## What Is PromptTrace?
+
+**PromptTrace** is a local-first prompt optimization and reuse tool for AI-assisted development.
+
+It scans your local AI coding tool histories and turns them into a dashboard where you can
+understand how you use prompts across your projects.
+
+The idea is simple:
+
+**Your prompt history should not be just history. It should become reusable knowledge.**
+
+PromptTrace helps you see:
+
+- which prompts are strong
+- which prompts are weak
+- which prompts you repeat often
+- which workflows appear across multiple sessions
+- which prompts can become reusable templates
+- which projects use AI tools the most
+- where your prompting can improve
+
+Instead of letting useful prompts disappear inside different tools, PromptTrace makes them visible
+again.
+
+## Why I Built It Local-First
+
+One of the most important decisions was privacy.
+
+Prompt history can contain sensitive information.
+
+It can include code context, product ideas, client work, internal project details, file paths,
+technical decisions, and sometimes even private notes.
+
+So I did not want PromptTrace to be a cloud product first.
+
+I wanted it to run locally.
+
+No account.  
+No API key.  
+No cloud sync.  
+No telemetry.
+
+Everything stays on your machine.
+
+For me, this is important because a prompt analytics tool should not create a new privacy problem
+while trying to solve a productivity problem.
+
+## How PromptTrace Works
+
+You can start it with one command:
+
+```bash
+npx prompttrace
+```
+
+PromptTrace scans supported local AI tool histories, analyzes the prompts, and opens a dashboard in
+your browser.
+
+It currently supports local histories from tools like:
+
+- Claude Code
+- Cursor
+- Codex CLI
+- VS Code Copilot
+- Windsurf
+- Zed
+- Gemini CLI
+- Copilot CLI
+- Antigravity
+- Goose
+- Kiro
+- OpenCode
+- Command Code
+
+After scanning, PromptTrace classifies and scores prompts using several quality dimensions like
+clarity, specificity, constraints, context efficiency, ambiguity, and optimization.
+
+The goal is not only to count prompts.
+
+The goal is to understand how useful they are.
+
+## Turning Prompts Into Reusable Assets
+
+The part I care about most is reuse.
+
+Developers already reuse code, components, snippets, configs, scripts, and templates.
+
+But we rarely reuse prompts in a structured way.
+
+PromptTrace tries to change that.
+
+It can detect prompt patterns and turn them into reusable templates. For example, if you often ask
+AI to refactor a component, generate tests, or review a feature, PromptTrace can help surface those
+repeated patterns.
+
+This makes prompting feel less like a one-time message and more like a reusable engineering asset.
+
+That is the main idea behind the project.
+
+## Prompt Packs and Workflow Patterns
+
+Another useful concept in PromptTrace is workflow detection.
+
+Sometimes a single prompt is not the whole story.
+
+A real AI coding workflow usually looks like a sequence:
+
+- Explain this code
+- Find the bug
+- Suggest a fix
+- Refactor the solution
+- Add tests
+- Review the final result
+
+PromptTrace can detect repeated workflow sequences and group them as Prompt Packs.
+
+This is helpful because many developers do not just need better prompts. They need better prompting
+workflows.
+
+For example:
+
+- Bug Triage Pack
+- Refactor & Test Pack
+- Feature Planning Pack
+- Code Review Pack
+- Documentation Pack
+
+These kinds of workflows can become reusable patterns for future projects.
+
+## What You Can See in the Dashboard
+
+PromptTrace includes a local dashboard with different views for understanding your AI-assisted
+development workflow.
+
+You can explore:
+
+- Overview of prompt quality and optimization opportunities
+- Searchable prompt library
+- AI sessions as timelines
+- Project-level prompt patterns
+- Outcome signals like file changes and follow-ups
+- Reusable templates
+- Prompt Packs
+- Prompt standards
+- Connected AI tool sources
+- Local settings and data management
+
+I wanted the dashboard to feel practical, not just analytical.
+
+The main question is always:
+
+**What can I improve or reuse from my own prompt history?**
+
+## Why This Matters for Developers
+
+AI coding tools are moving fast.
+
+Every month there are new models, new agents, new IDE features, and new ways to generate code.
+
+But one thing is still true:
+
+The quality of the result depends a lot on the quality of the instruction.
+
+For developers, prompting is slowly becoming a real skill.
+
+Not in a buzzword way, but in a practical way.
+
+A better prompt can mean:
+
+- fewer wrong assumptions
+- better code output
+- less back and forth
+- clearer constraints
+- better test coverage
+- faster debugging
+- more consistent results
+
+PromptTrace is my attempt to make that skill easier to observe and improve.
+
+## Built for Indie Makers and Developers
+
+I built PromptTrace as an indie maker because I needed it myself.
+
+I did not want a complex enterprise tool. I wanted something simple, local, and useful.
+
+Something I could run quickly.
+
+Something that could show me patterns in my own AI usage.
+
+Something that respects privacy.
+
+Something that helps me improve without forcing me into another platform.
+
+That is why PromptTrace is open source.
+
+You can try it, inspect it, modify it, or contribute to it.
+
+## Try PromptTrace
+
+You can try PromptTrace with:
+
+```bash
+npx prompttrace
+```
+
+Live demo: [PromptTrace Demo](https://ahmetseha.github.io/prompt-trace/)  
+GitHub: [ahmetseha/prompt-trace](https://github.com/ahmetseha/prompt-trace)
+
+If you are using AI coding tools every day, I would love to hear your feedback.
+
+Especially if you use Cursor, Claude Code, Codex CLI, Copilot, Windsurf, Zed, Gemini CLI, or similar
+tools.
+
+I believe prompt history will become more important as AI-assisted development grows.
+
+And maybe the next step is not only writing better prompts.
+
+Maybe it is learning from the prompts we already wrote.
+
+_Originally published on
+[Medium](https://medium.com/@sehaxy/i-kept-losing-my-best-ai-prompts-so-i-built-prompttrace-b66ec8090990)._
