@@ -125,6 +125,23 @@ export function useProjects() {
       ],
     },
     {
+      id: 'preflint',
+      image: '/preflint.png',
+      title: t('preflint.title'),
+      dates: '2026 - Present',
+      href: 'https://seha.studio/preflint',
+      description: t('preflint.description'),
+      category: 'web',
+      tags: ['Nuxt', 'Vue', 'TypeScript', 'Local-first', 'App Store'],
+      links: [
+        {
+          icon: <Globe className="size-3" />,
+          type: 'Website',
+          href: 'https://seha.studio/preflint',
+        },
+      ],
+    },
+    {
       id: 'clariole',
       image: '/clariole.png',
       title: t('clariole.title'),

@@ -10,7 +10,7 @@ import { useProjects, type Project, type ProjectCategory } from '@/components/pr
 
 const BLUR_FADE_DELAY = 0.04;
 
-const categoryOrder: ProjectCategory[] = ['apps', 'web', 'tools', 'npm'];
+const categoryOrder: ProjectCategory[] = ['web', 'apps', 'tools', 'npm'];
 
 function ProjectLinks({ project }: { project: Project }) {
   return (

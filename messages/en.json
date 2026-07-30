@@ -99,6 +99,10 @@
       "title": "Soul Garden: Reflex",
       "description": "A fast-paced survival game where you dodge obstacles, unlock abilities, and test your reflexes across Normal, Zen, and Twin game modes."
     },
+    "preflint": {
+      "title": "Preflint",
+      "description": "An App Store asset checker that validates screenshots, promotional images, and icons directly in your browser, applies safe fixes, and keeps every file local."
+    },
     "clariole": {
       "title": "Clariole",
       "description": "A CV analysis tool that makes your resume readable by ATS systems and convincing to people. It checks parsing risk, job-description alignment, missing keywords, weak bullets, and recruiter readability — without fake ATS promises."
