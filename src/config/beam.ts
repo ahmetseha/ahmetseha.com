@@ -5,7 +5,7 @@ type BeamPreset = 'surface' | 'control' | 'line';
 export const BEAM_CONFIG = {
   colorVariant: 'mono',
   theme: 'dark',
-  strength: 0.6,
+  strength: 0.78,
   duration: 2.8,
   brightness: 1.2,
   saturation: 1.2,

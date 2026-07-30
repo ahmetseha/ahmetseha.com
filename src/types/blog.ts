@@ -7,6 +7,12 @@ export interface MDXContent {
   [key: string]: any;
 }
 
+export interface BlogHeading {
+  id: string;
+  text: string;
+  level: 2 | 3;
+}
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -17,5 +23,6 @@ export interface BlogPost {
   content: ReactElement<unknown, string | JSXElementConstructor<any>>;
   readingTime: string;
   author: string;
+  headings: BlogHeading[];
   image?: string | null;
 }

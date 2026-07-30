@@ -62,9 +62,9 @@ export default async function BlogPost({ params }: Props) {
   }
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-5xl flex-col px-4 pb-16 sm:px-6 sm:pb-24">
-      <article className="mx-auto w-full max-w-2xl">
-        <header className="mb-9 border-b pb-7 sm:mb-12 sm:pb-9">
+    <main className="mx-auto flex min-h-screen max-w-4xl flex-col px-4 pb-16 sm:px-6 sm:pb-24">
+      <article className="w-full">
+        <header className="mb-9 max-w-2xl border-b pb-7 sm:mb-12 sm:pb-9">
           <div className="mb-5 flex items-center gap-3 font-mono text-[10px] uppercase tracking-wider">
             <Link
               href="/blog"
@@ -126,22 +126,46 @@ export default async function BlogPost({ params }: Props) {
           )}
         </header>
 
-        <div
-          className="blog-post-prose prose prose-neutral max-w-none
-          prose-headings:scroll-mt-8 prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-foreground
-          prose-h1:mb-4 prose-h1:text-3xl
-          prose-h2:mb-4 prose-h2:mt-12 prose-h2:text-2xl
-          prose-h3:mb-3 prose-h3:mt-8 prose-h3:text-xl
-          prose-p:mb-5 prose-p:text-base prose-p:leading-8 prose-p:text-foreground/75
-          prose-a:text-foreground prose-a:underline prose-a:decoration-muted-foreground/50 hover:prose-a:decoration-foreground
-          prose-strong:font-semibold prose-strong:text-foreground
-          prose-blockquote:border-l-primary prose-blockquote:text-foreground/80
-          prose-code:rounded prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:text-sm prose-code:text-foreground
-          prose-pre:border prose-pre:border-border prose-pre:bg-muted
-          prose-ul:my-5 prose-ul:text-foreground/75 prose-ol:my-5 prose-ol:text-foreground/75 prose-li:my-1.5 prose-li:leading-7
-          prose-img:rounded-lg prose-img:border prose-img:border-border"
-        >
-          {post.content}
+        <div className="grid min-w-0 items-start gap-8 lg:grid-cols-[minmax(0,42rem)_12rem]">
+          <div
+            className="prose prose-neutral max-w-none
+            prose-headings:scroll-mt-8 prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-foreground
+            prose-h1:mb-4 prose-h1:text-3xl
+            prose-h2:mb-4 prose-h2:mt-12 prose-h2:text-2xl
+            prose-h3:mb-3 prose-h3:mt-8 prose-h3:text-xl
+            prose-p:mb-5 prose-p:text-base prose-p:leading-8 prose-p:text-foreground/90
+            prose-a:text-foreground prose-a:underline prose-a:decoration-primary/50 hover:prose-a:decoration-primary
+            prose-strong:font-semibold prose-strong:text-foreground
+            prose-blockquote:border-l-primary prose-blockquote:text-foreground/90
+            prose-code:rounded prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:text-sm prose-code:text-foreground
+            prose-pre:border prose-pre:border-border prose-pre:bg-muted
+            prose-ul:my-5 prose-ul:text-foreground/90 prose-ol:my-5 prose-ol:text-foreground/90 prose-li:my-1.5 prose-li:leading-7
+            prose-img:rounded-lg prose-img:border prose-img:border-border"
+          >
+            {post.content}
+          </div>
+
+          {post.headings.length > 0 && (
+            <aside className="sticky top-8 hidden border-l pl-4 lg:block">
+              <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.14em] text-primary">
+                On this page
+              </p>
+              <nav aria-label="Table of contents">
+                <ol className="space-y-3">
+                  {post.headings.map((heading) => (
+                    <li key={heading.id} className={heading.level === 3 ? 'pl-3' : undefined}>
+                      <a
+                        href={`#${heading.id}`}
+                        className="block font-mono text-[10px] leading-relaxed text-muted-foreground transition-colors hover:text-primary focus-visible:text-primary focus-visible:outline-none"
+                      >
+                        {heading.text}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            </aside>
+          )}
         </div>
       </article>
     </main>

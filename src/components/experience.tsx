@@ -1,6 +1,9 @@
 'use client';
 
+import { ChevronDown } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+
+import { HoverBeam } from '@/components/ui/hover-beam';
 
 export default function Experience() {
   const t = useTranslations('Work');
@@ -51,63 +54,51 @@ export default function Experience() {
   ];
 
   return (
-    <section className="border-y">
-      {experiences.map((experience, index) => (
-        <article
-          key={experience.id}
-          className="group grid gap-4 border-b py-7 last:border-b-0 sm:grid-cols-[8.5rem_minmax(0,1fr)] sm:gap-6 sm:py-9"
-        >
-          <aside className="flex items-start justify-between gap-4 sm:block">
-            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary">
-              {String(index + 1).padStart(2, '0')} / Role
-            </p>
-            <p className="max-w-32 text-right font-mono text-[9px] uppercase leading-relaxed tracking-wide text-muted-foreground sm:mt-3 sm:text-left">
-              {experience.period}
-            </p>
-          </aside>
-
-          <div className="min-w-0">
-            <header className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+    <section className="space-y-4">
+      {experiences.map((experience) => (
+        <HoverBeam key={experience.id} className="rounded-xl">
+          <article className="group rounded-xl border bg-card/35 p-5 transition-colors hover:bg-card/60 sm:p-6">
+            <header className="flex flex-wrap items-start justify-between gap-x-5 gap-y-3">
               <div>
-                <h2 className="text-xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary sm:text-2xl">
+                <h2 className="text-xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary">
                   {experience.company}
                 </h2>
-                <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-primary/80">
+                <p className="mt-1.5 font-mono text-[10px] uppercase tracking-wider text-primary">
                   {experience.position}
                 </p>
               </div>
-              {experience.location && (
-                <span className="rounded-full border px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-muted-foreground">
-                  {experience.location}
-                </span>
-              )}
+              <div className="text-right font-mono text-[9px] uppercase leading-relaxed tracking-wide text-muted-foreground">
+                <p>{experience.period}</p>
+                {experience.location && (
+                  <p className="mt-1 text-primary/70">{experience.location}</p>
+                )}
+              </div>
             </header>
 
-            <p className="mt-4 text-sm leading-7 text-muted-foreground sm:text-[15px]">
-              {experience.description}
-            </p>
+            <p className="mt-4 text-sm leading-7 text-foreground/80">{experience.description}</p>
 
-            <div className="mt-5">
-              <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground/60">
-                Selected contributions
-              </p>
-              <ul className="space-y-2.5">
+            <details className="group/details mt-5 border-t pt-4">
+              <summary className="flex min-h-8 cursor-pointer list-none items-center justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground [&::-webkit-details-marker]:hidden">
+                <span>Selected contributions · {experience.highlights.length}</span>
+                <ChevronDown className="size-4 transition-transform group-open/details:rotate-180" />
+              </summary>
+              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                 {experience.highlights.map((highlight) => (
                   <li
                     key={highlight}
-                    className="flex gap-3 text-[13px] leading-relaxed text-foreground/80 sm:text-sm"
+                    className="flex gap-2.5 text-xs leading-relaxed text-muted-foreground"
                   >
                     <span
                       aria-hidden="true"
-                      className="mt-[0.7em] h-px w-3 shrink-0 bg-primary/70"
+                      className="mt-[0.65em] size-1 shrink-0 rounded-full bg-primary"
                     />
                     <span>{highlight}</span>
                   </li>
                 ))}
               </ul>
-            </div>
-          </div>
-        </article>
+            </details>
+          </article>
+        </HoverBeam>
       ))}
     </section>
   );

@@ -1,33 +1,49 @@
 import fs from 'fs';
 import path from 'path';
 
+import GithubSlugger from 'github-slugger';
 import matter from 'gray-matter';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import rehypeImgSize from 'rehype-img-size';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
-import rehypeToc from 'rehype-toc';
 import remarkGfm from 'remark-gfm';
+import type { Pluggable } from 'unified';
 
-import { type BlogPost, type MDXContent } from '@/types/blog';
+import { type BlogHeading, type BlogPost, type MDXContent } from '@/types/blog';
 
 const postsDirectory = path.join(process.cwd(), 'src/data/posts');
 
 const mdxOptions = {
-  remarkPlugins: [remarkGfm],
+  remarkPlugins: [remarkGfm] satisfies Pluggable[],
   rehypePlugins: [
     rehypePrism,
     rehypeSlug,
-    [
-      rehypeToc,
-      {
-        headings: ['h1', 'h2', 'h3'],
-        position: 'before-content',
-      },
-    ],
     [rehypeImgSize, { dir: 'public' }],
-  ],
+  ] satisfies Pluggable[],
 };
+
+function getHeadings(content: string): BlogHeading[] {
+  const slugger = new GithubSlugger();
+  const headings: BlogHeading[] = [];
+  const headingPattern = /^(#{2,3})\s+(.+)$/gm;
+
+  for (const match of content.matchAll(headingPattern)) {
+    const level = match[1].length as 2 | 3;
+    const text = match[2]
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+      .replace(/[`*_~]/g, '')
+      .trim();
+
+    headings.push({
+      id: slugger.slug(text),
+      text,
+      level,
+    });
+  }
+
+  return headings;
+}
 
 export async function getAllPosts(): Promise<BlogPost[]> {
   try {
@@ -69,7 +85,10 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     // Compile MDX content
     const { content: compiledContent } = await compileMDX<MDXContent>({
       source: content,
-      options: { parseFrontmatter: true, ...mdxOptions },
+      options: {
+        parseFrontmatter: true,
+        mdxOptions,
+      },
     });
 
     // Validate required fields
@@ -88,6 +107,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
       content: compiledContent,
       readingTime: data.readingTime || '5 min',
       author: data.author || 'Ahmet Seha',
+      headings: getHeadings(content),
       image: data.image || null,
     };
   } catch (error) {
