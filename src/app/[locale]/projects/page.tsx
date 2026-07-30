@@ -14,7 +14,7 @@ const categoryOrder: ProjectCategory[] = ['web', 'apps', 'tools', 'npm'];
 
 function ProjectLinks({ project }: { project: Project }) {
   return (
-    <div className="flex flex-wrap items-center gap-2 pt-1">
+    <div className="flex flex-wrap items-center gap-2">
       {project.links.map((link) => (
         <a
           key={`${project.id}-${link.type}`}
@@ -86,8 +86,13 @@ function AppCard({ project }: { project: Project }) {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="group overflow-hidden rounded-xl border bg-card/45 transition-colors hover:border-white/20">
-      <a href={project.href} target="_blank" rel="noopener noreferrer" className="block">
+    <article className="group flex h-full flex-col overflow-hidden rounded-xl border bg-card/45 transition-colors hover:border-white/20">
+      <a
+        href={project.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block shrink-0"
+      >
         <div className="relative aspect-[16/9] w-full overflow-hidden border-b bg-muted/20">
           <Image
             src={project.image}
@@ -102,7 +107,7 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
       </a>
 
-      <div className="space-y-3 p-4">
+      <div className="flex flex-1 flex-col p-4">
         <div>
           <div className="mb-1 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
             <h3 className="font-semibold tracking-tight">{project.title}</h3>
@@ -114,8 +119,12 @@ function ProjectCard({ project }: { project: Project }) {
             {project.description}
           </p>
         </div>
-        <ProjectTags project={project} />
-        <ProjectLinks project={project} />
+        <div className="mt-3">
+          <ProjectTags project={project} />
+        </div>
+        <div className="mt-auto pt-4">
+          <ProjectLinks project={project} />
+        </div>
       </div>
     </article>
   );
