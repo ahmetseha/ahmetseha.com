@@ -1,6 +1,5 @@
-import { setRequestLocale } from 'next-intl/server';
-
 import { ArrowUpRight, Clock3 } from 'lucide-react';
+import { setRequestLocale } from 'next-intl/server';
 
 import BlurFade from '@/components/magicui/blur-fade';
 import { HoverBeam } from '@/components/ui/hover-beam';
@@ -11,11 +10,7 @@ import { Link } from '@/i18n/navigation';
 
 const BLUR_FADE_DELAY = 0.04;
 
-export default async function BlogPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: localeParam } = await params;
   setRequestLocale(localeParam);
 
@@ -44,25 +39,27 @@ export default async function BlogPage({
       </BlurFade>
 
       <section id="blog-posts" aria-label="Blog posts">
-        <div className="space-y-3">
+        <div>
           {posts.map((post, index) => (
-            <BlurFade key={post.slug} delay={BLUR_FADE_DELAY * (2 + index * 0.5)}>
-              <HoverBeam className="rounded-xl">
+            <BlurFade
+              key={post.slug}
+              delay={BLUR_FADE_DELAY * (2 + index * 0.5)}
+              className={index < posts.length - 1 ? 'border-b' : undefined}
+            >
+              <HoverBeam preset="line" borderRadius={0}>
                 <Link
                   href={`/blog/${post.slug}`}
                   aria-label={`Read ${post.title}`}
-                  className="group relative grid grid-cols-[auto_minmax(0,1fr)_auto] gap-3 rounded-xl border bg-card/20 p-4 transition-colors hover:bg-card/70 focus-visible:bg-card/70 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-primary/70 sm:gap-5 sm:p-5"
+                  className="group relative grid grid-cols-[auto_minmax(0,1fr)_auto] gap-3 py-6 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/70 sm:gap-5 sm:py-8"
                 >
-                  <span className="grid size-8 shrink-0 place-items-center rounded-md border bg-background/50 font-mono text-[9px] tabular-nums text-muted-foreground transition-colors group-hover:border-primary/40 group-hover:text-primary">
+                  <span className="pt-0.5 font-mono text-[10px] tabular-nums text-primary/70 transition-colors group-hover:text-primary">
                     {String(index + 1).padStart(2, '0')}
                   </span>
 
                   <article className="min-w-0">
-                    <div className="mb-2.5 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[9px] uppercase tracking-wider text-muted-foreground">
+                    <div className="mb-2.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 font-mono text-[9px] uppercase tracking-wider text-muted-foreground">
                       <span className="text-primary/90">{post.category}</span>
-                      <span aria-hidden="true" className="text-border">
-                        /
-                      </span>
+                      <span aria-hidden="true" className="size-1 rounded-full bg-primary/70" />
                       <time dateTime={post.date}>
                         {new Date(post.date).toLocaleDateString('en-US', {
                           year: 'numeric',
@@ -70,9 +67,7 @@ export default async function BlogPage({
                           day: '2-digit',
                         })}
                       </time>
-                      <span aria-hidden="true" className="text-border">
-                        /
-                      </span>
+                      <span aria-hidden="true" className="size-1 rounded-full bg-primary/70" />
                       <span className="inline-flex items-center gap-1">
                         <Clock3 className="size-3" aria-hidden="true" />
                         {post.readingTime}
@@ -87,17 +82,18 @@ export default async function BlogPage({
                     </p>
 
                     {post.tags && post.tags.length > 0 && (
-                      <div className="mt-3 hidden flex-wrap gap-1.5 sm:flex">
+                      <div className="mt-3 hidden flex-wrap gap-x-3 gap-y-1 sm:flex">
                         {post.tags.slice(0, 3).map((tag) => (
                           <span
                             key={tag}
-                            className="rounded-md border border-white/5 bg-muted/50 px-2 py-1 font-mono text-[9px] uppercase tracking-wide text-muted-foreground"
+                            className="font-mono text-[9px] uppercase tracking-wide text-muted-foreground"
                           >
+                            <span className="mr-0.5 text-primary/80">#</span>
                             {tag}
                           </span>
                         ))}
                         {post.tags.length > 3 && (
-                          <span className="px-1 py-1 font-mono text-[9px] text-muted-foreground/60">
+                          <span className="font-mono text-[9px] text-muted-foreground/60">
                             +{post.tags.length - 3}
                           </span>
                         )}
@@ -111,11 +107,6 @@ export default async function BlogPage({
                       aria-hidden="true"
                     />
                   </span>
-
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100"
-                  />
                 </Link>
               </HoverBeam>
             </BlurFade>

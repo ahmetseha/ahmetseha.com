@@ -1,11 +1,11 @@
 import type { BorderBeamProps } from 'border-beam';
 
-type BeamPreset = 'surface' | 'control';
+type BeamPreset = 'surface' | 'control' | 'line';
 
 export const BEAM_CONFIG = {
-  colorVariant: 'sunset',
+  colorVariant: 'mono',
   theme: 'dark',
-  strength: 0.78,
+  strength: 0.6,
   duration: 2.8,
   brightness: 1.2,
   saturation: 1.2,
@@ -19,6 +19,9 @@ export const BEAM_PRESETS = {
   },
   control: {
     size: 'sm',
+  },
+  line: {
+    size: 'line',
   },
 } as const satisfies Record<BeamPreset, Partial<BorderBeamProps>>;
 

@@ -2,15 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 
-import BlurFade from '@/components/magicui/blur-fade';
-
-const BLUR_FADE_DELAY = 0.04;
-
-interface ExperienceProps {
-  delay?: number;
-}
-
-export default function Experience({ delay = BLUR_FADE_DELAY * 5 }: ExperienceProps) {
+export default function Experience() {
   const t = useTranslations('Work');
 
   const experiences = [
@@ -59,28 +51,64 @@ export default function Experience({ delay = BLUR_FADE_DELAY * 5 }: ExperiencePr
   ];
 
   return (
-    <main>
-      <section className="mt-[-24px] space-y-8">
-        {experiences.map((experience, idx) => (
-          <article key={idx}>
-            <h3 className="font-semibold text-xl mb-2 text-foreground">{experience.company}</h3>
-            <p className="font-mono text-sm text-muted-foreground mb-3">
-              {experience.position}
-              {experience.location && `, ${experience.location}`} • {experience.period}
+    <section className="border-y">
+      {experiences.map((experience, index) => (
+        <article
+          key={experience.id}
+          className="group grid gap-4 border-b py-7 last:border-b-0 sm:grid-cols-[8.5rem_minmax(0,1fr)] sm:gap-6 sm:py-9"
+        >
+          <aside className="flex items-start justify-between gap-4 sm:block">
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary">
+              {String(index + 1).padStart(2, '0')} / Role
             </p>
+            <p className="max-w-32 text-right font-mono text-[9px] uppercase leading-relaxed tracking-wide text-muted-foreground sm:mt-3 sm:text-left">
+              {experience.period}
+            </p>
+          </aside>
 
-            <p className="text-base text-foreground font-sans mb-4 leading-relaxed">
+          <div className="min-w-0">
+            <header className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+              <div>
+                <h2 className="text-xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary sm:text-2xl">
+                  {experience.company}
+                </h2>
+                <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-primary/80">
+                  {experience.position}
+                </p>
+              </div>
+              {experience.location && (
+                <span className="rounded-full border px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-muted-foreground">
+                  {experience.location}
+                </span>
+              )}
+            </header>
+
+            <p className="mt-4 text-sm leading-7 text-muted-foreground sm:text-[15px]">
               {experience.description}
             </p>
 
-            <ul className="list-disc list-inside space-y-2 text-base text-foreground font-sans">
-              {experience.highlights.map((highlight, highlightIdx) => (
-                <li key={highlightIdx}>{highlight}</li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </section>
-    </main>
+            <div className="mt-5">
+              <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground/60">
+                Selected contributions
+              </p>
+              <ul className="space-y-2.5">
+                {experience.highlights.map((highlight) => (
+                  <li
+                    key={highlight}
+                    className="flex gap-3 text-[13px] leading-relaxed text-foreground/80 sm:text-sm"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-[0.7em] h-px w-3 shrink-0 bg-primary/70"
+                    />
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </article>
+      ))}
+    </section>
   );
 }
