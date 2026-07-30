@@ -80,7 +80,10 @@ export function PageHero() {
       <div className="overflow-x-auto scrollbar-hide pb-2 -mx-1 px-1">
         <nav className="flex items-center gap-3 sm:gap-6 font-mono text-xs sm:text-sm uppercase tracking-wider">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive =
+              link.href === '/'
+                ? pathname === link.href
+                : pathname === link.href || pathname.startsWith(`${link.href}/`);
 
             return (
               <Link
