@@ -1,17 +1,16 @@
+import { ArrowUpRight } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
-import BlurFade from '@/components/magicui/blur-fade';
 import { About } from '@/components/about';
+import BlurFade from '@/components/magicui/blur-fade';
+import { HoverBeam } from '@/components/ui/hover-beam';
 
 import { DATA } from '@/data/resume';
+import { Link } from '@/i18n/navigation';
 
 const BLUR_FADE_DELAY = 0.04;
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
 
@@ -27,8 +26,40 @@ export default async function Page({
         </BlurFade>
       </section>
 
-      <section id="contact">
+      <section id="now">
         <BlurFade delay={BLUR_FADE_DELAY * 2}>
+          <HoverBeam className="rounded-xl">
+            <div className="group flex flex-col gap-4 rounded-xl border bg-card/35 px-4 py-4 transition-colors hover:bg-card/60 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end sm:px-5">
+              <div className="min-w-0">
+                <div className="flex items-center gap-2">
+                  <span
+                    className="size-1.5 rounded-full bg-primary shadow-[0_0_10px_var(--primary)]"
+                    aria-hidden="true"
+                  />
+                  <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-primary">
+                    {t('now')}
+                  </p>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-300">{t('currentFocus')}</p>
+              </div>
+
+              <Link
+                href="/projects"
+                className="group/link inline-flex cursor-pointer items-center gap-1.5 self-start rounded-md border border-zinc-700 px-3 py-2 font-mono text-[9px] uppercase tracking-wider text-zinc-300 transition-all hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary sm:self-end"
+              >
+                {t('exploreProjects')}
+                <ArrowUpRight
+                  className="size-3.5 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+                  aria-hidden="true"
+                />
+              </Link>
+            </div>
+          </HoverBeam>
+        </BlurFade>
+      </section>
+
+      <section id="contact">
+        <BlurFade delay={BLUR_FADE_DELAY * 3}>
           <div className="flex flex-wrap gap-4 text-sm">
             <a
               href={`mailto:${DATA.contact.email}`}
