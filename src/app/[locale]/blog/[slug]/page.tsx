@@ -62,24 +62,17 @@ export default async function BlogPost({ params }: Props) {
   }
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-4xl flex-col px-4 pb-16 sm:px-6 sm:pb-24">
+    <main className="mx-auto flex min-h-screen max-w-5xl flex-col px-4 pb-16 sm:px-6 sm:pb-24">
       <article className="w-full">
-        <header className="mb-9 max-w-2xl border-b pb-7 sm:mb-12 sm:pb-9">
-          <div className="mb-5 flex items-center gap-3 font-mono text-[10px] uppercase tracking-wider">
+        <header className="mb-9 max-w-[44rem] border-b pb-7 sm:mb-12 sm:pb-9">
+          <div className="mb-6">
             <Link
               href="/blog"
-              className="border-b border-primary pb-1 text-primary transition-opacity hover:opacity-80"
+              className="group inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-400 transition-colors hover:text-primary focus-visible:text-primary focus-visible:outline-none"
             >
-              Blog
-            </Link>
-            <span className="text-border" aria-hidden="true">
-              /
-            </span>
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-1.5 text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <ArrowLeft className="size-3" aria-hidden="true" />
+              <span className="grid size-6 place-items-center rounded-full border border-zinc-700 transition-colors group-hover:border-primary/60 group-hover:bg-primary group-hover:text-primary-foreground">
+                <ArrowLeft className="size-3" aria-hidden="true" />
+              </span>
               {t('backToBlog')}
             </Link>
           </div>
@@ -120,43 +113,65 @@ export default async function BlogPost({ params }: Props) {
           )}
 
           {post.description && (
-            <p className="mt-5 max-w-xl text-sm leading-7 text-muted-foreground sm:text-base">
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-zinc-300 sm:text-base">
               {post.description}
             </p>
           )}
         </header>
 
-        <div className="grid min-w-0 items-start gap-8 lg:grid-cols-[minmax(0,42rem)_12rem]">
+        {post.headings.length > 0 && (
+          <details className="mb-8 border-y py-4 lg:hidden">
+            <summary className="cursor-pointer list-none font-mono text-[10px] uppercase tracking-[0.14em] text-primary [&::-webkit-details-marker]:hidden">
+              On this page
+            </summary>
+            <nav className="mt-4" aria-label="Table of contents">
+              <ol className="space-y-3">
+                {post.headings.map((heading) => (
+                  <li key={heading.id} className={heading.level === 3 ? 'pl-3' : undefined}>
+                    <a
+                      href={`#${heading.id}`}
+                      className="block text-sm leading-relaxed text-zinc-300 transition-colors hover:text-primary"
+                    >
+                      {heading.text}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </details>
+        )}
+
+        <div className="grid min-w-0 items-start gap-12 lg:grid-cols-[minmax(0,44rem)_14rem]">
           <div
-            className="prose prose-neutral max-w-none
+            className="prose prose-invert min-w-0 max-w-none
             prose-headings:scroll-mt-8 prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-foreground
             prose-h1:mb-4 prose-h1:text-3xl
             prose-h2:mb-4 prose-h2:mt-12 prose-h2:text-2xl
             prose-h3:mb-3 prose-h3:mt-8 prose-h3:text-xl
-            prose-p:mb-5 prose-p:text-base prose-p:leading-8 prose-p:text-foreground/90
+            prose-p:mb-5 prose-p:text-base prose-p:leading-8 prose-p:text-zinc-300
             prose-a:text-foreground prose-a:underline prose-a:decoration-primary/50 hover:prose-a:decoration-primary
             prose-strong:font-semibold prose-strong:text-foreground
-            prose-blockquote:border-l-primary prose-blockquote:text-foreground/90
+            prose-blockquote:border-l-primary prose-blockquote:text-zinc-300
             prose-code:rounded prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:text-sm prose-code:text-foreground
             prose-pre:border prose-pre:border-border prose-pre:bg-muted
-            prose-ul:my-5 prose-ul:text-foreground/90 prose-ol:my-5 prose-ol:text-foreground/90 prose-li:my-1.5 prose-li:leading-7
+            prose-ul:my-5 prose-ul:text-zinc-300 prose-ol:my-5 prose-ol:text-zinc-300 prose-li:my-1.5 prose-li:leading-7 prose-li:text-zinc-300
             prose-img:rounded-lg prose-img:border prose-img:border-border"
           >
             {post.content}
           </div>
 
           {post.headings.length > 0 && (
-            <aside className="sticky top-8 hidden border-l pl-4 lg:block">
-              <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.14em] text-primary">
+            <aside className="sticky top-8 hidden border-l border-zinc-700/80 pl-5 lg:block">
+              <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.16em] text-primary">
                 On this page
               </p>
               <nav aria-label="Table of contents">
-                <ol className="space-y-3">
+                <ol className="space-y-3.5">
                   {post.headings.map((heading) => (
                     <li key={heading.id} className={heading.level === 3 ? 'pl-3' : undefined}>
                       <a
                         href={`#${heading.id}`}
-                        className="block font-mono text-[10px] leading-relaxed text-muted-foreground transition-colors hover:text-primary focus-visible:text-primary focus-visible:outline-none"
+                        className="block font-mono text-[10px] leading-relaxed text-zinc-400 transition-colors hover:text-primary focus-visible:text-primary focus-visible:outline-none"
                       >
                         {heading.text}
                       </a>
