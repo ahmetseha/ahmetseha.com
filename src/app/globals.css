@@ -81,67 +81,8 @@ body {
   animation: blur-fade-in var(--blur-fade-duration, 0.26s) ease-out var(--blur-fade-delay, 0s) both;
 }
 
-@property --hover-beam-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes hover-beam-spin {
-  to {
-    --hover-beam-angle: 360deg;
-  }
-}
-
-.hover-beam {
-  position: relative;
-  isolation: isolate;
-}
-
-.hover-beam::after {
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  padding: 1px;
-  border-radius: inherit;
-  background: conic-gradient(
-    from var(--hover-beam-angle),
-    transparent 0 72%,
-    color-mix(in srgb, var(--primary) 85%, white) 79%,
-    transparent 87%
-  );
-  content: '';
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 180ms ease-out;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
-
-.hover-beam:hover::after,
-.hover-beam:focus-within::after {
-  animation: hover-beam-spin 2.8s linear infinite;
-  opacity: 0.78;
-}
-
-.hover-beam[data-beam-preset='control']::after {
-  padding: 2px;
-}
-
-.hover-beam[data-beam-preset='line']::after {
-  background: linear-gradient(90deg, transparent, var(--primary), transparent);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .blur-fade {
-    animation: none;
-  }
-
-  .hover-beam:hover::after,
-  .hover-beam:focus-within::after {
     animation: none;
   }
 }
