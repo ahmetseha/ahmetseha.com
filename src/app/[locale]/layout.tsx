@@ -6,7 +6,8 @@ import { setRequestLocale } from 'next-intl/server';
 
 import '../globals.css';
 
-import { JetBrains_Mono as FontMono, Inter as FontSans } from 'next/font/google';
+import { JetBrains_Mono as FontMono } from 'next/font/google';
+import localFont from 'next/font/local';
 
 import { GridBackground } from '@/components/shared/grid-background';
 import { PageHero } from '@/components/shared/page-hero';
@@ -24,9 +25,24 @@ export const metadata: Metadata = {
     apple: '/icon.png',
   },
 };
-const fontSans = FontSans({
-  subsets: ['latin'],
+const fontSans = localFont({
+  src: [
+    {
+      path: '../fonts/satoshi-variable.woff2',
+      weight: '300 900',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/satoshi-variable-italic.woff2',
+      weight: '300 900',
+      style: 'italic',
+    },
+  ],
   variable: '--font-sans',
+  display: 'swap',
+  preload: true,
+  fallback: ['Arial', 'sans-serif'],
+  adjustFontFallback: 'Arial',
 });
 
 const fontMono = FontMono({
