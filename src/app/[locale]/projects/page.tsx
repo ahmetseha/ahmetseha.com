@@ -1,12 +1,10 @@
-'use client';
-
 import Image from 'next/image';
 
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import BlurFade from '@/components/magicui/blur-fade';
-import { useProjects, type Project, type ProjectCategory } from '@/components/projects';
+import { getProjects, type Project, type ProjectCategory } from '@/components/projects';
 import { HoverBeam } from '@/components/ui/hover-beam';
 
 const BLUR_FADE_DELAY = 0.04;
@@ -91,12 +89,7 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <HoverBeam className="h-full rounded-xl">
       <article className="group flex h-full flex-col overflow-hidden rounded-xl border bg-card/45 transition-colors">
-        <a
-          href={project.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block shrink-0"
-        >
+        <a href={project.href} target="_blank" rel="noopener noreferrer" className="block shrink-0">
           <div className="relative aspect-[16/9] w-full overflow-hidden border-b bg-muted/20">
             <Image
               src={project.image}
@@ -135,9 +128,11 @@ function ProjectCard({ project }: { project: Project }) {
   );
 }
 
-export default function ProjectsPage() {
-  const projects = useProjects();
-  const t = useTranslations('ProjectCategories');
+export default async function ProjectsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const [projects, t] = await Promise.all([getProjects(), getTranslations('ProjectCategories')]);
 
   return (
     <main className="mx-auto flex min-h-screen max-w-2xl flex-col px-4 pb-14 sm:px-6 sm:pb-24">

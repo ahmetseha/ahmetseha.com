@@ -1,12 +1,10 @@
-'use client';
-
 import { ChevronDown } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 import { HoverBeam } from '@/components/ui/hover-beam';
 
-export default function Experience() {
-  const t = useTranslations('Work');
+export default async function Experience() {
+  const t = await getTranslations('Work');
 
   const experiences = [
     {

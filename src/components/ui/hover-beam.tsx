@@ -1,11 +1,8 @@
-'use client';
+import type { ReactNode } from 'react';
 
-import { type FocusEvent, type ReactNode, useEffect, useState } from 'react';
-
-import { BorderBeam } from 'border-beam';
-
-import { BEAM_CONFIG, BEAM_PRESETS, type BeamPreset } from '@/config/beam';
 import { cn } from '@/lib/utils';
+
+import type { BeamPreset } from '@/config/beam';
 
 type HoverBeamProps = {
   children: ReactNode;
@@ -14,44 +11,23 @@ type HoverBeamProps = {
   borderRadius?: number;
 };
 
+/**
+ * Keeps the beam treatment without per-card state, effects or event listeners.
+ * Hover/focus activation and reduced-motion handling live entirely in CSS.
+ */
 export function HoverBeam({
   children,
   className,
   preset = 'surface',
   borderRadius,
 }: HoverBeamProps) {
-  const [isActive, setIsActive] = useState(false);
-  const [reduceMotion, setReduceMotion] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const updatePreference = () => setReduceMotion(mediaQuery.matches);
-
-    updatePreference();
-    mediaQuery.addEventListener('change', updatePreference);
-
-    return () => mediaQuery.removeEventListener('change', updatePreference);
-  }, []);
-
-  const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
-    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-      setIsActive(false);
-    }
-  };
-
   return (
-    <BorderBeam
-      {...BEAM_CONFIG}
-      {...BEAM_PRESETS[preset]}
-      active={isActive && !reduceMotion}
-      borderRadius={borderRadius}
-      className={cn('beam-hover-surface', className)}
-      onPointerEnter={() => setIsActive(true)}
-      onPointerLeave={() => setIsActive(false)}
-      onFocusCapture={() => setIsActive(true)}
-      onBlurCapture={handleBlur}
+    <div
+      className={cn('hover-beam', className)}
+      data-beam-preset={preset}
+      style={borderRadius === undefined ? undefined : { borderRadius }}
     >
       {children}
-    </BorderBeam>
+    </div>
   );
 }

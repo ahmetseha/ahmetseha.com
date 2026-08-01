@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { ArrowLeft, Clock3 } from 'lucide-react';
@@ -9,7 +10,7 @@ import BlurFade from '@/components/magicui/blur-fade';
 
 import { getAllPosts, getPostBySlug } from '@/lib/mdx';
 
-import { Link, routing } from '@/i18n/navigation';
+import { routing } from '@/i18n/navigation';
 
 interface Props {
   params: Promise<{

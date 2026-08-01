@@ -1,9 +1,9 @@
-'use client';
+import { setRequestLocale } from 'next-intl/server';
 
 import BlurFade from '@/components/magicui/blur-fade';
 import { HoverBeam } from '@/components/ui/hover-beam';
 
-import { useThoughts } from '@/data/thoughts';
+import { getThoughts } from '@/data/thoughts';
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -29,8 +29,11 @@ const formatRelativeTime = (timestamp: string) => {
   return `${years}y ago`;
 };
 
-export default function ThoughtsPage() {
-  const thoughts = useThoughts();
+export default async function ThoughtsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const thoughts = await getThoughts();
 
   const sortedThoughts = [...thoughts].sort(
     (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()

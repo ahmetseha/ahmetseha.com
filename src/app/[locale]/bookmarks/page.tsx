@@ -21,6 +21,7 @@ export default function BookmarksPage() {
 
       <section id="bookmarks-embed">
         <iframe
+          loading="lazy"
           style={{
             border: '0',
             width: '100%',

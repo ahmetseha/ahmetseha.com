@@ -1,9 +1,14 @@
+import { setRequestLocale } from 'next-intl/server';
+
 import Experience from '@/components/experience';
 import BlurFade from '@/components/magicui/blur-fade';
 
 const BLUR_FADE_DELAY = 0.04;
 
-export default function WorkPage() {
+export default async function WorkPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <main className="mx-auto flex min-h-screen max-w-2xl flex-col px-4 pb-16 sm:px-6 sm:pb-24">
       <BlurFade delay={BLUR_FADE_DELAY}>

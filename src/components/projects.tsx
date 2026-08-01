@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 import { Github, Globe, Smartphone } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 export type ProjectCategory = 'apps' | 'web' | 'tools' | 'npm';
 
@@ -24,8 +24,8 @@ export type Project = {
   }[];
 };
 
-export function useProjects() {
-  const t = useTranslations('Projects');
+export async function getProjects() {
+  const t = await getTranslations('Projects');
 
   const projects: Project[] = [
     {

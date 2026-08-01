@@ -11,6 +11,21 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
   },
+  async redirects() {
+    return [
+      { source: '/tr', destination: '/', permanent: true },
+      { source: '/tr/:path*', destination: '/:path*', permanent: true },
+    ];
+  },
+  async rewrites() {
+    const pages = ['about', 'blog', 'bookmarks', 'hobbies', 'projects', 'thoughts', 'work'];
+
+    return [
+      { source: '/', destination: '/en' },
+      ...pages.map((page) => ({ source: `/${page}`, destination: `/en/${page}` })),
+      { source: '/blog/:slug', destination: '/en/blog/:slug' },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

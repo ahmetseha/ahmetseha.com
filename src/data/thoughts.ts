@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 export type ThoughtCategory = 'quote' | 'code' | 'idea' | 'note' | 'book';
 
@@ -12,8 +12,8 @@ export interface ThoughtEntry {
   timestamp: string;
 }
 
-export function useThoughts() {
-  const t = useTranslations('Thoughts');
+export async function getThoughts() {
+  const t = await getTranslations('Thoughts');
 
   const THOUGHTS: ThoughtEntry[] = [
     {

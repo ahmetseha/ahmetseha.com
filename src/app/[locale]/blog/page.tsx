@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { ArrowUpRight, Clock3 } from 'lucide-react';
 import { setRequestLocale } from 'next-intl/server';
 
@@ -5,8 +7,6 @@ import BlurFade from '@/components/magicui/blur-fade';
 import { HoverBeam } from '@/components/ui/hover-beam';
 
 import { getAllPosts } from '@/lib/mdx';
-
-import { Link } from '@/i18n/navigation';
 
 const BLUR_FADE_DELAY = 0.04;
 

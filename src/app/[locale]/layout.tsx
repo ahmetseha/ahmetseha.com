@@ -1,20 +1,19 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { NextIntlClientProvider, hasLocale } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { hasLocale } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 
 import '../globals.css';
 
-import { Inter as FontSans, JetBrains_Mono as FontMono } from 'next/font/google';
+import { JetBrains_Mono as FontMono, Inter as FontSans } from 'next/font/google';
 
-import { ThemeProvider } from '@/components/provider/theme-provider';
 import { GridBackground } from '@/components/shared/grid-background';
 import { PageHero } from '@/components/shared/page-hero';
-import { TooltipProvider } from '@/components/ui/tooltip';
+
+import { cn } from '@/lib/utils';
 
 import { routing } from '@/i18n/navigation';
-import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'Seha Acar',
@@ -55,10 +54,8 @@ export default async function RootLayout({
   // Keep next-intl request state fixed for static rendering.
   setRequestLocale(locale);
 
-  const messages = await getMessages();
-
   return (
-    <html lang={locale} className="dark" suppressHydrationWarning>
+    <html lang={locale} className="dark">
       <body
         className={cn(
           'min-h-screen bg-background font-sans antialiased relative',
@@ -67,21 +64,10 @@ export default async function RootLayout({
         )}
       >
         <GridBackground />
-        <NextIntlClientProvider messages={messages}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            forcedTheme="dark"
-            disableTransitionOnChange
-          >
-            <TooltipProvider delayDuration={0}>
-              <div className="relative z-10">
-                <PageHero />
-                {children}
-              </div>
-            </TooltipProvider>
-          </ThemeProvider>
-        </NextIntlClientProvider>
+        <div className="relative z-10">
+          <PageHero />
+          {children}
+        </div>
       </body>
     </html>
   );

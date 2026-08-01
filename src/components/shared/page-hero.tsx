@@ -1,24 +1,19 @@
-'use client';
-
 import Image from 'next/image';
+import Link from 'next/link';
 
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 import BlurFadeText from '@/components/magicui/blur-fade-text';
+import { ActiveNavigation } from '@/components/shared/active-navigation';
 import { HoverBeam } from '@/components/ui/hover-beam';
 
-import { cn } from '@/lib/utils';
-
 import { DATA } from '@/data/resume';
-import { Link, usePathname } from '@/i18n/navigation';
 
 const BLUR_FADE_DELAY = 0.04;
 
-export function PageHero() {
-  const pathname = usePathname();
-  const t = useTranslations('Navigation');
-  const tHero = useTranslations('Hero');
-
+export async function PageHero() {
+  const t = await getTranslations('Navigation');
+  const tHero = await getTranslations('Hero');
   const navLinks = [
     { href: '/', label: t('intro') },
     { href: '/projects', label: t('projects') },
@@ -28,7 +23,6 @@ export function PageHero() {
 
   return (
     <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 pt-12 sm:pt-32 pb-6 sm:pb-8">
-      {/* Hero Section */}
       <div className="mb-6 sm:mb-8">
         <div className="flex items-center justify-between gap-3 sm:gap-4">
           <div className="flex flex-col items-start text-left">
@@ -43,13 +37,6 @@ export function PageHero() {
               delay={BLUR_FADE_DELAY * 2}
               text={tHero('role')}
             />
-            {/* <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200/70 bg-emerald-50/80 px-3 py-1 text-xs font-medium text-emerald-700 shadow-sm dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-200 mt-2">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
-              </span>
-              {tHero('status')}
-            </div> */}
           </div>
           <div className="relative flex flex-col items-end gap-2">
             <HoverBeam
@@ -76,31 +63,7 @@ export function PageHero() {
         </div>
       </div>
 
-      {/* Navigation Links */}
-      <div className="overflow-x-auto scrollbar-hide pb-2 -mx-1 px-1">
-        <nav className="flex items-center gap-3 sm:gap-6 font-mono text-xs sm:text-sm uppercase tracking-wider">
-          {navLinks.map((link) => {
-            const isActive =
-              link.href === '/'
-                ? pathname === link.href
-                : pathname === link.href || pathname.startsWith(`${link.href}/`);
-
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  'rounded-md transition-colors duration-200 whitespace-nowrap py-1 px-1.5 sm:px-0',
-                  'hover:text-foreground',
-                  isActive ? 'text-primary' : 'text-muted-foreground'
-                )}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
-      </div>
+      <ActiveNavigation links={navLinks} />
     </div>
   );
 }
