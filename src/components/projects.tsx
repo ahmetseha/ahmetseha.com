@@ -237,6 +237,28 @@ export async function getProjects() {
       ],
     },
     {
+      id: 'ascii-reveal',
+      image: '/ascii-reveal-demo.gif',
+      title: t('ascii-reveal.title'),
+      dates: '2026 - Present',
+      href: 'https://github.com/ahmetseha/ascii-reveal',
+      description: t('ascii-reveal.description'),
+      category: 'npm',
+      tags: ['TypeScript', 'npm', 'React', 'Vue', 'Accessible'],
+      links: [
+        {
+          icon: <Globe className="size-3" />,
+          type: 'NPM',
+          href: 'https://www.npmjs.com/package/@ascii-reveal/react',
+        },
+        {
+          icon: <Github className="size-3" />,
+          type: 'Source',
+          href: 'https://github.com/ahmetseha/ascii-reveal',
+        },
+      ],
+    },
+    {
       id: 'tr-slugify',
       image: '/tr-slugify.png',
       title: t('tr-slugify.title'),

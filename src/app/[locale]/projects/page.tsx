@@ -95,6 +95,7 @@ function ProjectCard({ project }: { project: Project }) {
               src={project.image}
               alt={project.title}
               fill
+              unoptimized={project.image.endsWith('.gif')}
               sizes="(max-width: 640px) 100vw, 320px"
               className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
             />

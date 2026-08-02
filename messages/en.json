@@ -122,6 +122,10 @@
       "title": "PromptTrace",
       "description": "Open-source, local-first CLI that scans your AI tool histories, scores every prompt across 6 quality dimensions, extracts reusable templates, and detects workflow patterns."
     },
+    "ascii-reveal": {
+      "title": "ASCII Reveal",
+      "description": "An accessible, framework-friendly ASCII text reveal animation library with core, React, and Vue packages."
+    },
     "tr-slugify": {
       "title": "tr-slugify",
       "description": "NPM package that correctly converts Turkish special characters and creates slugs for URLs."
