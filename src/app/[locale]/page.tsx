@@ -4,6 +4,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { About } from '@/components/about';
+import { AsciiRevealDemo } from '@/components/ascii-reveal-demo';
 import BlurFade from '@/components/magicui/blur-fade';
 import { HoverBeam } from '@/components/ui/hover-beam';
 
@@ -59,8 +60,14 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
         </BlurFade>
       </section>
 
-      <section id="contact">
+      <section aria-label="ASCII reveal demo">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
+          <AsciiRevealDemo />
+        </BlurFade>
+      </section>
+
+      <section id="contact">
+        <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <div className="flex flex-wrap gap-4 text-sm">
             <a
               href={`mailto:${DATA.contact.email}`}
