@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { ArrowUpRight, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, ExternalLink, Star } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import BlurFade from '@/components/magicui/blur-fade';
@@ -39,6 +39,61 @@ function ProjectTags({ project }: { project: Project }) {
           className="font-mono text-[10px] uppercase tracking-wide text-muted-foreground/70"
         >
           {tag}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function ProjectMetrics({ project, locale }: { project: Project; locale: string }) {
+  if (!project.metrics) return null;
+
+  const formatter = new Intl.NumberFormat(locale);
+  const compactFormatter = new Intl.NumberFormat(locale, {
+    notation: 'compact',
+    maximumFractionDigits: 1,
+  });
+  const metrics = [
+    project.metrics.githubStars === undefined
+      ? null
+      : {
+          type: 'github',
+          value: project.metrics.githubStars,
+          source: 'GitHub',
+          label: 'stars',
+        },
+    project.metrics.weeklyDownloads === undefined
+      ? null
+      : {
+          type: 'npm',
+          value: project.metrics.weeklyDownloads,
+          source: 'npm',
+          label: 'weekly downloads',
+        },
+  ].filter((metric) => metric !== null);
+
+  return (
+    <div className="flex flex-wrap gap-2">
+      {metrics.map((metric) => (
+        <span
+          key={metric.label}
+          className="inline-flex h-7 overflow-hidden rounded-md border border-white/10 bg-background/20 font-mono shadow-[0_1px_0_rgba(255,255,255,0.03)]"
+          title={`${formatter.format(metric.value)} ${metric.source} ${metric.label}`}
+        >
+          <span className="inline-flex items-center gap-1.5 border-r border-white/10 bg-white/[0.035] px-2 text-[9px] font-medium text-muted-foreground">
+            {metric.type === 'npm' ? (
+              <span className="size-1.5 rounded-[2px] bg-red-400" aria-hidden="true" />
+            ) : (
+              <Star className="size-3 fill-current text-amber-300" aria-hidden="true" />
+            )}
+            {metric.source}
+          </span>
+          <span className="inline-flex items-center gap-1.5 px-2 text-[9px]">
+            <strong className="font-semibold tabular-nums text-foreground/90">
+              {compactFormatter.format(metric.value)}
+            </strong>
+            <span className="text-muted-foreground/65">{metric.label}</span>
+          </span>
         </span>
       ))}
     </div>
@@ -85,7 +140,7 @@ function AppCard({ project }: { project: Project }) {
   );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, locale }: { project: Project; locale: string }) {
   return (
     <HoverBeam className="h-full rounded-xl">
       <article className="group flex h-full flex-col overflow-hidden rounded-xl border bg-card/45 transition-colors">
@@ -106,19 +161,15 @@ function ProjectCard({ project }: { project: Project }) {
         </a>
 
         <div className="flex flex-1 flex-col p-4">
-          <div>
-            <div className="mb-1 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
-              <h3 className="font-semibold tracking-tight">{project.title}</h3>
-              <span className="shrink-0 font-mono text-[9px] uppercase tracking-wide text-muted-foreground/60">
-                {project.dates.replace(' - Present', '—Now')}
-              </span>
-            </div>
-            <p className="line-clamp-3 text-sm leading-relaxed text-muted-foreground">
-              {project.description}
-            </p>
-          </div>
-          <div className="mt-3">
+          <h3 className="h-6 line-clamp-1 font-semibold tracking-tight">{project.title}</h3>
+          <p className="mt-1 h-[68px] line-clamp-3 text-sm leading-relaxed text-muted-foreground">
+            {project.description}
+          </p>
+          <div className="mt-3 h-[34px] overflow-hidden">
             <ProjectTags project={project} />
+          </div>
+          <div className="mt-3 h-7">
+            {project.metrics ? <ProjectMetrics project={project} locale={locale} /> : null}
           </div>
           <div className="mt-auto pt-4">
             <ProjectLinks project={project} />
@@ -184,7 +235,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
               ) : (
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {categoryProjects.map((project) => (
-                    <ProjectCard key={project.id} project={project} />
+                    <ProjectCard key={project.id} project={project} locale={locale} />
                   ))}
                 </div>
               )}

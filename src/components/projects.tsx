@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { Github, Globe, Smartphone } from 'lucide-react';
+import { Github, Globe, Package, Smartphone } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 
 export type ProjectCategory = 'apps' | 'web' | 'tools' | 'npm';
@@ -17,12 +17,53 @@ export type Project = {
   description: string;
   category: ProjectCategory;
   tags: string[];
+  githubRepo?: string;
+  npmPackage?: string;
+  metrics?: {
+    githubStars?: number;
+    weeklyDownloads?: number;
+  };
   links: {
     icon: ReactNode;
     type: string;
     href: string;
   }[];
 };
+
+async function getGithubStars(repository: string) {
+  try {
+    const response = await fetch(`https://api.github.com/repos/${repository}`, {
+      headers: {
+        Accept: 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+      next: { revalidate: 3600 },
+    });
+
+    if (!response.ok) return undefined;
+
+    const data = (await response.json()) as { stargazers_count?: unknown };
+    return typeof data.stargazers_count === 'number' ? data.stargazers_count : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+async function getWeeklyDownloads(packageName: string) {
+  try {
+    const response = await fetch(
+      `https://api.npmjs.org/downloads/point/last-week/${encodeURIComponent(packageName)}`,
+      { next: { revalidate: 3600 } }
+    );
+
+    if (!response.ok) return undefined;
+
+    const data = (await response.json()) as { downloads?: unknown };
+    return typeof data.downloads === 'number' ? data.downloads : undefined;
+  } catch {
+    return undefined;
+  }
+}
 
 export async function getProjects() {
   const t = await getTranslations('Projects');
@@ -184,11 +225,17 @@ export async function getProjects() {
       description: t('registry-doctor.description'),
       category: 'tools',
       tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'Vercel'],
+      npmPackage: 'registry-doctor',
       links: [
         {
           icon: <Globe className="size-3" />,
           type: 'Website',
           href: 'https://seha.studio/registrydoctor/',
+        },
+        {
+          icon: <Package className="size-3" />,
+          type: 'NPM',
+          href: 'https://www.npmjs.com/package/registry-doctor',
         },
       ],
     },
@@ -201,6 +248,7 @@ export async function getProjects() {
       description: t('prompt-trace.description'),
       category: 'tools',
       tags: ['TypeScript', 'Node.js', 'CLI', 'SQLite', 'Local-first', 'AI'],
+      npmPackage: 'prompttrace',
       links: [
         {
           icon: <Globe className="size-3" />,
@@ -211,6 +259,11 @@ export async function getProjects() {
           icon: <Github className="size-3" />,
           type: 'Source',
           href: 'https://github.com/ahmetseha/prompt-trace',
+        },
+        {
+          icon: <Package className="size-3" />,
+          type: 'NPM',
+          href: 'https://www.npmjs.com/package/prompttrace',
         },
       ],
     },
@@ -223,6 +276,7 @@ export async function getProjects() {
       description: t('git-score-lab.description'),
       category: 'web',
       tags: ['React', 'TypeScript', 'Tailwind CSS', 'Next.js', 'Supabase', 'Netlify'],
+      githubRepo: 'ahmetseha/git-score-lab',
       links: [
         {
           icon: <Globe className="size-3" />,
@@ -245,9 +299,10 @@ export async function getProjects() {
       description: t('ascii-reveal.description'),
       category: 'npm',
       tags: ['TypeScript', 'npm', 'React', 'Vue', 'Accessible'],
+      npmPackage: '@ascii-reveal/react',
       links: [
         {
-          icon: <Globe className="size-3" />,
+          icon: <Package className="size-3" />,
           type: 'NPM',
           href: 'https://www.npmjs.com/package/@ascii-reveal/react',
         },
@@ -267,7 +322,13 @@ export async function getProjects() {
       description: t('tr-slugify.description'),
       category: 'npm',
       tags: ['TypeScript', 'npm'],
+      npmPackage: 'tr-slugify',
       links: [
+        {
+          icon: <Package className="size-3" />,
+          type: 'NPM',
+          href: 'https://www.npmjs.com/package/tr-slugify',
+        },
         {
           icon: <Globe className="size-3" />,
           type: 'Website',
@@ -282,5 +343,24 @@ export async function getProjects() {
     },
   ];
 
-  return projects;
+  return Promise.all(
+    projects.map(async (project) => {
+      const [githubStars, weeklyDownloads] = await Promise.all([
+        project.githubRepo && !project.npmPackage
+          ? getGithubStars(project.githubRepo)
+          : Promise.resolve(undefined),
+        project.npmPackage ? getWeeklyDownloads(project.npmPackage) : Promise.resolve(undefined),
+      ]);
+
+      if (githubStars === undefined && weeklyDownloads === undefined) return project;
+
+      return {
+        ...project,
+        metrics: {
+          githubStars,
+          weeklyDownloads,
+        },
+      };
+    })
+  );
 }
