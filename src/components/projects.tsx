@@ -51,8 +51,13 @@ async function getGithubStars(repository: string) {
 
 async function getWeeklyDownloads(packageName: string) {
   try {
+    const end = new Date();
+    const start = new Date(end);
+    start.setUTCDate(start.getUTCDate() - 6);
+
+    const period = `${start.toISOString().slice(0, 10)}:${end.toISOString().slice(0, 10)}`;
     const response = await fetch(
-      `https://api.npmjs.org/downloads/point/last-week/${encodeURIComponent(packageName)}`,
+      `https://api.npmjs.org/downloads/point/${period}/${encodeURIComponent(packageName)}`,
       { next: { revalidate: 3600 } }
     );
 
@@ -287,6 +292,35 @@ export async function getProjects() {
           icon: <Github className="size-3" />,
           type: 'Source',
           href: 'https://github.com/ahmetseha/git-score-lab',
+        },
+      ],
+    },
+    {
+      id: 'vue-renderer-tunnel',
+      image: '/vue-renderer-tunnel.png',
+      title: t('vue-renderer-tunnel.title'),
+      dates: 'September 2026 - Present',
+      href: 'https://seha.studio/lab/renderer-tunnel',
+      description: t('vue-renderer-tunnel.description'),
+      category: 'npm',
+      tags: ['Vue 3', 'TypeScript', 'TresJS', 'Three.js', 'Custom Renderer'],
+      githubRepo: 'ahmetseha/vue-renderer-tunnel',
+      npmPackage: 'vue-renderer-tunnel',
+      links: [
+        {
+          icon: <Globe className="size-3" />,
+          type: 'Live Demo',
+          href: 'https://seha.studio/lab/renderer-tunnel',
+        },
+        {
+          icon: <Package className="size-3" />,
+          type: 'NPM',
+          href: 'https://www.npmjs.com/package/vue-renderer-tunnel',
+        },
+        {
+          icon: <Github className="size-3" />,
+          type: 'Source',
+          href: 'https://github.com/ahmetseha/vue-renderer-tunnel',
         },
       ],
     },

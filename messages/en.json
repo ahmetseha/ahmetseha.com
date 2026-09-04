@@ -122,6 +122,10 @@
       "title": "PromptTrace",
       "description": "Open-source, local-first CLI that scans your AI tool histories, scores every prompt across 6 quality dimensions, extracts reusable templates, and detects workflow patterns."
     },
+    "vue-renderer-tunnel": {
+      "title": "vue-renderer-tunnel",
+      "description": "A tiny, typed Vue 3 package for routing reactive content between DOM and custom renderer roots such as TresJS—without duplicating the canvas or component tree."
+    },
     "ascii-reveal": {
       "title": "ASCII Reveal",
       "description": "An accessible, framework-friendly ASCII text reveal animation library with core, React, and Vue packages."
