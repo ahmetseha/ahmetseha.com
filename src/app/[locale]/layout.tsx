@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
+import { Analytics } from '@vercel/analytics/next';
 import { hasLocale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 
@@ -84,6 +85,7 @@ export default async function RootLayout({
           <PageHero />
           {children}
         </div>
+        <Analytics />
       </body>
     </html>
   );
