@@ -175,7 +175,7 @@ export async function getProjects() {
       image: '/preflint.png',
       title: t('preflint.title'),
       dates: '2026 - Present',
-      href: 'https://seha.studio/preflint',
+      href: 'https://preflint-web-web.seha.studio/',
       description: t('preflint.description'),
       category: 'web',
       tags: ['Nuxt', 'Vue', 'TypeScript', 'Local-first', 'App Store'],
@@ -183,7 +183,7 @@ export async function getProjects() {
         {
           icon: <Globe className="size-3" />,
           type: 'Website',
-          href: 'https://seha.studio/preflint',
+          href: 'https://preflint-web-web.seha.studio/',
         },
       ],
     },
@@ -192,7 +192,7 @@ export async function getProjects() {
       image: '/clariole.png',
       title: t('clariole.title'),
       dates: '2025 - Present',
-      href: 'https://seha.studio/cloriole/',
+      href: 'https://cloriole.seha.studio/',
       description: t('clariole.description'),
       category: 'web',
       tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
@@ -200,7 +200,7 @@ export async function getProjects() {
         {
           icon: <Globe className="size-3" />,
           type: 'Website',
-          href: 'https://seha.studio/cloriole/',
+          href: 'https://cloriole.seha.studio/',
         },
       ],
     },
@@ -226,7 +226,7 @@ export async function getProjects() {
       image: '/registry-doctor.svg',
       title: t('registry-doctor.title'),
       dates: '2026 - Present',
-      href: 'https://seha.studio/registrydoctor/',
+      href: 'https://registry-doctor-web.seha.studio/',
       description: t('registry-doctor.description'),
       category: 'tools',
       tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'Vercel'],
@@ -235,7 +235,7 @@ export async function getProjects() {
         {
           icon: <Globe className="size-3" />,
           type: 'Website',
-          href: 'https://seha.studio/registrydoctor/',
+          href: 'https://registry-doctor-web.seha.studio/',
         },
         {
           icon: <Package className="size-3" />,
@@ -249,17 +249,13 @@ export async function getProjects() {
       image: '/prompt-trace-v2.png',
       title: t('prompt-trace.title'),
       dates: 'October 2025 - Present',
-      href: 'https://seha.studio/promptrace/',
+      href: 'https://github.com/ahmetseha/prompt-trace',
       description: t('prompt-trace.description'),
       category: 'tools',
       tags: ['TypeScript', 'Node.js', 'CLI', 'SQLite', 'Local-first', 'AI'],
+      githubRepo: 'ahmetseha/prompt-trace',
       npmPackage: 'prompttrace',
       links: [
-        {
-          icon: <Globe className="size-3" />,
-          type: 'Website',
-          href: 'https://seha.studio/promptrace/',
-        },
         {
           icon: <Github className="size-3" />,
           type: 'Source',
@@ -277,7 +273,7 @@ export async function getProjects() {
       image: '/git-score-lab.png',
       title: t('git-score-lab.title'),
       dates: 'April 2023 - September 2023',
-      href: 'https://seha.studio/gitscorelab/',
+      href: 'https://git-score-lab.seha.studio/',
       description: t('git-score-lab.description'),
       category: 'web',
       tags: ['React', 'TypeScript', 'Tailwind CSS', 'Next.js', 'Supabase', 'Netlify'],
@@ -286,7 +282,7 @@ export async function getProjects() {
         {
           icon: <Globe className="size-3" />,
           type: 'Website',
-          href: 'https://seha.studio/gitscorelab/',
+          href: 'https://git-score-lab.seha.studio/',
         },
         {
           icon: <Github className="size-3" />,
@@ -300,23 +296,12 @@ export async function getProjects() {
       image: '/vue-renderer-tunnel.png',
       title: t('vue-renderer-tunnel.title'),
       dates: 'September 2026 - Present',
-      href: 'https://seha.studio/lab/renderer-tunnel',
+      href: 'https://github.com/ahmetseha/vue-renderer-tunnel',
       description: t('vue-renderer-tunnel.description'),
       category: 'npm',
       tags: ['Vue 3', 'TypeScript', 'TresJS', 'Three.js', 'Custom Renderer'],
       githubRepo: 'ahmetseha/vue-renderer-tunnel',
-      npmPackage: 'vue-renderer-tunnel',
       links: [
-        {
-          icon: <Globe className="size-3" />,
-          type: 'Live Demo',
-          href: 'https://seha.studio/lab/renderer-tunnel',
-        },
-        {
-          icon: <Package className="size-3" />,
-          type: 'NPM',
-          href: 'https://www.npmjs.com/package/vue-renderer-tunnel',
-        },
         {
           icon: <Github className="size-3" />,
           type: 'Source',
@@ -352,7 +337,7 @@ export async function getProjects() {
       image: '/tr-slugify.png',
       title: t('tr-slugify.title'),
       dates: 'June 2023 - Present',
-      href: 'https://seha.studio/trslugify/',
+      href: 'https://tr-slugify.seha.studio/',
       description: t('tr-slugify.description'),
       category: 'npm',
       tags: ['TypeScript', 'npm'],
@@ -366,7 +351,7 @@ export async function getProjects() {
         {
           icon: <Globe className="size-3" />,
           type: 'Website',
-          href: 'https://seha.studio/trslugify/',
+          href: 'https://tr-slugify.seha.studio/',
         },
         {
           icon: <Github className="size-3" />,
