@@ -27,7 +27,6 @@ export async function createSignatureScene(
 
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute('position', new THREE.BufferAttribute(cloud.positions, 3));
-  geometry.setAttribute('aNormal', new THREE.BufferAttribute(cloud.normals, 3));
   geometry.setAttribute('aSize', new THREE.BufferAttribute(cloud.sizes, 1));
   geometry.setAttribute('aAccent', new THREE.BufferAttribute(cloud.accents, 1));
 
@@ -39,7 +38,6 @@ export async function createSignatureScene(
     toneMapped: false,
     uniforms: {
       uPixelRatio: { value: renderer.getPixelRatio() },
-      uHover: { value: 0 },
     },
   });
 
@@ -49,29 +47,12 @@ export async function createSignatureScene(
   group.add(points);
   scene.add(group);
 
-  const target = { x: 0, y: 0, hover: 0 };
-  const current = { x: 0, y: 0, hover: 0 };
   let reducedMotion = options.reducedMotion;
   let visible = true;
   let frame = 0;
 
-  const renderFrame = (now: number, dt: number) => {
-    current.x += (target.x - current.x) * (1 - Math.exp(-dt * 5.2));
-    current.y += (target.y - current.y) * (1 - Math.exp(-dt * 5.2));
-    current.hover += (target.hover - current.hover) * (1 - Math.exp(-dt * 6));
-
-    const idle = reducedMotion
-      ? { x: 0, y: 0, lift: 0 }
-      : {
-          x: Math.sin(now * 0.00017) * 0.04,
-          y: Math.sin(now * 0.00023) * 0.14,
-          lift: Math.sin(now * 0.00085) * 0.01,
-        };
-
-    group.rotation.x = current.x + idle.x;
-    group.rotation.y = current.y + idle.y;
-    group.position.y = idle.lift;
-    material.uniforms.uHover.value = current.hover;
+  const renderFrame = (now: number) => {
+    group.position.y = reducedMotion ? 0 : Math.sin(now * 0.00085) * 0.01;
     renderer.render(scene, camera);
   };
 
@@ -79,7 +60,7 @@ export async function createSignatureScene(
   const tick = (now: number) => {
     frame = requestAnimationFrame(tick);
     if (!visible) return;
-    renderFrame(now, Math.min(0.05, (now - last) / 1000));
+    renderFrame(now);
     last = now;
     if (reducedMotion) {
       cancelAnimationFrame(frame);
@@ -101,33 +82,15 @@ export async function createSignatureScene(
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, dprCap));
     renderer.setSize(clientWidth, clientHeight, false);
     material.uniforms.uPixelRatio.value = renderer.getPixelRatio();
-    if (reducedMotion) renderFrame(performance.now(), 0.016);
+    if (reducedMotion) renderFrame(performance.now());
   };
 
   resize();
   start();
 
   return {
-    setPointer: (x, y) => {
-      if (reducedMotion) return;
-      target.y = x * 0.2;
-      target.x = y * 0.12;
-    },
-    setHover: (hovered) => {
-      if (reducedMotion) return;
-      target.hover = hovered ? 1 : 0;
-      if (!hovered) {
-        target.x = 0;
-        target.y = 0;
-      }
-    },
     setReducedMotion: (value) => {
       reducedMotion = value;
-      if (value) {
-        target.x = 0;
-        target.y = 0;
-        target.hover = 0;
-      }
       start();
     },
     setVisible: (value) => {

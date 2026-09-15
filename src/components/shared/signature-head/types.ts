@@ -7,8 +7,6 @@ export type HeadCloud = {
 };
 
 export type SignatureScene = {
-  setPointer: (x: number, y: number) => void;
-  setHover: (hovered: boolean) => void;
   setReducedMotion: (reduced: boolean) => void;
   setVisible: (visible: boolean) => void;
   resize: () => void;

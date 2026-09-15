@@ -96,20 +96,13 @@ export async function buildPortraitCloud(src: string, dense: boolean): Promise<H
   ) => {
     const u = (x - midX) / radiusX;
     const v = -((y - midY) / radiusY);
-    const dome = Math.sqrt(Math.max(0, 1 - u * u * 0.82 - v * v * 1.05));
-    const body = v > -0.18 ? 1 : 0.28 + Math.max(0, (v + 0.45) / 0.27);
-    let z = dome * 0.2 * body + (inked ? 0.01 : 0);
     const px = u * 0.46 + (Math.random() - 0.5) * scatter;
     const py = v * 0.46 + (Math.random() - 0.5) * scatter;
-    z += (Math.random() - 0.5) * scatter;
-    const nx = -u * 0.55;
-    const ny = v * 0.35;
-    const nz = 0.75 + dome * 0.25;
-    const length = Math.hypot(nx, ny, nz) || 1;
+    const pz = (Math.random() - 0.5) * scatter;
 
-    positions.push(px, py, z);
-    normals.push(nx / length, ny / length, nz / length);
-    sizes.push(inked ? 1.55 + dome * 0.4 : 0.72 + dome * 0.35);
+    positions.push(px, py, pz);
+    normals.push(0, 0, 1);
+    sizes.push(inked ? 1.55 : 0.72);
     accents.push(accent);
   };
 
@@ -118,16 +111,12 @@ export async function buildPortraitCloud(src: string, dense: boolean): Promise<H
       const index = y * SAMPLE + x;
       if (background[index]) continue;
       const inked = ink[index] === 1;
-      const step = inked ? inkStep : fillStep;
-      if (x % step !== 0 || y % step !== 0) continue;
+      const stride = inked ? inkStep : fillStep;
+      if (x % stride !== 0 || y % stride !== 0) continue;
 
       const nearTop = y < minY + (maxY - minY) * 0.28;
-      const accent = inked && nearTop && Math.random() < 0.035 ? 1 : 0;
+      const accent = inked && nearTop && Math.random() < 0.03 ? 1 : 0;
       pushPoint(x, y, inked, inked ? 0.004 : 0.01, accent);
-
-      if (!inked && Math.random() < (dense ? 0.05 : 0.03)) {
-        pushPoint(x, y, false, 0.026, 0);
-      }
     }
   }
 

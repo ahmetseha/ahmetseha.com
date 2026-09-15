@@ -1,6 +1,6 @@
 'use client';
 
-import { type PointerEvent, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import Image from 'next/image';
 
@@ -79,14 +79,6 @@ export function SignatureHead({ src }: { src: string }) {
     };
   }, [src]);
 
-  const updatePointer = (event: PointerEvent<HTMLCanvasElement>) => {
-    const bounds = event.currentTarget.getBoundingClientRect();
-    const x = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
-    const y = ((event.clientY - bounds.top) / bounds.height) * 2 - 1;
-    sceneRef.current?.setPointer(x, -y);
-    sceneRef.current?.setHover(true);
-  };
-
   if (useFallback) {
     return (
       <Image src={src} alt="" fill sizes="128px" className="object-contain invert" aria-hidden="true" />
@@ -98,9 +90,6 @@ export function SignatureHead({ src }: { src: string }) {
       ref={canvasRef}
       className="block h-full w-full bg-transparent"
       aria-hidden="true"
-      onPointerMove={updatePointer}
-      onPointerEnter={updatePointer}
-      onPointerLeave={() => sceneRef.current?.setHover(false)}
     />
   );
 }
