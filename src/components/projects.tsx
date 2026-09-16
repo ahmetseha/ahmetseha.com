@@ -300,7 +300,7 @@ export async function getProjects() {
       description: t('vue-renderer-tunnel.description'),
       category: 'npm',
       tags: ['Vue 3', 'TypeScript', 'TresJS', 'Three.js', 'Custom Renderer'],
-      githubRepo: 'ahmetseha/vue-renderer-tunnel',
+      npmPackage: 'vue-renderer-tunnel',
       links: [
         {
           icon: <Github className="size-3" />,
