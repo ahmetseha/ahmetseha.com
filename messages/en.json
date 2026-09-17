@@ -9,9 +9,10 @@
     "hobbies": "Hobbies"
   },
   "Hero": {
-    "greeting": "Hi, I'm {name}",
-    "role": "Product-oriented software engineer. I care about details and prioritize user experience.",
-    "status": "Open to work"
+    "name": "seha",
+    "titleLine1": "Frontend Engineer",
+    "titleLine2": "& Product Builder",
+    "description": "I build apps, local-first tools, and small product experiments. Frontend first, with care for how they look and feel."
   },
   "HomePage": {
     "now": "Now",
