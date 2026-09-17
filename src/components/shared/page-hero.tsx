@@ -5,7 +5,6 @@ import { getTranslations } from 'next-intl/server';
 
 import BlurFade from '@/components/magicui/blur-fade';
 import { ActiveNavigation } from '@/components/shared/active-navigation';
-import { HoverBeam } from '@/components/ui/hover-beam';
 
 import { DATA } from '@/data/resume';
 
@@ -25,28 +24,22 @@ export async function PageHero() {
     <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 pt-12 sm:pt-20 pb-6 sm:pb-8">
       <div className="mb-8 sm:mb-10">
         <BlurFade delay={BLUR_FADE_DELAY}>
-          <div className="mb-6 flex items-center gap-3 sm:mb-8">
-            <HoverBeam
-              preset="control"
-              borderRadius={999}
-              className="size-10 rounded-full sm:size-12"
+          <div className="mb-6 flex items-center gap-2.5 sm:mb-8">
+            <Link
+              href="/"
+              aria-label="Back to intro"
+              className="relative size-9 shrink-0 overflow-hidden rounded-full"
             >
-              <Link
-                href="/"
-                aria-label="Back to intro"
-                className="relative block size-10 flex-shrink-0 overflow-hidden rounded-full border-2 ring-2 ring-transparent transition-all duration-200 hover:ring-primary/20 sm:size-12"
-              >
-                <Image
-                  src={DATA.avatarUrl}
-                  alt={DATA.name}
-                  fill
-                  priority
-                  sizes="(max-width: 640px) 40px, 48px"
-                  className="object-cover"
-                />
-              </Link>
-            </HoverBeam>
-            <span className="font-mono text-xs text-muted-foreground">
+              <Image
+                src={DATA.avatarUrl}
+                alt={DATA.name}
+                fill
+                priority
+                sizes="36px"
+                className="object-contain"
+              />
+            </Link>
+            <span className="font-mono text-[13px] text-muted-foreground">
               {tHero('name')}
             </span>
           </div>

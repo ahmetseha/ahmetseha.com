@@ -1,7 +1,7 @@
 export const DATA = {
   name: 'Ahmet Seha',
   initials: 'AS',
-  avatarUrl: '/logo-new.png',
+  avatarUrl: '/logo-dots.png',
   contact: {
     email: 'ahmetsehacar@gmail.com',
     social: {
